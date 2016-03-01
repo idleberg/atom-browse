@@ -19,6 +19,10 @@ Add a command that let's you quickly browse the packages folder, like in Sublime
 1. Change directory `cd ~/.atom/packages/`
 2. Clone repository `git clone https://github.com/idleberg/atom-browse browse`
 
+## Usage
+
+Run “Browse: Packages Folder” from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) or the packages menu.
+
 ## License
 
 This work is licensed under the [The MIT License](LICENSE.md).
