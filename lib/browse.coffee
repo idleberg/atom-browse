@@ -31,12 +31,12 @@ module.exports = BrowsePackages =
       # Does packages folder exist?
       try
         fs.accessSync(@packageDir, fs.F_OK)
-      catch e
-        console.log e
+      catch error
+        atom.notifications.addError("atom-browse", detail: error, dismissable: true)
         return
 
       # Open packages folder
-      exec "#{@fileManager} #{packageDir}"
+      exec "#{@fileManager} #{@packageDir}"
 
   getFileManager: ->
 
@@ -46,5 +46,5 @@ module.exports = BrowsePackages =
       when "win32"
         return "explorer"
       when "linux"
-        console.log "browse: Linux is not yet supported."
+        atom.notifications.addWarning("atom-browse", detail: "Hold tight. Linux is not yet supported, but we're working on it!", dismissable: true)
         return null
