@@ -43,7 +43,6 @@ module.exports = BrowsePackages =
     configPath = path.dirname(@configFile)
 
     if @fileManager isnt null
-
       # Does config folder exist?
       try
         fs.accessSync(configPath, fs.F_OK)
@@ -54,8 +53,6 @@ module.exports = BrowsePackages =
       # Open packages folder
       exec "#{@fileManager} #{configPath}"
 
-
-
   getFileManager: ->
     switch process.platform
       when "darwin"
@@ -63,5 +60,21 @@ module.exports = BrowsePackages =
       when "win32"
         return "explorer"
       when "linux"
-        atom.notifications.addWarning("atom-browse", detail: "Hold tight, Linux user. Support for your operating system is underway!", dismissable: true)
+        # There are many possibile file managers on Linux, let's iterate over
+        # the most popular ones
+        # TODO: write preference to config.json
+        result = null
+        linuxFileManagers = ['xdg-open', 'gnome-open', 'kde-open', 'nautilus']
+
+        for fm in linuxFileManagers
+          try
+            exec "which #{fm}", (error, stdout, stderr) ->
+                if error is null and stdout isnt null
+                  result = fm
+
+          # Did we find anything yet?
+          if fm isnt null
+            return fm
+
+        atom.notifications.addWarning("atom-browse", detail: "No supported file manager detected", dismissable: true)
         return null
