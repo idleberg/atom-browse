@@ -1,0 +1,36 @@
+{
+  "name": "browse",
+  "description": "Add dialog to browse packages folder (like in Sublime Text)",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Jan T. Sott",
+    "url": "http://github.com/idleberg"
+  },
+  "activationCommands": {
+    "atom-workspace": [
+      "browse:packages-folder"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idleberg/atom-browse.git"
+  },
+  "main": "./lib/browse",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-coffeelint": "^0.6.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-jsonlint": "^1.1.1",
+    "gulp-recess": "^1.2.0"
+  },
+  "scripts": {
+    "test": "gulp lint"
+  }
+}
