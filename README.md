@@ -6,7 +6,9 @@
 
 # atom-browse
 
-Add a command that let's you quickly browse the packages folder, like in Sublime Text
+Add a command that let's you quickly browse the packages folder, like in Sublime Text.
+
+**Note:** Currently works on Mac OS X and Windows, Linux support is pending
 
 ## Installation
 
