@@ -9,6 +9,10 @@
       'label': 'Browse'
       'submenu': [
         {
+          'label': 'Open Configuration Folder'
+          'command': 'browse:configuration-folder'
+        },
+        {
           'label': 'Open Packages Folder'
           'command': 'browse:packages-folder'
         }

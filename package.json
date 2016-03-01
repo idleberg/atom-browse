@@ -9,6 +9,7 @@
   },
   "activationCommands": {
     "atom-workspace": [
+      "browse:configuration-folder",
       "browse:packages-folder"
     ]
   },
