@@ -8,7 +8,7 @@ module.exports = BrowsePackages =
   browsePackagesView: null
   subscriptions: null
   fileManager: null
-  configDir: path.join(atom.packages.resolvePackagePath('browse'), '..', '..')
+  packageDir: atom.packages.getPackageDirPaths()[0]
 
   activate: (state) ->
 
@@ -28,11 +28,9 @@ module.exports = BrowsePackages =
 
     if @fileManager isnt null
 
-      packageDir = path.join(@configDir, 'packages')
-
       # Does packages folder exist?
       try
-        fs.accessSync(packageDir, fs.F_OK)
+        fs.accessSync(@packageDir, fs.F_OK)
       catch e
         console.log e
         return
