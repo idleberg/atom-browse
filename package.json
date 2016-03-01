@@ -1,7 +1,7 @@
 {
   "name": "browse",
   "description": "Add dialog to browse packages folder (like in Sublime Text)",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "Jan T. Sott",
@@ -20,8 +20,7 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-coffeelint": "^0.6.0",
