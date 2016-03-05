@@ -10,7 +10,7 @@ Add a command that let's you quickly browse the packages folder, like in Sublime
 
 ## Installation
 
-### apm
+### apm (Atom Package Manager)
 
 * Install package `apm install browse` (or use the GUI)
 
@@ -21,7 +21,7 @@ Add a command that let's you quickly browse the packages folder, like in Sublime
 
 ## Usage
 
-Run “Browse: Packages Folder” from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) or the packages menu.
+Run `“Browse: Packages Folder”` from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) or the packages menu or go the menu and click `Packages> Browse> Open Packages Folder`
 
 ## License
 
