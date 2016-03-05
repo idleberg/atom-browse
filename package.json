@@ -7,6 +7,18 @@
     "name": "Jan T. Sott",
     "url": "http://github.com/idleberg"
   },
+  "contributors": [
+    {
+      "name": "Clifford Fajardo",
+      "url": "https://github.com/cliffordfajardo"
+    }
+  ],
+  "keywords": [
+    "atom",
+    "finder",
+    "packages",
+    "sublime text"
+  ],
   "activationCommands": {
     "atom-workspace": [
       "browse:configuration-folder",
