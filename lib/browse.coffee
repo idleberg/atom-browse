@@ -22,6 +22,7 @@ module.exports = BrowsePackages =
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:configuration-folder': => @browseConfig()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:enclosing-folder': => @browseEnclosing()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -38,6 +39,15 @@ module.exports = BrowsePackages =
 
       # Open packages folder
       exec "#{@fileManager} #{@packageDir}"
+
+  browseEnclosing: ->
+    # Get parent folder of active file
+    editor = atom.workspace.getActivePaneItem()
+    file = editor?.buffer.file
+    filePath = path.dirname(file?.path)
+
+    # Open packages folder
+    exec "#{@fileManager} #{filePath}"
 
   browseConfig: ->
     configPath = path.dirname(@configFile)
