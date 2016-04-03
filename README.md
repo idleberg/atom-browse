@@ -8,9 +8,9 @@
 
 Add a command that let's you quickly browse relevant folders:
 
-* `Browse: Packages folder`, like in Sublime Text.
+* `Browse: Packages folder` (like in Sublime Text)
 * `Browse: Configuration folder`
-* `Browse: Enclosing folder`
+* `Browse: Enclosing folder` (of active file)
 
 ## Installation
 
