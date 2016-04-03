@@ -6,7 +6,7 @@
 
 # atom-browse
 
-Add a command that let's you quickly browse relevant folders:
+Add commands that let you quickly browse relevant folders:
 
 * `Browse: Packages folder` (like in Sublime Text)
 * `Browse: Configuration folder`
