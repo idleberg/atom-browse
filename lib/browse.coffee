@@ -5,7 +5,7 @@ path = require 'path'
 {CompositeDisposable} = require 'atom'
 
 module.exports = BrowsePackages =
-  browsePackagesView: null
+  self: '[browse]'
   subscriptions: null
   fileManager: null
   configFile: atom.config.getUserConfigPath()
@@ -44,10 +44,15 @@ module.exports = BrowsePackages =
     # Get parent folder of active file
     editor = atom.workspace.getActivePaneItem()
     file = editor?.buffer.file
-    filePath = path.dirname(file?.path)
+    
+    if file isnt null
+      filePath = path.dirname(file?.path)
 
-    # Open packages folder
-    exec "#{@fileManager} #{filePath}"
+      # Open packages folder
+      exec "#{@fileManager} #{filePath}"
+      return
+
+    atom.notifications.addWarning("atom-browse", detail: "No active file", dismissable: false)
 
   browseConfig: ->
     configPath = path.dirname(@configFile)
@@ -64,6 +69,12 @@ module.exports = BrowsePackages =
       exec "#{@fileManager} #{configPath}"
 
   getFileManager: ->
+    fm = atom.config.get('browse.linuxFileManager');
+
+    if typeof fm isnt 'undefined'
+        console.log "#{@self} Load from config: #{fm}"
+        return fm
+
     switch process.platform
       when "darwin"
         return "open"
@@ -77,13 +88,14 @@ module.exports = BrowsePackages =
         linuxFileManagers = ['xdg-open', 'gnome-open', 'kde-open', 'nautilus']
 
         for fm in linuxFileManagers
-          try
-            exec "which #{fm}", (error, stdout, stderr) ->
-                if error is null and stdout isnt null
-                  result = fm
+          console.log "#{@self} Trying: #{fm}"
+          exec "which #{fm}", (error, stdout, stderr) ->
+            if stdout isnt null
+              result = stdout
 
-          # Did we find anything yet?
-          if fm isnt null
+          if typeof result isnt 'undefined'
+            console.log "#{@self} Save to config: #{fm}"
+            atom.config.set('browse.linuxFileManager', fm);
             return fm
 
         atom.notifications.addWarning("atom-browse", detail: "No supported file manager detected", dismissable: true)
