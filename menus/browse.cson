@@ -15,6 +15,11 @@
         {
           'label': 'Open Packages Folder'
           'command': 'browse:packages-folder'
+        },
+        { 'type': 'separator' },
+        {
+          'label': 'Open Enclosing Folder'
+          'command': 'browse:enclosing-folder'
         }
       ]
     ]
