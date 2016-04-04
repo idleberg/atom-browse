@@ -1,6 +1,6 @@
 {
   "name": "browse",
-  "description": "Add commands that let you quickly browse relevant folders",
+  "description": "Add commands that let you quickly browse folders",
   "version": "0.6.0",
   "license": "MIT",
   "author": {
