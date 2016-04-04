@@ -21,7 +21,7 @@ Add commands that let you quickly browse folders ([details below](#usage))
 
 ## Usage
 
-Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
+Run any of the following commands from the [Command Palette](http://flight-manual.atom.io/getting-started/sections/atom-basics/#_command_palette):
 
 * `Browse: Packages folder` (like in Sublime Text)
 * `Browse: Configuration folder`
