@@ -20,7 +20,11 @@
         {
           'label': 'Open Enclosing Folder'
           'command': 'browse:enclosing-folder'
-        }
+        },
+        {
+          'label': 'Open Project Folder(s)'
+          'command': 'browse:project-folders'
+          },
       ]
     ]
   }

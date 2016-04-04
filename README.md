@@ -11,6 +11,7 @@ Add commands that let you quickly browse relevant folders:
 * `Browse: Packages folder` (like in Sublime Text)
 * `Browse: Configuration folder`
 * `Browse: Enclosing folder` (of active file)
+* `Browse: Project folder(s)`
 
 ## Installation
 

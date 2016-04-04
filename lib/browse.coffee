@@ -21,8 +21,9 @@ module.exports = BrowsePackages =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:configuration-folder': => @browseConfig()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:enclosing-folder': => @browseEnclosing()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:project-folders': => @browseProjects()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -44,7 +45,7 @@ module.exports = BrowsePackages =
     # Get parent folder of active file
     editor = atom.workspace.getActivePaneItem()
     file = editor?.buffer.file
-    
+
     if file isnt null
       filePath = path.dirname(file?.path)
 
@@ -53,6 +54,24 @@ module.exports = BrowsePackages =
       return
 
     atom.notifications.addWarning("atom-browse", detail: "No active file", dismissable: false)
+
+  browseProjects: ->
+    projects = atom.project.getPaths()
+
+    for project in projects
+      # Skip Atom dialogs
+      if project.startsWith('atom://')
+        continue
+
+      # Does project folder exist?
+      try
+        fs.accessSync(project, fs.F_OK)
+      catch
+        atom.notifications.addError("atom-browse", detail: error, dismissable: true)
+        continue
+
+      # Open project folder
+      exec "#{@fileManager} #{project}"
 
   browseConfig: ->
     configPath = path.dirname(@configFile)
