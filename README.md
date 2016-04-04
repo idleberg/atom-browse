@@ -6,12 +6,7 @@
 
 # atom-browse
 
-Add commands that let you quickly browse relevant folders:
-
-* `Browse: Packages folder` (like in Sublime Text)
-* `Browse: Configuration folder`
-* `Browse: Enclosing folder` (of active file)
-* `Browse: Project folder(s)`
+Add commands that let you quickly browse folders
 
 ## Installation
 
@@ -26,7 +21,12 @@ Add commands that let you quickly browse relevant folders:
 
 ## Usage
 
-Run “Browse: Packages Folder” from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) or the packages menu.
+Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
+
+* `Browse: Packages folder` (like in Sublime Text)
+* `Browse: Configuration folder`
+* `Browse: Enclosing folder` (of active file)
+* `Browse: Project folder(s)`
 
 ## License
 
