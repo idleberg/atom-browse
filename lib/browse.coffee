@@ -102,7 +102,6 @@ module.exports = BrowsePackages =
       when "linux"
         # There are many possibile file managers on Linux, let's iterate over
         # the most popular ones
-        # TODO: write preference to config.json
         result = null
         linuxFileManagers = ['xdg-open', 'gnome-open', 'kde-open', 'nautilus']
 
