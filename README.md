@@ -28,6 +28,8 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 * `Browse: Reveal file`
 * `Browse: Project folder(s)`
 
+All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Browse: Reveal file`.
+
 ## License
 
 This work is licensed under the [The MIT License](LICENSE.md).

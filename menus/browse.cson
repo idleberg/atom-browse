@@ -1,8 +1,20 @@
 # See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
 'context-menu':
-  'atom-text-editor': [
+  '.platform-darwin atom-text-editor': [
     {
-      'label': 'Reveal File'
+      'label': 'Reveal in Finder'
+      'command': 'browse:reveal-file'
+    }
+  ]
+  '.platform-linux atom-text-editor': [
+    {
+      'label': 'Reveal file'
+      'command': 'browse:reveal-file'
+    }
+  ]
+  '.platform-windows atom-text-editor': [
+    {
+      'label': 'Reveal in Explorer'
       'command': 'browse:reveal-file'
     }
   ]
