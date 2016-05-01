@@ -143,7 +143,7 @@ module.exports = BrowsePackages =
               result = stdout
 
           if typeof result isnt 'undefined'
-            console.log "[#{@self}] Save to config: #{fm}"
+            atom.notifications.addInfo("**browse**: Saving `#{fm}` for future use", dismissable: false)
             atom.config.set('browse.linuxFileManager', fm);
             return fm
 
