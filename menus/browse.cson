@@ -1,6 +1,10 @@
 # See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
 'context-menu':
   'atom-text-editor': [
+    {
+      'label': 'Reveal File'
+      'command': 'browse:reveal-file'
+    }
   ]
 'menu': [
   {
@@ -18,13 +22,13 @@
         },
         { 'type': 'separator' },
         {
-          'label': 'Open Enclosing Folder'
-          'command': 'browse:enclosing-folder'
-        },
-        {
           'label': 'Open Project Folder(s)'
           'command': 'browse:project-folders'
-          },
+        },
+        {
+          'label': 'Reveal File'
+          'command': 'browse:reveal-file'
+        }
       ]
     ]
   }

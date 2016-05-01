@@ -10,8 +10,8 @@
   "activationCommands": {
     "atom-workspace": [
       "browse:configuration-folder",
+      "browse:reveal-file",
       "browse:project-folders",
-      "browse:enclosing-folder",
       "browse:packages-folder"
     ]
   },

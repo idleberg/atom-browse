@@ -5,7 +5,7 @@ path = require 'path'
 {CompositeDisposable} = require 'atom'
 
 module.exports = BrowsePackages =
-  self: '[browse]'
+  self: 'browse'
   subscriptions: null
   fileManager: null
   configFile: atom.config.getUserConfigPath()
@@ -21,9 +21,9 @@ module.exports = BrowsePackages =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:configuration-folder': => @browseConfig()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:enclosing-folder': => @browseEnclosing()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:project-folders': => @browseProjects()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-file': => @revealFile()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -35,13 +35,13 @@ module.exports = BrowsePackages =
       try
         fs.accessSync(@packageDir, fs.F_OK)
       catch error
-        atom.notifications.addError("atom-browse", detail: error, dismissable: true)
+        atom.notifications.addError(@self, detail: error, dismissable: true)
         return
 
       # Open packages folder
       exec "#{@fileManager} #{@packageDir}"
 
-  browseEnclosing: ->
+  revealFile: ->
     # Get parent folder of active file
     editor = atom.workspace.getActivePaneItem()
     file = editor?.buffer.file
@@ -49,11 +49,41 @@ module.exports = BrowsePackages =
     if file isnt null
       filePath = path.dirname(file?.path)
 
+      switch process.platform
+        when "darwin"
+          args = "-R #{file.path}"
+        when "win32"
+          args = "/select,#{file.path}"
+        when "linux"
+          args = filePath
+
       # Open packages folder
-      exec "#{@fileManager} #{filePath}"
+      exec "#{@fileManager} #{args}"
       return
 
-    atom.notifications.addWarning("atom-browse", detail: "No active file", dismissable: false)
+    atom.notifications.addWarning(@self, detail: "No active file", dismissable: false)
+
+    revealFile: ->
+    editor = atom.workspace.getActivePaneItem()
+    file = editor?.buffer.file
+
+    if file isnt null
+      filePath = path.dirname(file?.path)
+
+      # Open packages folder
+      switch process.platform
+        when "darwin"
+          args = "-R #{file.path}"
+        when "win32"
+          args = "/select,#{file.path}"
+        when "linux"
+          atom.notifications.addError("browse", detail: "Not yet available on Linux", dismissable: true)
+          return
+
+      exec "#{@fileManager} #{args}"
+      return
+
+    atom.notifications.addWarning(@self, detail: "No active file", dismissable: false)
 
   browseProjects: ->
     projects = atom.project.getPaths()
@@ -67,7 +97,7 @@ module.exports = BrowsePackages =
       try
         fs.accessSync(project, fs.F_OK)
       catch
-        atom.notifications.addError("atom-browse", detail: error, dismissable: true)
+        atom.notifications.addError(@self, detail: error, dismissable: true)
         continue
 
       # Open project folder
@@ -81,7 +111,7 @@ module.exports = BrowsePackages =
       try
         fs.accessSync(configPath, fs.F_OK)
       catch error
-        atom.notifications.addError("atom-browse", detail: error, dismissable: true)
+        atom.notifications.addError(@self, detail: error, dismissable: true)
         return
 
       # Open packages folder
@@ -91,7 +121,7 @@ module.exports = BrowsePackages =
     fm = atom.config.get('browse.linuxFileManager');
 
     if typeof fm isnt 'undefined'
-        console.log "#{@self} Load from config: #{fm}"
+        console.log "[#{@self}] Load from config: #{fm}"
         return fm
 
     switch process.platform
@@ -102,19 +132,20 @@ module.exports = BrowsePackages =
       when "linux"
         # There are many possibile file managers on Linux, let's iterate over
         # the most popular ones
+        # TODO: write preference to config.json
         result = null
         linuxFileManagers = ['xdg-open', 'gnome-open', 'kde-open', 'nautilus']
 
         for fm in linuxFileManagers
-          console.log "#{@self} Trying: #{fm}"
+          console.log "[#{@self}] Trying: #{fm}"
           exec "which #{fm}", (error, stdout, stderr) ->
             if stdout isnt null
               result = stdout
 
           if typeof result isnt 'undefined'
-            console.log "#{@self} Save to config: #{fm}"
+            console.log "[#{@self}] Save to config: #{fm}"
             atom.config.set('browse.linuxFileManager', fm);
             return fm
 
-        atom.notifications.addWarning("atom-browse", detail: "No supported file manager detected", dismissable: true)
+        atom.notifications.addWarning(@self, detail: "No supported file manager detected", dismissable: true)
         return null
