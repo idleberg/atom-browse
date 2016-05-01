@@ -61,29 +61,7 @@ module.exports = BrowsePackages =
       exec "#{@fileManager} #{args}"
       return
 
-    atom.notifications.addWarning(@self, detail: "No active file", dismissable: false)
-
-    revealFile: ->
-    editor = atom.workspace.getActivePaneItem()
-    file = editor?.buffer.file
-
-    if file isnt null
-      filePath = path.dirname(file?.path)
-
-      # Open packages folder
-      switch process.platform
-        when "darwin"
-          args = "-R #{file.path}"
-        when "win32"
-          args = "/select,#{file.path}"
-        when "linux"
-          atom.notifications.addError("browse", detail: "Not yet available on Linux", dismissable: true)
-          return
-
-      exec "#{@fileManager} #{args}"
-      return
-
-    atom.notifications.addWarning(@self, detail: "No active file", dismissable: false)
+    atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
 
   browseProjects: ->
     projects = atom.project.getPaths()
@@ -143,9 +121,10 @@ module.exports = BrowsePackages =
               result = stdout
 
           if typeof result isnt 'undefined'
-            atom.notifications.addInfo("**browse**: Saving `#{fm}` for future use", dismissable: false)
+            console.log "[#{@self}] Saving #{fm} for future use"
+            atom.notifications.addInfo("**#{@self}**: Saving `#{fm}` for future use", dismissable: false)
             atom.config.set('browse.linuxFileManager', fm);
             return fm
 
-        atom.notifications.addWarning(@self, detail: "No supported file manager detected", dismissable: true)
+        atom.notifications.addWarning("**#{@self}**: No supported file manager detected", dismissable: true)
         return null
