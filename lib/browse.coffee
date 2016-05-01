@@ -57,7 +57,7 @@ module.exports = BrowsePackages =
         when "linux"
           args = filePath
 
-      # Open packages folder
+      # Reveal file
       exec "#{@fileManager} #{args}"
       return
 
@@ -92,7 +92,7 @@ module.exports = BrowsePackages =
         atom.notifications.addError(@self, detail: error, dismissable: true)
         return
 
-      # Open packages folder
+      # Open config folder
       exec "#{@fileManager} #{configPath}"
 
   getFileManager: ->
