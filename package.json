@@ -1,7 +1,7 @@
 {
   "name": "browse",
   "description": "Add commands that let you quickly browse folders",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "license": "MIT",
   "author": {
     "name": "Jan T. Sott",
