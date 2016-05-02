@@ -55,7 +55,7 @@ module.exports = BrowsePackages =
         when "win32"
           args = "/select,#{file.path}"
         when "linux"
-          args = filePath
+          args = @getLinuxArgs() + " #{filePath}"
 
       # Reveal file
       exec "#{@fileManager} #{args}"
@@ -92,8 +92,13 @@ module.exports = BrowsePackages =
         atom.notifications.addError(@self, detail: error, dismissable: true)
         return
 
+      if process.platform is "linux"
+        args = @getLinuxArgs() + " #{configPath}"
+      else
+        args = configPath
+
       # Open config folder
-      exec "#{@fileManager} #{configPath}"
+      exec "#{@fileManager} #{args}"
 
   getFileManager: ->
     fm = atom.config.get('browse.linuxFileManager');
@@ -112,7 +117,7 @@ module.exports = BrowsePackages =
         # the most popular ones
         # TODO: write preference to config.json
         result = null
-        linuxFileManagers = ['xdg-open', 'gnome-open', 'kde-open', 'nautilus']
+        linuxFileManagers = ['nautilus', 'dolphin', 'xdg-open', 'gnome-open', 'kde-open']
 
         for fm in linuxFileManagers
           console.log "[#{@self}] Trying: #{fm}"
@@ -128,3 +133,12 @@ module.exports = BrowsePackages =
 
         atom.notifications.addWarning("**#{@self}**: No supported file manager detected", dismissable: true)
         return null
+
+  getLinuxArgs: ->
+    # Refined Linux arguments
+    if @fileManager is "nautilus"
+      return "-w"
+    else if @fileManager is "dolphin"
+      return "--select"
+    
+    return ""
