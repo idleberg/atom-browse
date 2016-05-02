@@ -8,7 +8,7 @@
   ]
   '.platform-linux atom-text-editor': [
     {
-      'label': 'Reveal file'
+      'label': 'Reveal in file manager'
       'command': 'browse:reveal-file'
     }
   ]
