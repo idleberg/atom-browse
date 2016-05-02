@@ -12,7 +12,7 @@
       'command': 'browse:reveal-file'
     }
   ]
-  '.platform-windows atom-text-editor': [
+  '.platform-win32 atom-text-editor': [
     {
       'label': 'Reveal in Explorer'
       'command': 'browse:reveal-file'
