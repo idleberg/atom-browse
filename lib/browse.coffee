@@ -100,12 +100,12 @@ module.exports = BrowsePackages =
       exec "#{@fileManager} #{args}"
 
   getFileManager: ->
-    fm = atom.config.get('browse.linuxFileManager');
+    fm = atom.config.get('browse.linuxFileManager')
 
     if typeof fm isnt 'undefined'
-        if @debug?
-          console.log "[#{@self}] Load from config: #{fm}"
-        return fm
+      if @debug?
+        console.log "[#{@self}] Load from config: #{fm}"
+      return fm
 
     switch process.platform
       when "darwin"
@@ -120,7 +120,7 @@ module.exports = BrowsePackages =
             fm = result.trim()
             if @debug
               console.log "[browse] Saving #{fm} for future use"
-            atom.config.set('browse.linuxFileManager', fm);
+            atom.config.set('browse.linuxFileManager', fm)
             return fm
 
           atom.notifications.addWarning("**browse**: No supported file manager detected", dismissable: true)
