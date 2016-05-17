@@ -6,7 +6,7 @@
 
 # atom-browse
 
-Add commands that let you quickly browse folders ([details below](#usage))
+Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
 
 ## Installation
 

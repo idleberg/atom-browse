@@ -1,4 +1,4 @@
-exec = require('child_process').exec
+{exec,execSync} = require('child_process')
 fs   = require 'fs'
 path = require 'path'
 
@@ -6,10 +6,12 @@ path = require 'path'
 
 module.exports = BrowsePackages =
   self: 'browse'
+  debug: false
   subscriptions: null
   fileManager: null
   configFile: atom.config.getUserConfigPath()
   packageDir: atom.packages.getPackageDirPaths()[0]
+  linuxFileManagers: ['xdg-open', 'gnome-open', 'kde-open', 'nautilus', 'dolphin']
 
   activate: ->
 
@@ -55,7 +57,7 @@ module.exports = BrowsePackages =
         when "win32"
           args = "/select,#{file.path}"
         when "linux"
-          args = @getLinuxArgs() + " #{filePath}"
+          args = filePath
 
       # Reveal file
       exec "#{@fileManager} #{args}"
@@ -92,10 +94,7 @@ module.exports = BrowsePackages =
         atom.notifications.addError(@self, detail: error, dismissable: true)
         return
 
-      if process.platform is "linux"
-        args = @getLinuxArgs() + " #{configPath}"
-      else
-        args = configPath
+      args = configPath
 
       # Open config folder
       exec "#{@fileManager} #{args}"
@@ -104,7 +103,8 @@ module.exports = BrowsePackages =
     fm = atom.config.get('browse.linuxFileManager');
 
     if typeof fm isnt 'undefined'
-        console.log "[#{@self}] Load from config: #{fm}"
+        if @debug?
+          console.log "[#{@self}] Load from config: #{fm}"
         return fm
 
     switch process.platform
@@ -113,32 +113,23 @@ module.exports = BrowsePackages =
       when "win32"
         return "explorer"
       when "linux"
-        # There are many possibile file managers on Linux, let's iterate over
+        # There are many possible file managers on Linux, let's iterate over
         # the most popular ones
-        # TODO: write preference to config.json
-        result = null
-        linuxFileManagers = ['nautilus', 'dolphin', 'xdg-open', 'gnome-open', 'kde-open']
-
-        for fm in linuxFileManagers
-          console.log "[#{@self}] Trying: #{fm}"
-          exec "which #{fm}", (error, stdout, stderr) ->
-            if stdout isnt null
-              result = stdout
-
+        @loopWhich (result) ->
           if typeof result isnt 'undefined'
-            console.log "[#{@self}] Saving #{fm} for future use"
-            atom.notifications.addInfo("**#{@self}**: Saving `#{fm}` for future use", dismissable: false)
+            fm = result.trim()
+            if @debug
+              console.log "[browse] Saving #{fm} for future use"
             atom.config.set('browse.linuxFileManager', fm);
             return fm
 
-        atom.notifications.addWarning("**#{@self}**: No supported file manager detected", dismissable: true)
-        return null
+          atom.notifications.addWarning("**browse**: No supported file manager detected", dismissable: true)
 
-  getLinuxArgs: ->
-    # Refined Linux arguments
-    if @fileManager is "nautilus"
-      return "-w"
-    else if @fileManager is "dolphin"
-      return "--select"
-    
-    return ""
+  loopWhich: (callback) ->
+    for fm in @linuxFileManagers
+
+      if @debug
+        console.log "[#{@self}] Trying: #{fm}"
+      exec "which #{fm}", (error, stdout, stderr) ->
+        if error is null
+          callback stdout
