@@ -12,14 +12,25 @@ Adds commands that let you quickly browse Atom-related folders or reveal files y
 
 ### apm
 
-* Install package `apm install browse` (or use the GUI)
+Install `browse` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:
+
+`$ apm install browse`
 
 ### GitHub
 
-1. Change directory `cd ~/.atom/packages/`
-2. Clone repository `git clone https://github.com/idleberg/atom-browse browse`
+Change to your Atom packages directory:
 
-## Usage
+```bash
+# Windows
+$ cd %USERPROFILE%\.atom\packages
+
+# Mac OS X & Linux
+$ cd ~/.atom/packages/
+```
+
+Clone repository as `browse`:
+
+`$ git clone https://github.com/idleberg/atom-browse browse`
 
 Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
 
