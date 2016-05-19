@@ -32,6 +32,19 @@ Clone the repository `browse`:
 
 `$ git clone https://github.com/idleberg/atom-browse browse`
 
+## Setup
+
+This package will try and detect your default file manager, and will use Finder on Mac OS X and Explorer on Windows. On Linux, this package iterates over available options.
+
+If you want to override the system default file manager, you can do so in your `config.cson`.
+
+**Example:**
+
+```cson
+"browse":
+  fileManager: "%PROGRAMFILES%\\Explorer++\Explorer++.exe"
+```
+
 ## Usage
 
 Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
