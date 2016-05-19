@@ -28,7 +28,7 @@ $ cd %USERPROFILE%\.atom\packages
 $ cd ~/.atom/packages/
 ```
 
-Clone repository as `browse`:
+Clone the repository `browse`:
 
 `$ git clone https://github.com/idleberg/atom-browse browse`
 
