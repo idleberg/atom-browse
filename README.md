@@ -32,6 +32,8 @@ Clone the repository `browse`:
 
 `$ git clone https://github.com/idleberg/atom-browse browse`
 
+## Usage
+
 Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
 
 * `Browse: Packages folder` (like in Sublime Text)
