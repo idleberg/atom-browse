@@ -49,12 +49,12 @@ If you want to override the system default file manager, you can do so in your `
 
 Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
 
-* `Browse: Packages folder` (like in Sublime Text)
+* `Browse: Packages folder`
 * `Browse: Configuration folder`
 * `Browse: Reveal file`
 * `Browse: Project folder(s)`
 
-All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Browse: Reveal file`.
+All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Reveal file`.
 
 ## License
 
