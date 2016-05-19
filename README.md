@@ -42,7 +42,7 @@ If you want to override the system default file manager, you can do so in your `
 
 ```cson
 "browse":
-  fileManager: "%PROGRAMFILES%\\Explorer++\Explorer++.exe"
+  fileManager: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
 
 ## Usage
