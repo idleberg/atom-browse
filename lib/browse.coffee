@@ -1,15 +1,17 @@
-# Dependencies
-fs   = require 'fs'
-path = require 'path'
-shell = require 'shell'
-
 {CompositeDisposable} = require 'atom'
+
+# Dependencies
+{exec} = require('child_process')
+fs   = require 'fs'
+shell = require 'shell'
 
 module.exports = BrowsePackages =
   self: 'browse'
+  debug: false
   subscriptions: null
- 
+
   activate: ->
+
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
@@ -23,7 +25,7 @@ module.exports = BrowsePackages =
     @subscriptions.dispose()
 
   browsePackages: ->
-    packageDir: atom.packages.getPackageDirPaths()[0]
+    packageDir = atom.packages.getPackageDirPaths()[0]
 
     # Does packages folder exist?
     try
@@ -32,8 +34,7 @@ module.exports = BrowsePackages =
       atom.notifications.addError(@self, detail: error, dismissable: true)
       return
 
-    # Open packages folder
-    shell.showItemInFolder(packageDir)
+    @openFolder(packageDir)
 
   revealFile: ->
     # Get parent folder of active file
@@ -41,10 +42,7 @@ module.exports = BrowsePackages =
     file = editor?.buffer.file
 
     if file isnt null
-      filePath = path.dirname(file?.path)
-
-      # Reveal file
-      shell.showItemInFolder(file.path)
+      @selectFile(file.path)
       return
 
     atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
@@ -65,18 +63,55 @@ module.exports = BrowsePackages =
         continue
 
       # Open project folder
-      shell.showItemInFolder(project)
+      @openFolder(project)
 
   browseConfig: ->
-    configFile: atom.config.getUserConfigPath()
+    path = require 'path'
+
+    configFile = atom.config.getUserConfigPath()
     configPath = path.dirname(configFile)
 
-    # Does config folder exist?
-    try
-      fs.accessSync(configPath, fs.F_OK)
-    catch error
-      atom.notifications.addError(@self, detail: error, dismissable: true)
+    if @fileManager isnt null
+      # Does config folder exist?
+      try
+        fs.accessSync(configPath, fs.F_OK)
+      catch error
+        atom.notifications.addError(@self, detail: error, dismissable: true)
+        return
+
+      # Open config folder
+      @openFolder(configPath)
+
+  selectFile: (path) ->
+    # Custom file manager
+    fileManager = atom.config.get('browse.fileManager')
+
+    if fileManager?
+      exec "\"#{fileManager}\" \"#{path}\""
       return
 
-    # Open config folder
-    shell.openItem(configPath)
+    # Default file manager
+    switch process.platform
+      when "darwin"
+         exec "open -R #{path}"
+      when "win32"
+        exec "explorer /select,#{path}"
+      when "linux"
+        shell.showItemInFolder(path)
+
+  openFolder: (path) ->
+    # Custom file manager
+    fileManager = atom.config.get('browse.fileManager')
+
+    if fileManager?
+      exec "\"#{fileManager}\" \"#{path}\""
+      return
+
+    # Default file manager
+    switch process.platform
+      when "darwin"
+        exec "open #{path}"
+      when "win32"
+        exec "explorer #{path}"
+      when "linux"
+        shell.openItem(path)
