@@ -1,23 +1,15 @@
-{exec,execSync} = require('child_process')
+# Dependencies
 fs   = require 'fs'
 path = require 'path'
+shell = require 'shell'
 
 {CompositeDisposable} = require 'atom'
 
 module.exports = BrowsePackages =
   self: 'browse'
-  debug: false
   subscriptions: null
-  fileManager: null
-  configFile: atom.config.getUserConfigPath()
-  packageDir: atom.packages.getPackageDirPaths()[0]
-  linuxFileManagers: ['nautilus', 'dolphin', 'xdg-open', 'gnome-open', 'kde-open']
-
+ 
   activate: ->
-
-    # Find default file manager
-    @fileManager = @getFileManager()
-
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
@@ -31,17 +23,17 @@ module.exports = BrowsePackages =
     @subscriptions.dispose()
 
   browsePackages: ->
-    if @fileManager isnt null
+    packageDir: atom.packages.getPackageDirPaths()[0]
 
-      # Does packages folder exist?
-      try
-        fs.accessSync(@packageDir, fs.F_OK)
-      catch error
-        atom.notifications.addError(@self, detail: error, dismissable: true)
-        return
+    # Does packages folder exist?
+    try
+      fs.accessSync(packageDir, fs.F_OK)
+    catch error
+      atom.notifications.addError(@self, detail: error, dismissable: true)
+      return
 
-      # Open packages folder
-      exec "#{@fileManager} #{@packageDir}"
+    # Open packages folder
+    shell.showItemInFolder(packageDir)
 
   revealFile: ->
     # Get parent folder of active file
@@ -51,23 +43,8 @@ module.exports = BrowsePackages =
     if file isnt null
       filePath = path.dirname(file?.path)
 
-      switch process.platform
-        when "darwin"
-          args = "-R #{file.path}"
-        when "win32"
-          args = "/select,#{file.path}"
-        when "linux"
-
-          # Refined Linux arguments
-          if @fileManager is "nautilus"
-            args = "-w #{filePath}"
-          else if @fileManager is "dolphin"
-            args = "--select #{filePath}"
-          else
-            args = filePath
-
       # Reveal file
-      exec "#{@fileManager} #{args}"
+      shell.showItemInFolder(file.path)
       return
 
     atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
@@ -88,55 +65,18 @@ module.exports = BrowsePackages =
         continue
 
       # Open project folder
-      exec "#{@fileManager} #{project}"
+      shell.showItemInFolder(project)
 
   browseConfig: ->
-    configPath = path.dirname(@configFile)
+    configFile: atom.config.getUserConfigPath()
+    configPath = path.dirname(configFile)
 
-    if @fileManager isnt null
-      # Does config folder exist?
-      try
-        fs.accessSync(configPath, fs.F_OK)
-      catch error
-        atom.notifications.addError(@self, detail: error, dismissable: true)
-        return
+    # Does config folder exist?
+    try
+      fs.accessSync(configPath, fs.F_OK)
+    catch error
+      atom.notifications.addError(@self, detail: error, dismissable: true)
+      return
 
-      args = configPath
-
-      # Open config folder
-      exec "#{@fileManager} #{args}"
-
-  getFileManager: ->
-    fm = atom.config.get('browse.fileManager')
-
-    if typeof fm isnt 'undefined'
-      if @debug?
-        console.log "[#{@self}] Load from config: #{fm}"
-      return fm
-
-    switch process.platform
-      when "darwin"
-        return "open"
-      when "win32"
-        return "explorer"
-      when "linux"
-        # There are many possible file managers on Linux, let's iterate over
-        # the most popular ones
-        @loopWhich (result) ->
-          if typeof result isnt 'undefined'
-            fm = result.trim()
-            if @debug
-              console.log "[browse] Saving #{fm} for future use"
-            atom.config.set('browse.fileManager', fm)
-            return fm
-
-          atom.notifications.addWarning("**browse**: No supported file manager detected", dismissable: true)
-
-  loopWhich: (callback) ->
-    for fm in @linuxFileManagers
-
-      if @debug
-        console.log "[#{@self}] Trying: #{fm}"
-      exec "which #{fm}", (error, stdout, stderr) ->
-        if error is null
-          callback stdout
+    # Open config folder
+    shell.openItem(configPath)
