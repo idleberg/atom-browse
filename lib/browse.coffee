@@ -11,7 +11,7 @@ module.exports = BrowsePackages =
   fileManager: null
   configFile: atom.config.getUserConfigPath()
   packageDir: atom.packages.getPackageDirPaths()[0]
-  linuxFileManagers: ['xdg-open', 'gnome-open', 'kde-open']
+  linuxFileManagers: ['nautilus', 'dolphin', 'xdg-open', 'gnome-open', 'kde-open']
 
   activate: ->
 
