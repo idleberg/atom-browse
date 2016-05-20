@@ -7,14 +7,13 @@
     "name": "Jan T. Sott",
     "url": "http://github.com/idleberg"
   },
-  "activationCommands": {
-    "atom-workspace": [
-      "browse:configuration-folder",
-      "browse:reveal-file",
-      "browse:project-folders",
-      "browse:packages-folder"
-    ]
-  },
+  "keywords": [
+    "developer",
+    "browse",
+    "explorer",
+    "file manager",
+    "finder"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/idleberg/atom-browse.git"
@@ -22,6 +21,14 @@
   "main": "./lib/browse",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "activationCommands": {
+    "atom-workspace": [
+      "browse:configuration-folder",
+      "browse:reveal-file",
+      "browse:project-folders",
+      "browse:packages-folder"
+    ]
   },
   "dependencies": {},
   "devDependencies": {
