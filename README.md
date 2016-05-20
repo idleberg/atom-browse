@@ -45,6 +45,17 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 
 All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Reveal file`.
 
+## Options
+
+If you want to override your system's default file manager, you can specify its in your `config.cson`.
+
+**Example:**
+
+```cson
+"browse":
+  fileManager: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
+```
+
 ## License
 
 This work is licensed under the [The MIT License](LICENSE.md).
