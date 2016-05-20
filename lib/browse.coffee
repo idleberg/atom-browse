@@ -11,7 +11,7 @@ module.exports = BrowsePackages =
   fileManager: null
   configFile: atom.config.getUserConfigPath()
   packageDir: atom.packages.getPackageDirPaths()[0]
-  linuxFileManagers: ['xdg-open', 'gnome-open', 'kde-open', 'nautilus', 'dolphin']
+  linuxFileManagers: ['xdg-open', 'gnome-open', 'kde-open']
 
   activate: ->
 
@@ -57,7 +57,14 @@ module.exports = BrowsePackages =
         when "win32"
           args = "/select,#{file.path}"
         when "linux"
-          args = filePath
+
+          # Refined Linux arguments
+          if @fileManager is "nautilus"
+            args = "-w #{filePath}"
+          else if @fileManager is "dolphin"
+            args = "--select #{filePath}"
+          else
+            args = filePath
 
       # Reveal file
       exec "#{@fileManager} #{args}"
