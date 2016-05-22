@@ -41,6 +41,7 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 * `Browse: Packages folder`
 * `Browse: Configuration folder`
 * `Browse: Reveal file`
+* `Browse: Reveal all open files`
 * `Browse: Project folder(s)`
 
 All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Reveal file`.

@@ -19,7 +19,7 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:project-folders': => @browseProjects()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-file': => @revealFile()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-all-files': => @revealAllFiles()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-all-open-files': => @revealFiles()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -49,7 +49,7 @@ module.exports = BrowsePackages =
 
     atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
 
-  revealAllFiles: ->
+  revealFiles: ->
     # Get all open file
     items = atom.workspace.getPaneItems()
 

@@ -25,7 +25,7 @@
   "activationCommands": {
     "atom-workspace": [
       "browse:configuration-folder",
-      "browse:reveal-all-files",
+      "browse:reveal-all-open-files",
       "browse:reveal-file",
       "browse:edit-.git-config",
       "browse:project-folders",
