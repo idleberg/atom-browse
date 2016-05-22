@@ -8,12 +8,11 @@
     "url": "http://github.com/idleberg"
   },
   "keywords": [
-    "browse",
     "developer",
+    "browse",
     "explorer",
     "file manager",
-    "finder",
-    "sublime text"
+    "finder"
   ],
   "repository": {
     "type": "git",
@@ -26,6 +25,7 @@
   "activationCommands": {
     "atom-workspace": [
       "browse:configuration-folder",
+      "browse:reveal-all-files",
       "browse:reveal-file",
       "browse:edit-.git-config",
       "browse:project-folders",

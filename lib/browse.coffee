@@ -7,7 +7,7 @@ shell = require 'shell'
 
 module.exports = BrowsePackages =
   self: 'browse'
-  debug: false
+  verbose: null
   subscriptions: null
 
   activate: ->
@@ -19,11 +19,13 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:project-folders': => @browseProjects()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-file': => @revealFile()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-all-files': => @revealAllFiles()
 
   deactivate: ->
     @subscriptions.dispose()
 
   browsePackages: ->
+    @verbose = atom.config.get('browse.notify')
     packageDir = atom.packages.getPackageDirPaths()[0]
 
     # Does packages folder exist?
@@ -46,6 +48,22 @@ module.exports = BrowsePackages =
       return
 
     atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
+
+  revealAllFiles: ->
+    # Get all open file
+    items = atom.workspace.getPaneItems()
+
+    unless items.length > 0
+      atom.notifications.addWarning("**#{@self}**: No files open", dismissable: false)
+      return
+
+    for item in items
+      if item.constructor.name is 'SettingsView'
+        continue
+
+      if item?.buffer.file
+        file = item?.buffer.file
+        @selectFile(file.path)
 
   browseProjects: ->
     projects = atom.project.getPaths()
@@ -99,6 +117,8 @@ module.exports = BrowsePackages =
       when "linux"
         shell.showItemInFolder(path)
 
+    @isVerbose(path)
+
   openFolder: (path) ->
     # Custom file manager
     fileManager = atom.config.get('browse.fileManager')
@@ -115,3 +135,22 @@ module.exports = BrowsePackages =
         exec "explorer #{path}"
       when "linux"
         shell.openItem(path)
+
+    @isVerbose(path)
+
+  isVerbose: (fullPath) ->
+    if atom.config.get('browse.notify') is true
+      # Get base name
+      path = require 'path'
+      baseName = path.basename(fullPath)
+
+      # Default file manager
+      switch process.platform
+        when "darwin"
+          fileManager = "Finder"
+        when "win32"
+          fileManager = "Explorer"
+        when "linux"
+          fileManager = "file manager"
+
+      atom.notifications.addInfo("**#{@self}**: Opened `#{baseName}` in #{fileManager}", dismissable: false)
