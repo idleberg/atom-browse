@@ -2,7 +2,7 @@
 
 # Dependencies
 {exec} = require('child_process')
-fs   = require 'fs'
+fs = require 'fs'
 shell = require 'shell'
 
 module.exports = BrowsePackages =
@@ -34,6 +34,7 @@ module.exports = BrowsePackages =
       atom.notifications.addError(@self, detail: error, dismissable: true)
       return
 
+    # Open packages folder
     @openFolder(packageDir)
 
   revealFile: ->
