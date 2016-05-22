@@ -11,7 +11,6 @@ module.exports = BrowsePackages =
   subscriptions: null
 
   activate: ->
-
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
