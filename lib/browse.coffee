@@ -112,12 +112,15 @@ module.exports = BrowsePackages =
     switch process.platform
       when "darwin"
          exec "open -R #{path}"
+         fileManager = "Finder"
       when "win32"
         exec "explorer /select,#{path}"
+        fileManager = "Explorer"
       when "linux"
         shell.showItemInFolder(path)
+        fileManager = "file manager"
 
-    @isVerbose("Revealed", path)
+    @isVerbose("Revealed", path, fileManager)
 
   openFolder: (path) ->
     # Custom file manager
@@ -131,26 +134,20 @@ module.exports = BrowsePackages =
     switch process.platform
       when "darwin"
         exec "open #{path}"
+        fileManager = "Finder"
       when "win32"
         exec "explorer #{path}"
+        fileManager = "Explorer"
       when "linux"
         shell.openItem(path)
+        fileManager = "file manager"
 
-    @isVerbose("Opened", path)
+    @isVerbose("Opened", path, fileManager)
 
-  isVerbose: (verb, fullPath) ->
+  isVerbose: (verb, fullPath, fileManager) ->
     if atom.config.get('browse.notify') is true
       # Get base name
       path = require 'path'
       baseName = path.basename(fullPath)
-
-      # Default file manager
-      switch process.platform
-        when "darwin"
-          fileManager = "Finder"
-        when "win32"
-          fileManager = "Explorer"
-        when "linux"
-          fileManager = "file manager"
 
       atom.notifications.addInfo("**#{@self}**: #{verb} `#{baseName}` in #{fileManager}", dismissable: false)
