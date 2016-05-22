@@ -117,7 +117,7 @@ module.exports = BrowsePackages =
       when "linux"
         shell.showItemInFolder(path)
 
-    @isVerbose(path)
+    @isVerbose(path, "Revealed")
 
   openFolder: (path) ->
     # Custom file manager
@@ -136,9 +136,9 @@ module.exports = BrowsePackages =
       when "linux"
         shell.openItem(path)
 
-    @isVerbose(path)
+    @isVerbose(path, "Opened")
 
-  isVerbose: (fullPath) ->
+  isVerbose: (fullPath, verb) ->
     if atom.config.get('browse.notify') is true
       # Get base name
       path = require 'path'
@@ -153,4 +153,4 @@ module.exports = BrowsePackages =
         when "linux"
           fileManager = "file manager"
 
-      atom.notifications.addInfo("**#{@self}**: Opened `#{baseName}` in #{fileManager}", dismissable: false)
+      atom.notifications.addInfo("**#{@self}**: #{verb} `#{baseName}` in #{fileManager}", dismissable: false)
