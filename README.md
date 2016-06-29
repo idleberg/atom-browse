@@ -26,13 +26,15 @@ Change to your Atom packages directory:
 # Windows
 $ cd %USERPROFILE%\.atom\packages
 
-# Mac OS X & Linux
+# Linux & macOS
 $ cd ~/.atom/packages/
 ```
 
 Clone the repository as `browse`:
 
-`$ git clone https://github.com/idleberg/atom-browse browse`
+```bash
+$ git clone https://github.com/idleberg/atom-browse browse
+```
 
 ## Usage
 
