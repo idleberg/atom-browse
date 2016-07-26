@@ -41,9 +41,9 @@ module.exports = BrowsePackages =
   revealFile: ->
     # Get parent folder of active file
     editor = atom.workspace.getActivePaneItem()
-    file = editor?.buffer.file
+    file = editor?.buffer?.file
 
-    if file isnt null
+    if file?
       @selectFile(file.path)
       return
 
