@@ -68,6 +68,10 @@ module.exports = BrowsePackages =
   browseProjects: ->
     projects = atom.project.getPaths()
 
+    unless projects.length > 0
+      atom.notifications.addWarning("**#{@self}**: No active project", dismissable: false)
+      return
+
     for project in projects
       # Skip Atom dialogs
       if project.startsWith('atom://')
