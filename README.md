@@ -50,7 +50,7 @@ All of these commands can also be accessed from the *“Packages”* menu. From 
 
 ## Options
 
-If you want to override your system's default file manager, you can specify its in your Atom [configuration](http://flight-manual.atom.io/using-atom/sections/basic-customization/#_global_configuration_settings).
+If you want to override your system's default file manager, you can specify its path in your Atom [configuration](http://flight-manual.atom.io/using-atom/sections/basic-customization/#_global_configuration_settings).
 
 **Example:**
 
