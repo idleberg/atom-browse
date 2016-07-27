@@ -46,7 +46,7 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 * `Browse: Reveal all open files`
 * `Browse: Project folder(s)`
 
-All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Reveal file`.
+All of these commands can also be accessed from the *“Packages”* menu. From the context menu, you can run `Reveal file`. The [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for most of these commands.
 
 ## Options
 
@@ -59,7 +59,7 @@ If you want to override your system's default file manager, you can specify its 
   fileManager: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
 
-Also in `config.cson` you can activate Atom info notifications.
+Also in `config.cson`, you can activate Atom info notifications.
 
 **Example:**
 
