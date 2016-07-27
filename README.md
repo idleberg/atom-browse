@@ -59,7 +59,7 @@ If you want to override your system's default file manager, you can specify its 
   fileManager: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
 
-Also in `config.cson`, you can activate Atom info notifications.
+Also in `config.cson`, you can activate Atom info notifications for visual feedback on your actions.
 
 **Example:**
 
