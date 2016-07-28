@@ -27,7 +27,6 @@
       "browse:configuration-folder",
       "browse:reveal-all-open-files",
       "browse:reveal-file",
-      "browse:edit-.git-config",
       "browse:project-folders",
       "browse:packages-folder"
     ]
