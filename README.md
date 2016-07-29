@@ -4,7 +4,7 @@
 [![apm](https://img.shields.io/apm/v/browse.svg?style=flat-square)](https://atom.io/packages/browse)
 [![apm](https://img.shields.io/apm/dm/browse.svg?style=flat-square)](https://atom.io/packages/browse)
 [![Travis](https://img.shields.io/travis/idleberg/atom-browse.svg?style=flat-square)](https://travis-ci.org/idleberg/atom-browse)
-[![David](https://img.shields.io/david/dev/idleberg/atom-browse.svg?style=flat-square)](https://david-dm.org/idleberg/atom-browse#info=dependencies)
+[![David](https://img.shields.io/david/dev/idleberg/atom-browse.svg?style=flat-square)](https://david-dm.org/idleberg/atom-browse#info=devDependencies)
 
 Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
 
