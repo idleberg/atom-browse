@@ -1,0 +1,4 @@
+'.platform-darwin atom-text-editor':
+  'cmd-alt-o': 'browse:reveal-file'
+'.platform-linux atom-text-editor, .platform-win32 atom-text-editor':
+  'alt-shift-o': 'browse:reveal-file'
