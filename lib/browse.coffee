@@ -22,7 +22,8 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-all-open-files': => @revealFiles()
 
   deactivate: ->
-    @subscriptions.dispose()
+    @subscriptions?.dispose()
+    @subscriptions = null
 
   browsePackages: ->
     @verbose = atom.config.get('browse.notify')
