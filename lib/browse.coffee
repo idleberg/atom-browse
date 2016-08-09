@@ -6,8 +6,18 @@ fs = require 'fs'
 shell = require 'shell'
 
 module.exports = BrowsePackages =
+  config:
+    fileManager:
+      title: "File manager"
+      description: "Specify the full path to a custom file manager"
+      type: "string"
+      default: ""
+    notify:
+      title: "Verbose Mode"
+      description: "Show info notifications for all actions"
+      type: "boolean"
+      default: false
   self: 'browse'
-  verbose: null
   subscriptions: null
 
   activate: ->
@@ -26,7 +36,6 @@ module.exports = BrowsePackages =
     @subscriptions = null
 
   browsePackages: ->
-    @verbose = atom.config.get('browse.notify')
     packageDir = atom.packages.getPackageDirPaths()[0]
 
     # Does packages folder exist?
@@ -94,7 +103,7 @@ module.exports = BrowsePackages =
     configFile = atom.config.getUserConfigPath()
     configPath = path.dirname(configFile)
 
-    if @fileManager isnt null
+    if configPath
       # Does config folder exist?
       try
         fs.accessSync(configPath, fs.F_OK)
@@ -109,7 +118,7 @@ module.exports = BrowsePackages =
     # Custom file manager
     fileManager = atom.config.get('browse.fileManager')
 
-    if fileManager?
+    if fileManager
       exec "\"#{fileManager}\" \"#{path}\""
       return
 
@@ -131,7 +140,7 @@ module.exports = BrowsePackages =
     # Custom file manager
     fileManager = atom.config.get('browse.fileManager')
 
-    if fileManager?
+    if fileManager
       exec "\"#{fileManager}\" \"#{path}\""
       return
 
