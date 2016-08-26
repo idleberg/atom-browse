@@ -1,47 +1,50 @@
-# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
 'context-menu':
   '.platform-darwin atom-text-editor': [
     {
-      'label': 'Reveal in Finder'
-      'command': 'browse:reveal-file'
+      command: 'browse:reveal-file'
+      label: 'Reveal in Finder'
     }
   ]
   '.platform-linux atom-text-editor': [
     {
-      'label': 'Reveal in file manager'
-      'command': 'browse:reveal-file'
+      command: 'browse:reveal-file'
+      label: 'Reveal in file manager'
     }
   ]
   '.platform-win32 atom-text-editor': [
     {
-      'label': 'Reveal in Explorer'
-      'command': 'browse:reveal-file'
+      command: 'browse:reveal-file'
+      label: 'Reveal in Explorer'
     }
   ]
-'menu': [
+menu: [
   {
-    'label': 'Packages'
-    'submenu': [
-      'label': 'Browse'
-      'submenu': [
-        {
-          'label': 'Open Configuration Folder'
-          'command': 'browse:configuration-folder'
-        },
-        {
-          'label': 'Open Packages Folder'
-          'command': 'browse:packages-folder'
-        },
-        { 'type': 'separator' },
-        {
-          'label': 'Open Project Folder(s)'
-          'command': 'browse:project-folders'
-        },
-        {
-          'label': 'Reveal File'
-          'command': 'browse:reveal-file'
-        }
-      ]
+    label: 'Packages'
+    submenu: [
+      {
+        label: 'Browse'
+        submenu: [
+          {
+            command: 'browse:configuration-folder'
+            label: 'Open Configuration Folder'
+          }
+          {
+            command: 'browse:packages-folder'
+            label: 'Open Packages Folder'
+          }
+          {
+            type: 'separator'
+          }
+          {
+            command: 'browse:project-folder'
+            label: 'Open Project Folder(s)'
+          }
+          {
+            command: 'browse:reveal-file'
+            label: 'Reveal File'
+          }
+        ]
+      }
     ]
   }
 ]

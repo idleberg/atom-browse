@@ -27,7 +27,7 @@
       "browse:configuration-folder",
       "browse:reveal-all-open-files",
       "browse:reveal-file",
-      "browse:project-folders",
+      "browse:project-folder",
       "browse:packages-folder"
     ]
   },
