@@ -125,8 +125,8 @@ module.exports = BrowsePackages =
     # Default file manager
     switch process.platform
       when "darwin"
-         exec "open -R #{path}"
-         fileManager = "Finder"
+        exec "open -R #{path}"
+        fileManager = "Finder"
       when "win32"
         exec "explorer /select,#{path}"
         fileManager = "Explorer"
