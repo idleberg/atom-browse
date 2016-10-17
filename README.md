@@ -18,7 +18,7 @@ Install `browse` from Atom's [Package Manager](http://flight-manual.atom.io/usin
 
 `$ apm install browse`
 
-### GitHub
+### Using Git
 
 Change to your Atom packages directory:
 
