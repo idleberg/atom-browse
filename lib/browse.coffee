@@ -36,17 +36,17 @@ module.exports = BrowsePackages =
     @subscriptions = null
 
   browsePackages: ->
-    packageDir = atom.packages.getPackageDirPaths()[0]
+    packageDirs = atom.packages.getPackageDirPaths()
 
-    # Does packages folder exist?
-    try
-      fs.accessSync(packageDir, fs.F_OK)
-    catch error
-      atom.notifications.addError(@self, detail: error, dismissable: true)
-      return
+    for packageDir in packageDirs
+      # Does packages folder exist?
+      try
+        fs.accessSync(packageDir, fs.F_OK)
+      catch error
+        atom.notifications.addError(@self, detail: error, dismissable: true)
 
-    # Open packages folder
-    @openFolder(packageDir)
+      # Open packages folder
+      @openFolder(packageDir)
 
   revealFile: ->
     # Get parent folder of active file
