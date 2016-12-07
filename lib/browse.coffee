@@ -27,7 +27,7 @@ module.exports = BrowsePackages =
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:configuration-folder': => @browseConfig()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:packages-folder': => @browsePackages()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:project-folder': => @browseProjects()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'browse:project-folders': => @browseProjects()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-file': => @revealFile()
     @subscriptions.add atom.commands.add 'atom-workspace', 'browse:reveal-all-open-files': => @revealFiles()
 
