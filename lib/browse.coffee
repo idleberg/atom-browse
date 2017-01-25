@@ -54,8 +54,10 @@ module.exports = BrowsePackages =
 
     if editor?.constructor.name is 'TextEditor' or editor?.constructor.name is 'ImageEditor'
       file = if editor?.buffer?.file then editor.buffer.file else if editor?.file then editor.file
-      @selectFile(file.path)
-      return
+      
+      if file?.path
+        @selectFile(file.path)
+        return
     
     atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
 
@@ -69,8 +71,10 @@ module.exports = BrowsePackages =
         continue unless editor.constructor.name is 'TextEditor' or editor.constructor.name is 'ImageEditor'
 
         file = if editor?.buffer?.file then editor.buffer.file else if editor?.file then editor.file
-        @selectFile(file.path)
-        count++
+
+        if file?.path
+          @selectFile(file.path)
+          count++
 
       return if count > 0
 
