@@ -1,7 +1,7 @@
 {CompositeDisposable} = require 'atom'
 
 # Dependencies
-{exec} = require('child_process')
+{spawnSync} = require('child_process')
 fs = require 'fs'
 shell = require 'shell'
 
@@ -51,28 +51,30 @@ module.exports = BrowsePackages =
   revealFile: ->
     # Get parent folder of active file
     editor = atom.workspace.getActivePaneItem()
-    file = editor?.buffer?.file
 
-    if file?
+    if editor?.constructor.name is 'TextEditor' or editor?.constructor.name is 'ImageEditor'
+      file = if editor?.buffer?.file then editor.buffer.file else if editor?.file then editor.file
       @selectFile(file.path)
       return
-
+    
     atom.notifications.addWarning("**#{@self}**: No active file", dismissable: false)
 
   revealFiles: ->
     # Get all open file
-    items = atom.workspace.getPaneItems()
+    editors = atom.workspace.getPaneItems()
 
-    unless items.length > 0
-      atom.notifications.addWarning("**#{@self}**: No files open", dismissable: false)
-      return
+    if editors.length > 0
+      count = 0
+      for editor in editors
+        continue unless editor.constructor.name is 'TextEditor' or editor.constructor.name is 'ImageEditor'
 
-    for item in items
-      continue unless item.constructor.name is 'TextEditor'
-
-      if item?.buffer.file
-        file = item?.buffer.file
+        file = if editor?.buffer?.file then editor.buffer.file else if editor?.file then editor.file
         @selectFile(file.path)
+        count++
+
+      return if count > 0
+
+    atom.notifications.addWarning("**#{@self}**: No open files", dismissable: false)
 
   browseProjects: ->
     projects = atom.project.getPaths()
@@ -118,16 +120,16 @@ module.exports = BrowsePackages =
     fileManager = atom.config.get('browse.fileManager')
 
     if fileManager
-      exec "\"#{fileManager}\" \"#{path}\""
+      spawnSync fileManager, [ path ]
       return
 
     # Default file manager
     switch process.platform
       when "darwin"
-        exec "open -R #{path}"
+        spawnSync "open", [ "-R", path ]
         fileManager = "Finder"
       when "win32"
-        exec "explorer /select,#{path}"
+        spawnSync "explorer", [ "/select,#{path}" ]
         fileManager = "Explorer"
       when "linux"
         shell.showItemInFolder(path)
@@ -140,16 +142,16 @@ module.exports = BrowsePackages =
     fileManager = atom.config.get('browse.fileManager')
 
     if fileManager
-      exec "\"#{fileManager}\" \"#{path}\""
+      spawnSync fileManager, [ path ]
       return
 
     # Default file manager
     switch process.platform
       when "darwin"
-        exec "open #{path}"
+        spawnSync "open", [ path ]
         fileManager = "Finder"
       when "win32"
-        exec "explorer #{path}"
+        spawnSync "explorer", [ path ]
         fileManager = "Explorer"
       when "linux"
         shell.openItem(path)
