@@ -68,8 +68,7 @@ module.exports = BrowsePackages =
       return
 
     for item in items
-      if item.constructor.name is 'SettingsView'
-        continue
+      continue if item.constructor.name isnt 'TextEditor'
 
       if item?.buffer.file
         file = item?.buffer.file
