@@ -1,20 +1,57 @@
 'context-menu':
+  'atom-text-editor': [
+    {
+      label: "Browse"
+      submenu: [
+        {
+          command: 'browse:configuration-folder'
+          label: 'Open Configuration Folder'
+        }
+        {
+          command: 'browse:packages-folder'
+          label: 'Open Packages Folder'
+        }
+        {
+          type: 'separator'
+        }
+        {
+          command: 'browse:project-folders'
+          label: 'Open Project Folder(s)'
+        }
+      ]
+    }
+  ]
   '.platform-darwin atom-text-editor': [
     {
-      command: 'browse:reveal-file'
-      label: 'Reveal in Finder'
+      label: "Browse"
+      submenu: [
+        {
+          command: 'browse:reveal-file'
+          label: 'Reveal in Finder'
+        }
+      ]
     }
   ]
   '.platform-linux atom-text-editor': [
     {
-      command: 'browse:reveal-file'
-      label: 'Reveal in file manager'
+      label: "Browse"
+      submenu: [
+        {
+          command: 'browse:reveal-file'
+          label: 'Reveal in file manager'
+        }
+      ]
     }
   ]
   '.platform-win32 atom-text-editor': [
     {
-      command: 'browse:reveal-file'
-      label: 'Reveal in Explorer'
+      label: "Browse"
+      submenu: [
+        {
+          command: 'browse:reveal-file'
+          label: 'Reveal in Explorer'
+        }
+      ]
     }
   ]
 menu: [
