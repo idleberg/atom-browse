@@ -1,7 +1,7 @@
 {CompositeDisposable} = require 'atom'
 
 # Dependencies
-{exec} = require('child_process')
+{execSync} = require('child_process')
 fs = require 'fs'
 shell = require 'shell'
 
