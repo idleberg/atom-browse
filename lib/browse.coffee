@@ -1,7 +1,7 @@
 {CompositeDisposable} = require 'atom'
 
 # Dependencies
-{execSync} = require('child_process')
+{exec} = require('child_process')
 fs = require 'fs'
 shell = require 'shell'
 
@@ -68,7 +68,7 @@ module.exports = BrowsePackages =
       return
 
     for item in items
-      continue if item.constructor.name isnt 'TextEditor'
+      continue unless item.constructor.name is 'TextEditor'
 
       if item?.buffer.file
         file = item?.buffer.file
@@ -124,7 +124,7 @@ module.exports = BrowsePackages =
     # Default file manager
     switch process.platform
       when "darwin"
-        exec "open -n -R #{path}"
+        exec "open -R #{path}"
         fileManager = "Finder"
       when "win32"
         exec "explorer /select,#{path}"
