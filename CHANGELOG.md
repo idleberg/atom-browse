@@ -1,12 +1,13 @@
 # v1.6.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.6.0)
 
 - add command to open Atom application path
+- lazy-load dependencies
 - include `CHANGELOG.md`
 
 # v1.5.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.5.0)
 
-- use `spawn` over `spawnSync`
-- update `devDependencies`
+* use `spawn` over `spawnSync`
+* update `devDependencies`
 
 # v1.4.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.4.1)
 
