@@ -25,10 +25,26 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:project-folders": => @browseProjects()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file": => @revealFile()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-all-open-files": => @revealFiles()
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:atom-app-folder": => @appFolder()
 
   deactivate: ->
     @subscriptions?.dispose()
     @subscriptions = null
+
+  appFolder: ->
+    { platform } = require "os"
+    { dirname, join, resolve } = require "path"
+
+    processBin = resolve process.execPath
+    processPath = dirname processBin
+
+    switch platform()
+      when "darwin"
+        appFolder = join(processPath, "..", "..", "..", "..")
+      else
+        appFolder = processPath
+
+    @openFolder(appFolder)
 
   browsePackages: ->
     { accessSync, F_OK } = require "fs"
