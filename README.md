@@ -40,17 +40,18 @@ $ git clone https://github.com/idleberg/atom-browse browse
 
 Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
 
-* `Browse: Packages folder`
-* `Browse: Configuration folder`
+* `Browse: Packages Folder`
+* `Browse: Configuration Folder`
 * `Browse: Reveal file`
-* `Browse: Reveal all open files`
-* `Browse: Project folder(s)`
+* `Browse: Reveal All Open Files`
+* `Browse: Project Folder(s)`
+* `Browse: Atom App Folder`
 
 All of these commands can also be accessed from the *“Packages”* menu and the context menu. Lastly, the [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for most of these commands.
 
 ## Options
 
-If you want to override your system's default file manager, you can specify its path in your Atom [configuration](http://flight-manual.atom.io/using-atom/sections/basic-customization/#_global_configuration_settings).
+If you want to override your system's default file-manager, you can specify its path in your Atom [configuration](http://flight-manual.atom.io/using-atom/sections/basic-customization/#_global_configuration_settings).
 
 **Example:**
 
