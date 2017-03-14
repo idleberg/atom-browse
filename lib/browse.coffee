@@ -158,7 +158,7 @@ module.exports = BrowsePackages =
     open = spawn cmd, args
 
     open.stderr.on "data", (error) ->
-       atom.notifications.addError("**#{name}**: #{error}", dismissable: true)
+      atom.notifications.addError("**#{name}**: #{error}", dismissable: true)
 
     open.on "close", ( errorCode ) ->
       if errorCode is 0 and atom.config.get("#{name}.notify")
