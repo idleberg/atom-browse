@@ -70,8 +70,8 @@ menu: [
             label: 'Open Packages Folder'
           }
           {
-            command: 'browse:atom-app-folder'
-            label: 'Open Atom Application Folder'
+            command: 'browse:application-folder'
+            label: 'Open Application Folder'
           }
           {
             type: 'separator'
