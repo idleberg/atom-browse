@@ -45,7 +45,7 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 * `Browse: Reveal file`
 * `Browse: Reveal All Open Files`
 * `Browse: Project Folder(s)`
-* `Browse: App Folder`
+* `Browse: Application Folder`
 
 All of these commands can also be accessed from the *“Packages”* menu and the context menu. Lastly, the [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for most of these commands.
 
