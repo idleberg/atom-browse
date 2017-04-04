@@ -1,3 +1,7 @@
+# v1.6.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.6.1)
+
+- use more generic `Browse:Application Folder` name
+
 # v1.6.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.6.0)
 
 - add command to open Atom application path
