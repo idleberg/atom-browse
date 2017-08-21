@@ -1,3 +1,8 @@
+# v1.7.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.7.0)
+
+- add support for tree-view
+- update `devDependencies`
+
 # v1.6.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.6.1)
 
 - use more generic `Browse:Application Folder` name
