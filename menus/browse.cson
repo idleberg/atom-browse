@@ -54,6 +54,24 @@
       ]
     }
   ]
+  '.platform-darwin .tree-view .full-menu': [
+    {
+      command: 'browse:reveal-file-from-treeview'
+      label: 'Reveal in Finder'
+    }
+  ]
+  '.platform-linux .tree-view .full-menu': [
+    {
+      command: 'browse:reveal-file-from-treeview'
+      label: 'Reveal in file manager'
+    }
+  ]
+  '.platform-win32 .tree-view .full-menu': [
+    {
+      command: 'browse:reveal-file-from-treeview'
+      label: 'Reveal in Explorer'
+    }
+  ]
 menu: [
   {
     label: 'Packages'

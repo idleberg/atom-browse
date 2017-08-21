@@ -30,7 +30,8 @@
       "browse:reveal-file",
       "browse:project-folders",
       "browse:packages-folder"
-    ]
+    ],
+    ".tree-view": "browse:reveal-file-from-treeview"
   },
   "dependencies": {
     "shell": "^0.3.2"

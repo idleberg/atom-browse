@@ -1,5 +1,4 @@
 { name } = require "../package.json"
-{ CompositeDisposable } = require "atom"
 
 module.exports = BrowsePackages =
   config:
@@ -17,6 +16,7 @@ module.exports = BrowsePackages =
 
   activate: ->
     # Events subscribed to in Atom's system can be easily cleaned up with a CompositeDisposable
+    { CompositeDisposable } = require "atom"
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
@@ -25,6 +25,7 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:project-folders": => @browseProjects()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file": => @revealFile()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-all-open-files": => @revealFiles()
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-treeview": => @revealFileFromTreeview()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
 
   deactivate: ->
@@ -62,7 +63,6 @@ module.exports = BrowsePackages =
       @openFolder(packageDir)
 
   revealFile: ->
-    # Get parent folder of active file
     editor = atom.workspace.getActivePaneItem()
 
     if editor?.constructor.name is "TextEditor" or editor?.constructor.name is "ImageEditor"
@@ -71,11 +71,10 @@ module.exports = BrowsePackages =
       if file?.path
         @selectFile(file.path)
         return
-    
+
     atom.notifications.addWarning("**#{name}**: No active file", dismissable: false)
 
   revealFiles: ->
-    # Get all open file
     editors = atom.workspace.getPaneItems()
 
     if editors.length > 0
@@ -92,6 +91,25 @@ module.exports = BrowsePackages =
       return if count > 0
 
     atom.notifications.addWarning("**#{name}**: No open files", dismissable: false)
+
+
+  revealFileFromTreeview: ->
+    panes = atom.workspace.getPaneItems()
+
+    if panes.length > 0
+      count = 0
+      for pane in panes
+        continue unless pane.constructor.name is "TreeView"
+
+        file = pane.selectedPath
+
+        if file?
+          @selectFile(file)
+          return
+
+      return if count > 0
+
+    atom.notifications.addWarning("**#{name}**: No selected files", dismissable: false)
 
   browseProjects: ->
     { accessSync, F_OK } = require "fs"
