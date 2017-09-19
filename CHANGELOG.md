@@ -1,3 +1,7 @@
+# v1.8.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.0)
+
+- add metrics support
+
 # v1.7.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.7.0)
 
 - add support for tree-view
