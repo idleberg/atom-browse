@@ -28,16 +28,16 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-treeview": => @revealFileFromTreeview()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
 
-    require("./ga").sendEvent("browse", "activate")
+    require("./ga").sendEvent(name, "activate")
 
   deactivate: ->
-    require("./ga").sendEvent("browse", "deactivate")
+    require("./ga").sendEvent(name, "deactivate")
 
     @subscriptions?.dispose()
     @subscriptions = null
 
   appFolder: ->
-    require("./ga").sendEvent("browse", "application-folder")
+    require("./ga").sendEvent(name, "application-folder")
 
     { platform } = require "os"
     { dirname, join, resolve } = require "path"
@@ -54,7 +54,7 @@ module.exports = BrowsePackages =
     @openFolder(appFolder)
 
   browsePackages: ->
-    require("./ga").sendEvent("browse", "packages-folder")
+    require("./ga").sendEvent(name, "packages-folder")
 
     { accessSync, F_OK } = require "fs"
 
@@ -71,7 +71,7 @@ module.exports = BrowsePackages =
       @openFolder(packageDir)
 
   revealFile: ->
-    require("./ga").sendEvent("browse", "reveal-file")
+    require("./ga").sendEvent(name, "reveal-file")
 
     editor = atom.workspace.getActivePaneItem()
 
@@ -85,7 +85,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No active file", dismissable: false)
 
   revealFiles: ->
-    require("./ga").sendEvent("browse", "reveal-all-open-files")
+    require("./ga").sendEvent(name, "reveal-all-open-files")
 
     editors = atom.workspace.getPaneItems()
 
@@ -105,7 +105,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No open files", dismissable: false)
 
   revealFileFromTreeview: ->
-    require("./ga").sendEvent("browse", "reveal-file-from-treeview")
+    require("./ga").sendEvent(name, "reveal-file-from-treeview")
 
     panes = atom.workspace.getPaneItems()
 
@@ -125,7 +125,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No selected files", dismissable: false)
 
   browseProjects: ->
-    require("./ga").sendEvent("browse", "project-folders")
+    require("./ga").sendEvent(name, "project-folders")
 
     { accessSync, F_OK } = require "fs"
 
@@ -148,7 +148,7 @@ module.exports = BrowsePackages =
       @openFolder(project)
 
   browseConfig: ->
-    require("./ga").sendEvent("browse", "configuration-folder")
+    require("./ga").sendEvent(name, "configuration-folder")
 
     { accessSync, F_OK } = require "fs"
     { dirname } = require "path"
@@ -168,7 +168,7 @@ module.exports = BrowsePackages =
       @openFolder(configPath)
 
   selectFile: (path) ->
-    require("./ga").sendEvent("browse", "configuration-folder")
+    require("./ga").sendEvent(name, "configuration-folder")
 
     { basename } = require "path"
 
