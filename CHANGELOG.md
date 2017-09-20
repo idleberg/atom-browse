@@ -1,3 +1,7 @@
+# v1.8.3 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.3)
+
+- remove activate/deactivate events
+
 # v1.8.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.2)
 
 - fix package name

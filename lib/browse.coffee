@@ -28,11 +28,7 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-treeview": => @revealFileFromTreeview()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
 
-    require("./ga").sendEvent(name, "activate")
-
   deactivate: ->
-    require("./ga").sendEvent(name, "deactivate")
-
     @subscriptions?.dispose()
     @subscriptions = null
 
