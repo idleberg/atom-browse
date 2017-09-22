@@ -1,3 +1,7 @@
+# v1.8.5 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.5)
+
+- modify event output
+
 # v1.8.4 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.4)
 
 - fix require
