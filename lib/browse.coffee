@@ -33,7 +33,7 @@ module.exports = BrowsePackages =
     @subscriptions = null
 
   appFolder: ->
-    require("./ga").sendEvent(name, "application-folder")
+    require("./ga").sendEvent name, "application-folder"
 
     { platform } = require "os"
     { dirname, join, resolve } = require "path"
@@ -50,7 +50,7 @@ module.exports = BrowsePackages =
     @openFolder(appFolder)
 
   browsePackages: ->
-    require("./ga").sendEvent(name, "packages-folder")
+    require("./ga").sendEvent name, "packages-folder"
 
     { accessSync, F_OK } = require "fs"
 
@@ -67,7 +67,7 @@ module.exports = BrowsePackages =
       @openFolder(packageDir)
 
   revealFile: ->
-    require("./ga").sendEvent(name, "reveal-file")
+    require("./ga").sendEvent name, "reveal-file"
 
     editor = atom.workspace.getActivePaneItem()
 
@@ -81,7 +81,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No active file", dismissable: false)
 
   revealFiles: ->
-    require("./ga").sendEvent(name, "reveal-all-open-files")
+    require("./ga").sendEvent name, "reveal-all-open-files"
 
     editors = atom.workspace.getPaneItems()
 
@@ -101,7 +101,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No open files", dismissable: false)
 
   revealFileFromTreeview: ->
-    require("./ga").sendEvent(name, "reveal-file-from-treeview")
+    require("./ga").sendEvent name, "reveal-file-from-treeview"
 
     panes = atom.workspace.getPaneItems()
 
@@ -121,7 +121,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No selected files", dismissable: false)
 
   browseProjects: ->
-    require("./ga").sendEvent(name, "project-folders")
+    require("./ga").sendEvent name, "project-folders"
 
     { accessSync, F_OK } = require "fs"
 
@@ -144,7 +144,7 @@ module.exports = BrowsePackages =
       @openFolder(project)
 
   browseConfig: ->
-    require("./ga").sendEvent(name, "configuration-folder")
+    require("./ga").sendEvent name, "configuration-folder"
 
     { accessSync, F_OK } = require "fs"
     { dirname } = require "path"
@@ -164,7 +164,7 @@ module.exports = BrowsePackages =
       @openFolder(configPath)
 
   selectFile: (path) ->
-    require("./ga").sendEvent(name, "configuration-folder")
+    require("./ga").sendEvent name, "configuration-folder"
 
     { basename } = require "path"
 
