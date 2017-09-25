@@ -54,9 +54,3 @@ module.exports = GoogleAnalytics =
       v: 1
       tid: "UA-53539506-9"
     }
-
-atom.packages.onDidActivatePackage (pkg) ->
-  if "metrics" == pkg.name
-    meta = atom.packages.getLoadedPackage("browse").metadata
-    require("./ga").sendEvent "browse", "activate (v#{meta.version})",
-  return

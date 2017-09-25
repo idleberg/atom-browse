@@ -1,3 +1,7 @@
+# v1.8.6 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.6)
+
+- remove activation event
+
 # v1.8.5 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.5)
 
 - modify event output
