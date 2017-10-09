@@ -25,7 +25,7 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:project-folders": => @browseProjects()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file": => @revealFile()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-all-open-files": => @revealFiles()
-    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-treeview": => @revealFileFromTreeview()
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-tree-view": => @revealFileFromTreeview()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
 
   deactivate: ->
@@ -101,7 +101,7 @@ module.exports = BrowsePackages =
     atom.notifications.addWarning("**#{name}**: No open files", dismissable: false)
 
   revealFileFromTreeview: ->
-    require("./ga").sendEvent name, "reveal-file-from-treeview"
+    require("./ga").sendEvent name, "reveal-file-from-tree-view"
 
     panes = atom.workspace.getPaneItems()
 

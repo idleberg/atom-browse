@@ -56,19 +56,19 @@
   ]
   '.platform-darwin .tree-view .full-menu': [
     {
-      command: 'browse:reveal-file-from-treeview'
+      command: 'browse:reveal-file-from-tree-view'
       label: 'Reveal in Finder'
     }
   ]
   '.platform-linux .tree-view .full-menu': [
     {
-      command: 'browse:reveal-file-from-treeview'
+      command: 'browse:reveal-file-from-tree-view'
       label: 'Reveal in file manager'
     }
   ]
   '.platform-win32 .tree-view .full-menu': [
     {
-      command: 'browse:reveal-file-from-treeview'
+      command: 'browse:reveal-file-from-tree-view'
       label: 'Reveal in Explorer'
     }
   ]
