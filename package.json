@@ -24,6 +24,7 @@
   },
   "activationCommands": {
     "atom-workspace": [
+      "browse:.apm-folder",
       "browse:application-folder",
       "browse:configuration-folder",
       "browse:reveal-all-open-files",

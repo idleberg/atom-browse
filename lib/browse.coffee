@@ -27,10 +27,32 @@ module.exports = BrowsePackages =
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-all-open-files": => @revealFiles()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-tree-view": => @revealFileFromTreeview()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:.apm-folder": => @apmFolder()
 
   deactivate: ->
     @subscriptions?.dispose()
     @subscriptions = null
+
+  apmFolder: ->
+    require("./ga").sendEvent name, "apm-folder"
+
+    { accessSync, F_OK } = require "fs"
+    { dirname, join } = require "path"
+
+    configFile = atom.config.getUserConfigPath()
+    configPath = dirname(configFile)
+    apmPath = join(configPath, '.apm')
+
+    if apmPath
+      # Does config folder exist?
+      try
+        accessSync(apmPath, F_OK)
+      catch error
+        atom.notifications.addError(name, detail: error, dismissable: true)
+        return
+
+      # Open config folder
+      @openFolder(apmPath)
 
   appFolder: ->
     require("./ga").sendEvent name, "application-folder"
