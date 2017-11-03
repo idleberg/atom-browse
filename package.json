@@ -27,10 +27,10 @@
       "browse:.apm-folder",
       "browse:application-folder",
       "browse:configuration-folder",
-      "browse:reveal-all-open-files",
-      "browse:reveal-file",
+      "browse:packages-folder",
       "browse:project-folders",
-      "browse:packages-folder"
+      "browse:reveal-all-open-files",
+      "browse:reveal-file"
     ],
     ".tree-view": "browse:reveal-file-from-tree-view"
   },
