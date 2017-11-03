@@ -1,6 +1,6 @@
 { name } = require "../package.json"
 
-module.exports = BrowsePackages =
+module.exports = Browse =
   config:
     fileManager:
       title: "File manager"
@@ -36,23 +36,13 @@ module.exports = BrowsePackages =
   apmFolder: ->
     require("./ga").sendEvent name, "apm-folder"
 
-    { accessSync, F_OK } = require "fs"
     { dirname, join } = require "path"
 
     configFile = atom.config.getUserConfigPath()
     configPath = dirname(configFile)
     apmPath = join(configPath, '.apm')
 
-    if apmPath
-      # Does config folder exist?
-      try
-        accessSync(apmPath, F_OK)
-      catch error
-        atom.notifications.addError(name, detail: error, dismissable: true)
-        return
-
-      # Open config folder
-      @openFolder(apmPath)
+    @openFolder(apmPath) if apmPath
 
   appFolder: ->
     require("./ga").sendEvent name, "application-folder"
@@ -69,23 +59,15 @@ module.exports = BrowsePackages =
       else
         appFolder = processPath
 
-    @openFolder(appFolder)
+    @openFolder(appFolder) if appFolder
 
   browsePackages: ->
     require("./ga").sendEvent name, "packages-folder"
 
-    { accessSync, F_OK } = require "fs"
 
     packageDirs = atom.packages.getPackageDirPaths()
 
     for packageDir in packageDirs
-      # Does packages folder exist?
-      try
-        accessSync(packageDir, F_OK)
-      catch error
-        atom.notifications.addError(name, detail: error, dismissable: true)
-
-      # Open packages folder
       @openFolder(packageDir)
 
   revealFile: ->
@@ -145,45 +127,25 @@ module.exports = BrowsePackages =
   browseProjects: ->
     require("./ga").sendEvent name, "project-folders"
 
-    { accessSync, F_OK } = require "fs"
 
-    projects = atom.project.getPaths()
-    return atom.notifications.addWarning("**#{name}**: No active project", dismissable: false) unless projects.length > 0
+    projectPaths = atom.project.getPaths()
+    return atom.notifications.addWarning("**#{name}**: No active project", dismissable: false) unless projectPaths.length > 0
 
-    for project in projects
+    for projectPath in projectPaths
       # Skip Atom dialogs
-      if project.startsWith('atom://')
-        continue
+      continue if projectPath.startsWith('atom://')
 
-      # Does project folder exist?
-      try
-        accessSync(project, F_OK)
-      catch
-        atom.notifications.addError(name, detail: error, dismissable: true)
-        continue
-
-      # Open project folder
-      @openFolder(project)
+      @openFolder(projectPath)
 
   browseConfig: ->
     require("./ga").sendEvent name, "configuration-folder"
 
-    { accessSync, F_OK } = require "fs"
     { dirname } = require "path"
 
     configFile = atom.config.getUserConfigPath()
     configPath = dirname(configFile)
 
-    if configPath
-      # Does config folder exist?
-      try
-        accessSync(configPath, F_OK)
-      catch error
-        atom.notifications.addError(name, detail: error, dismissable: true)
-        return
-
-      # Open config folder
-      @openFolder(configPath)
+    @openFolder(configPath) if configPath
 
   selectFile: (path) ->
     require("./ga").sendEvent name, "configuration-folder"
@@ -206,22 +168,26 @@ module.exports = BrowsePackages =
         atom.notifications.addInfo("**#{name}**: Opened `#{basename(path)}` in file manager", dismissable: false)
 
   openFolder: (path) ->
+    { access, F_OK } = require "fs"
     { basename } = require "path"
 
-    # Custom file manager
-    fileManager = atom.config.get("#{name}.fileManager")
-    return @spawnCmd fileManager, [ path ], basename(path), "file manager" if fileManager
+    access path, F_OK, (err) ->
+      return atom.notifications.addError(name, detail: error, dismissable: true) if err
 
-    # Default file manager
-    switch process.platform
-      when "darwin"
-        @spawnCmd "open", [ path ], basename(path), "Finder"
-      when "win32"
-        @spawnCmd "explorer", [ path ], basename(path), "Explorer"
-      when "linux"
-        { openItem } = require "shell"
-        openItem(path)
-        atom.notifications.addInfo("**#{name}**: Opened `#{basename(path)}` in file manager", dismissable: false)
+      # Custom file manager
+      fileManager = atom.config.get("#{name}.fileManager")
+      return Browse.spawnCmd fileManager, [ path ], basename(path), "file manager" if fileManager
+
+      # Default file manager
+      switch process.platform
+        when "darwin"
+          Browse.spawnCmd "open", [ path ], basename(path), "Finder"
+        when "win32"
+          Browse.spawnCmd "explorer", [ path ], basename(path), "Explorer"
+        when "linux"
+          { openItem } = require "shell"
+          openItem(path)
+          atom.notifications.addInfo("**#{name}**: Opened `#{basename(path)}` in file manager", dismissable: false)
 
   spawnCmd: (cmd, args, baseName, fileManager) ->
     { spawn } = require("child_process")
