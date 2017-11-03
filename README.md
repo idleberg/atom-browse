@@ -42,7 +42,7 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 
 * `Browse: Packages Folder`
 * `Browse: Configuration Folder`
-* `Browse: Reveal file`
+* `Browse: Reveal File`
 * `Browse: Reveal All Open Files`
 * `Browse: Project Folder(s)`
 * `Browse: Application Folder`
