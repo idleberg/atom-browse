@@ -1,3 +1,8 @@
+# v1.9.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.9.0)
+
+- add command to open .apm path
+- rename tree-view command
+
 # v1.8.6 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.8.6)
 
 - remove activation event
