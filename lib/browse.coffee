@@ -20,14 +20,14 @@ module.exports = Browse =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:.apm-folder": => @apmFolder()
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:configuration-folder": => @browseConfig()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:packages-folder": => @browsePackages()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:project-folders": => @browseProjects()
-    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file": => @revealFile()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-all-open-files": => @revealFiles()
+    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file": => @revealFile()
     @subscriptions.add atom.commands.add "atom-workspace", "#{name}:reveal-file-from-tree-view": => @revealFileFromTreeview()
-    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:application-folder": => @appFolder()
-    @subscriptions.add atom.commands.add "atom-workspace", "#{name}:.apm-folder": => @apmFolder()
 
   deactivate: ->
     @subscriptions?.dispose()
