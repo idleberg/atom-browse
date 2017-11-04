@@ -1,3 +1,8 @@
+# v1.10.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.0)
+
+- remove async code
+- refactor
+
 # v1.9.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.9.0)
 
 - add command to open `.apm` path
@@ -48,8 +53,8 @@
 
 # v1.5.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.5.0)
 
-* use `spawn` over `spawnSync`
-* update `devDependencies`
+- use `spawn` over `spawnSync`
+- update `devDependencies`
 
 # v1.4.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.4.1)
 
