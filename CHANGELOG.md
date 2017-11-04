@@ -1,6 +1,6 @@
 # v1.10.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.0)
 
-- remove async code
+- remove synchronous functions
 - refactor
 
 # v1.9.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.9.0)
