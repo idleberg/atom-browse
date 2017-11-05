@@ -38,18 +38,20 @@ $ git clone https://github.com/idleberg/atom-browse browse
 
 ## Usage
 
-Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette):
+Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
 
-* Project-specific
-    * `Browse: Project Folder(s)`
-    * `Browse: Reveal All Open Files`
-    * `Browse: Reveal File`
+**Project-specific:**
 
-* Atom-specific
-    * `Browse: .apm Folder`
-    * `Browse: Application Folder`
-    * `Browse: Configuration Folder`
-    * `Browse: Packages Folder`
+* `Browse: Project Folder(s)`
+* `Browse: Reveal All Open Files`
+* `Browse: Reveal File`
+
+**Atom-specific:**
+
+* `Browse: .apm Folder`
+* `Browse: Application Folder`
+* `Browse: Configuration Folder`
+* `Browse: Packages Folder`
 
 All of these commands can also be accessed from the *“Packages”* menu and the context menu. Lastly, the [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for some of these commands.
 
