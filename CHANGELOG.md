@@ -1,3 +1,8 @@
+# v1.10.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.2)
+
+- change notification wording
+- add missing context menu entries
+
 # v1.10.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.1)
 
 - add missing condition for notifications on Linux
