@@ -53,7 +53,7 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 * `Browse: Configuration Folder`
 * `Browse: Packages Folder`
 
-All of these commands can also be accessed from the *“Packages”* menu and the context menu. Lastly, the [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for some of these commands.
+All of these commands can also be accessed from the *“Packages”* menu and the context menu. Lastly, the [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for many of these commands.
 
 ## Options
 
