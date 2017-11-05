@@ -12,6 +12,14 @@
           label: 'Open Packages Folder'
         }
         {
+          command: 'browse:.apm-folder'
+          label: 'Open .apm Folder'
+        }
+        {
+          command: 'browse:application-folder'
+          label: 'Open Application Folder'
+        }
+        {
           type: 'separator'
         }
         {
