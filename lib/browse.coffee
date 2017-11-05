@@ -165,7 +165,7 @@ module.exports = Browse =
       when "linux"
         { showItemInFolder } = require "shell"
         showItemInFolder(path)
-        atom.notifications.addInfo("**#{name}**: Opened `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
+        atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
   openFolder: (path) ->
     { access, F_OK } = require "fs"
@@ -187,7 +187,7 @@ module.exports = Browse =
         when "linux"
           { openItem } = require "shell"
           openItem(path)
-          atom.notifications.addInfo("**#{name}**: Opened `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
+          atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
   spawnCmd: (cmd, args, baseName, fileManager) ->
     { spawn } = require("child_process")
@@ -199,4 +199,4 @@ module.exports = Browse =
 
     open.on "close", ( errorCode ) ->
       if errorCode is 0 and atom.config.get("#{name}.notify")
-        atom.notifications.addInfo("**#{name}**: Opened `#{baseName}` in #{fileManager}", dismissable: false)
+        atom.notifications.addInfo("**#{name}**: Opening `#{baseName}` in #{fileManager}", dismissable: false)
