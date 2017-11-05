@@ -1,3 +1,7 @@
+# v1.10.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.1)
+
+- add missing condition for notifications on Linux
+
 # v1.10.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.0)
 
 - remove synchronous functions
