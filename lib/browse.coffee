@@ -163,7 +163,7 @@ module.exports = Browse =
       when "win32"
         @spawnCmd "explorer", [ "/select,#{path}" ], basename(path), "Explorer"
       when "linux"
-        { showItemInFolder } = require "shell"
+        opn = require "opn"
         showItemInFolder(path)
         atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
@@ -185,8 +185,8 @@ module.exports = Browse =
         when "win32"
           Browse.spawnCmd "explorer", [ path ], basename(path), "Explorer"
         when "linux"
-          { openItem } = require "shell"
-          openItem(path)
+          opn = require "opn"
+          opn(path)
           atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
   spawnCmd: (cmd, args, baseName, fileManager) ->
