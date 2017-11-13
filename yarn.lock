@@ -544,12 +544,6 @@ each-props@^1.2.1:
     is-plain-object "^2.0.1"
     object.defaults "^1.1.0"
 
-each@latest:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/each/-/each-0.6.1.tgz#1181cc47933882055a590f70ae78c1b11f1b8865"
-  dependencies:
-    glob "~7.0.0"
-
 eachr@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/eachr/-/eachr-3.2.0.tgz#2c35e43ea086516f7997cf80b7aa64d55a4a4484"
@@ -902,17 +896,6 @@ glob@^7.0.5, glob@^7.0.6, glob@^7.1.1:
     inflight "^1.0.4"
     inherits "2"
     minimatch "^3.0.4"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
-glob@~7.0.0:
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
-  dependencies:
-    fs.realpath "^1.0.0"
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "^3.0.2"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
@@ -1875,7 +1858,7 @@ once@^1.3.0, once@^1.3.2, once@^1.3.3, once@^1.4.0:
   dependencies:
     wrappy "1"
 
-optimist@^0.6.1, optimist@latest:
+optimist@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   dependencies:
@@ -1909,10 +1892,6 @@ osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
-
-pad@latest:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/pad/-/pad-1.1.0.tgz#7a7d185200ebac32f9f12ee756c3a1d087b3190b"
 
 parse-filepath@^1.0.1:
   version "1.0.1"
@@ -2272,14 +2251,6 @@ set-blocking@~2.0.0:
 set-immediate-shim@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/set-immediate-shim/-/set-immediate-shim-1.0.1.tgz#4b2b1b27eb808a9f8dcc481a58e5e56f599f3f61"
-
-shell@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/shell/-/shell-0.3.2.tgz#117eabe80750bf70e949142a70152d94cc063f1e"
-  dependencies:
-    each latest
-    optimist latest
-    pad latest
 
 shelljs@0.3.x:
   version "0.3.0"
