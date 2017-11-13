@@ -35,8 +35,7 @@
     ".tree-view": "browse:reveal-file-from-tree-view"
   },
   "dependencies": {
-    "getmac": "^1.2.1",
-    "opn": "^5.1.0"
+    "getmac": "^1.2.1"
   },
   "devDependencies": {
     "coffeelint-stylish": "^0.1.2",
