@@ -1,3 +1,7 @@
+# v1.10.3 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.3)
+
+- fix loading wrong dependency
+
 # v1.10.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.2)
 
 - change notification wording
