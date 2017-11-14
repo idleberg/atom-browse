@@ -1,7 +1,7 @@
 {
   "name": "browse",
   "description": "Adds commands that let you quickly browse Atom-related folders or reveal files you're working on",
-  "version": "1.10.3",
+  "version": "1.10.2",
   "license": "MIT",
   "author": {
     "name": "Jan T. Sott",
