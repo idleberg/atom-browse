@@ -1,3 +1,4 @@
+
 { name } = require "../package.json"
 
 module.exports = Browse =
@@ -163,8 +164,8 @@ module.exports = Browse =
       when "win32"
         @spawnCmd "explorer", [ "/select,#{path}" ], basename(path), "Explorer"
       when "linux"
-        { showItemInFolder } = require "shell"
-        showItemInFolder(path)
+        { shell } = require "electron"
+        shell.showItemInFolder(path)
         atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
   openFolder: (path) ->
@@ -185,8 +186,8 @@ module.exports = Browse =
         when "win32"
           Browse.spawnCmd "explorer", [ path ], basename(path), "Explorer"
         when "linux"
-          { openItem } = require "shell"
-          openItem(path)
+          { shell } = require "electron"
+          shell.openItem(path)
           atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
   spawnCmd: (cmd, args, baseName, fileManager) ->
