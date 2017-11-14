@@ -35,7 +35,6 @@
     ".tree-view": "browse:reveal-file-from-tree-view"
   },
   "dependencies": {
-    "electron": "^1.7.9",
     "getmac": "^1.2.1"
   },
   "devDependencies": {
