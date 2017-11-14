@@ -1,3 +1,7 @@
+# v1.10.4 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.4)
+
+- remove unused dependency
+
 # v1.10.3 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.3)
 
 - fix loading wrong dependency
