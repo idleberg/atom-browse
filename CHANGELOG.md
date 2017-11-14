@@ -1,3 +1,8 @@
+# v1.10.5 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.5)
+
+- reduce whitespace
+- fix `package.json`
+
 # v1.10.4 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.4)
 
 - remove unused dependency
