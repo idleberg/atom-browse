@@ -171,8 +171,8 @@ module.exports = Browse =
     { access, F_OK } = require "fs"
     { basename } = require "path"
 
-    access path, F_OK, (err) ->
-      return atom.notifications.addError(name, detail: error, dismissable: true) if err
+    access path, F_OK, (error) ->
+      return atom.notifications.addError(name, detail: error, dismissable: true) if error
 
       # Custom file manager
       fileManager = atom.config.get("#{name}.fileManager")
