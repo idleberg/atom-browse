@@ -77,7 +77,7 @@ Also in `config.cson`, you can activate Atom info notifications for visual feedb
 
 ## Metrics
 
-With Atom's default [`metrics`](https://atom.io/packages/metrics) package enabled, this package sends anonymized usage statistics to Google Analytics. This is limited to the name of the methods called by the user. This helps me getting an understanding how this package is used. If you don't want this, you probably already disabled the `metrics` package. Otherwise, please do.
+With Atom's default [`metrics`](https://atom.io/packages/metrics) package enabled, this package sends anonymized usage statistics to Google Analytics. The data transferred is limited to the name of the methods called by the user ([see for yourself](https://github.com/idleberg/atom-browse/search?q=ga+sendEvent&l=CoffeeScript)!) This helps me getting an understanding how this package is used. If you oppose data collection of that kind, you have probably disabled the `metrics` package already. Otherwise, please do.
 
 ## License
 
