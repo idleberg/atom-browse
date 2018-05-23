@@ -1,3 +1,8 @@
+# v1.10.7 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.7)
+
+- update default GA parameter
+- update dependencies
+
 # v1.10.6 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.6)
 
 - fix variable name
