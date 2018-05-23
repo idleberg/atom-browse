@@ -52,8 +52,8 @@ module.exports = GoogleAnalytics =
     # https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
     {
       v: 1
-      aip: true
+      aip: 1
       ds: "app"
       tid: "UA-53539506-9"
-      ua: "Atom v#{atom.appVersion} #{atom.getReleaseChannel()}"
+      ua: "Atom v#{atom.appVersion} (#{atom.getReleaseChannel()})"
     }
