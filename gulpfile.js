@@ -14,20 +14,12 @@ const coffeeFiles = [
     './snippets/*.cson'
 ];
 
-const jsFiles = [
-    './lib/**/*.js'
-];
-
 const jsonFiles = [
     './grammars/*.json',
     './keymaps/*.json',
     './menus/*.json',
     './snippets/*.json',
     './package.json'
-];
-
-const lessFiles = [
-    './styles/**/*.less'
 ];
 
 // Lint CoffeeScript & CSON files
