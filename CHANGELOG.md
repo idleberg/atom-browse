@@ -1,3 +1,7 @@
+# v1.10.8 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.8)
+
+- fix anonymizerIP parameter
+
 # v1.10.7 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.7)
 
 - update default GA parameters
