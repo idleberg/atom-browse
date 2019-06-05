@@ -64,7 +64,6 @@ module.exports = Browse =
   browsePackages: ->
     require("./ga").sendEvent name, "packages-folder"
 
-
     packageDirs = atom.packages.getPackageDirPaths()
 
     for packageDir in packageDirs
@@ -168,11 +167,35 @@ module.exports = Browse =
         atom.notifications.addInfo("**#{name}**: Opening `#{basename(path)}` in file manager", dismissable: false) if atom.config.get("#{name}.notify")
 
   openFolder: (path) ->
-    { access, F_OK } = require "fs"
+    { access, existsSync, F_OK } = require "fs"
     { basename } = require "path"
 
+    if !existsSync path
+      console.warn "Skipping #{path}, folder doesn't exist"
+      return
+
     access path, F_OK, (error) ->
-      return atom.notifications.addError(name, detail: error, dismissable: true) if error
+      if error
+        notification = atom.notifications.addError(
+          name,
+          detail: "Something went wrong. Please see the console for details."
+          dismissable: true,
+          buttons: [
+            {
+              text: "Open Console"
+              onDidClick: ->
+                atom.openDevTools()
+                notification.dismiss()
+            }
+            {
+              text: "Cancel",
+              onDidClick: ->
+                notification.dismiss()
+            }
+          ]
+        )
+
+        return console.error error
 
       # Custom file manager
       fileManager = atom.config.get("#{name}.fileManager")
