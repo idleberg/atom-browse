@@ -1,10 +1,10 @@
 # browse
 
-[![apm](https://img.shields.io/apm/l/browse.svg?style=flat-square)](https://atom.io/packages/browse)
-[![apm](https://img.shields.io/apm/v/browse.svg?style=flat-square)](https://atom.io/packages/browse)
-[![apm](https://img.shields.io/apm/dm/browse.svg?style=flat-square)](https://atom.io/packages/browse)
-[![Travis](https://img.shields.io/travis/idleberg/atom-browse.svg?style=flat-square)](https://travis-ci.org/idleberg/atom-browse)
-[![David](https://img.shields.io/david/dev/idleberg/atom-browse.svg?style=flat-square)](https://david-dm.org/idleberg/atom-browse?type=dev)
+[![apm](https://flat.badgen.net/apm/license/browse)](https://atom.io/packages/browse)
+[![apm](https://flat.badgen.net/apm/v/browse)](https://atom.io/packages/browse)
+[![apm](https://flat.badgen.net/apm/dl/browse)](https://atom.io/packages/browse)
+[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-browse)](https://circleci.com/gh/idleberg/atom-browse)
+[![David](https://flat.badgen.net/david/dep/idleberg/atom-browse)](https://david-dm.org/idleberg/atom-browse)
 
 Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
 
