@@ -1,3 +1,8 @@
+# v1.11.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.11.0)
+
+- improve error handling
+- update dependencies
+
 # v1.10.8 [#](https://github.com/idleberg/atom-browse/releases/tag/v1.10.8)
 
 - fix `anonymizerIP` parameter
