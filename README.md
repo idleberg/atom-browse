@@ -4,11 +4,10 @@
 [![apm](https://flat.badgen.net/apm/v/browse)](https://atom.io/packages/browse)
 [![apm](https://flat.badgen.net/apm/dl/browse)](https://atom.io/packages/browse)
 [![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-browse)](https://circleci.com/gh/idleberg/atom-browse)
-[![David](https://flat.badgen.net/david/dep/idleberg/atom-browse)](https://david-dm.org/idleberg/atom-browse)
 
-Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
+# Description
 
-![Screenshot](https://raw.githubusercontent.com/idleberg/atom-browse/master/screenshot.gif)
+Adds commands that let you quickly browse Atom-related folders or reveal files you&#39;re working on
 
 ## Installation
 
@@ -22,11 +21,15 @@ Install `browse` from Atom's [Package Manager](http://flight-manual.atom.io/usin
 
 Change to your Atom packages directory:
 
-```bash
-# Windows
-$ cd %USERPROFILE%\.atom\packages
+**Windows**
 
-# Linux & macOS
+```cmd
+$ cd %USERPROFILE%\.atom\packages
+```
+
+**Linux & macOS**
+
+```bash
 $ cd ~/.atom/packages/
 ```
 
@@ -36,15 +39,21 @@ Clone the repository as `browse`:
 $ git clone https://github.com/idleberg/atom-browse browse
 ```
 
+Install dependencies:
+
+```bash
+cd browse && npm install
+```
+
 ## Usage
 
-Run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
+Once installed, you can run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
 
 **Project-specific:**
 
 * `Browse: Project Folder(s)`
-* `Browse: Reveal All Open Files`
 * `Browse: Reveal File`
+* `Browse: Reveal Open Files`
 
 **Atom-specific:**
 
@@ -52,8 +61,6 @@ Run any of the following commands from the [Command Palette](https://atom.io/doc
 * `Browse: Application Folder`
 * `Browse: Configuration Folder`
 * `Browse: Packages Folder`
-
-All of these commands can also be accessed from the *“Packages”* menu and the context menu. Lastly, the [package-developer-toolbar](https://github.com/idleberg/atom-package-developer-toolbar) provides a graphical user interface for many of these commands.
 
 ## Options
 
@@ -63,26 +70,22 @@ If you want to override your system's default file-manager, you can specify its 
 
 ```cson
 "browse":
-  fileManager: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
+  customFileManager.fullPath: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
 
-Also in `config.cson`, you can activate Atom info notifications for visual feedback on your actions.
+Furthermore, you can specify custom arguments for the open and reveal actions.
 
 **Example:**
 
 ```cson
 "browse":
-  notify: true
+  "customFileManager":
+    openArgs: ["-o", "%path%"]
+    revealArgs: ["-r", "%path%"]
 ```
 
-## Metrics
-
-With Atom's default [`metrics`](https://atom.io/packages/metrics) package enabled, this package sends anonymized usage statistics to Google Analytics. The data transferred is limited to the name of the methods called by the user ([see for yourself](https://github.com/idleberg/atom-browse/search?q=ga+sendEvent&l=CoffeeScript)!) This helps me getting an understanding how this package is used. If you oppose data collection of that kind, you have probably disabled the `metrics` package already. Otherwise, please do.
+**Note:** The `%path%` placeholder can be omitted when it's the last argument
 
 ## License
 
-This work is licensed under the [The MIT License](LICENSE.md).
-
-## Donate
-
-You are welcome to support this project using [Flattr](https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/atom-browse) or Bitcoin `17CXJuPsmhuTzFV2k4RKYwpEHVjskJktRd`
+This work is licensed under the [MIT License](LICENSE)

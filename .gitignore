@@ -1,5 +1,13 @@
+# Package Managers
 bower_components/
 node_modules/
-npm-debug.log*
-todo.md
-vendor/
+
+# Error Logs
+*npm-debug.log*
+yarn-error.log
+
+# Yeoman
+.yo-rc.json
+
+# Compiled Source
+lib/
