@@ -71,8 +71,9 @@ If you want to override your system's default file-manager, you can specify its 
 **Example:**
 
 ```cson
-"browse":
-  customFileManager.fullPath: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
+browse:
+  customFileManager:
+    fullPath: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
 
 Furthermore, you can specify custom arguments for the open and reveal actions.
@@ -80,8 +81,8 @@ Furthermore, you can specify custom arguments for the open and reveal actions.
 **Example:**
 
 ```cson
-"browse":
-  "customFileManager":
+browse:
+  customFileManager:
     openArgs: ["-o", "%path%"]
     revealArgs: ["-r", "%path%"]
 ```
