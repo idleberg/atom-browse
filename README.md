@@ -7,7 +7,9 @@
 
 # Description
 
-Adds commands that let you quickly browse Atom-related folders or reveal files you&#39;re working on
+Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
+
+![Screenshot](https://raw.githubusercontent.com/idleberg/atom-browse/master/screenshot.gif)
 
 ## Installation
 
