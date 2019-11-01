@@ -66,7 +66,7 @@ Once installed, you can run any of the following commands from the [Command Pale
 
 ## Options
 
-If you want to override your system's default file-manager, you can specify its path in your Atom [configuration](http://flight-manual.atom.io/using-atom/sections/basic-customization/#_global_configuration_settings).
+If you want to override your system's default file-manager, you can specify its path in the [package settings](https://flight-manual.atom.io/using-atom/sections/atom-packages/#package-settings).
 
 **Example:**
 
