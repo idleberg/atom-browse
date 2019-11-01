@@ -8,6 +8,3 @@ yarn-error.log
 
 # Yeoman
 .yo-rc.json
-
-# Compiled Source
-lib/
