@@ -3,7 +3,7 @@ export const config = {
     title: 'Show Notifications',
     description: 'Show info notifications for all actions',
     type: 'boolean',
-    default: false,
+    default: true,
     order: 1
   },
   beep: {
