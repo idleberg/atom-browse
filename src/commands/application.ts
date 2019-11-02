@@ -16,7 +16,7 @@ const appFolder = async (): Promise<void> => {
       appFolder = execPath;
   }
 
-  showFolder(appFolder);
+  showFolder('Application Folder', appFolder);
 };
 
 export default appFolder;

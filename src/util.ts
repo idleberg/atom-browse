@@ -28,7 +28,7 @@ const getFileManager = (): string => {
   }
 };
 
-const showFolder = async (filePath: string) => {
+const showFolder = async (folderName: string, filePath: string) => {
   const fileManager = getConfig('customFileManager.fullPath');
 
   if (fileManager) {
@@ -46,8 +46,10 @@ const showFolder = async (filePath: string) => {
       openArgs = [ filePath ];
     }
 
+    info(`Opening ${folderName} in custom file manager`);
     spawnAsync(fileManager, openArgs, {});
   } else {
+    info(`Opening ${folderName} in ${getFileManager()}`);
     shell.openItem(filePath);
   }
 };
