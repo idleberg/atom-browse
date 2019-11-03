@@ -10,13 +10,11 @@ const appDataFolder = async (): Promise<void> => {
       appDataFolder = resolve(homedir(), 'Library', 'Application Support', 'Atom');
       break;
     case 'win32':
-      appDataFolder =  (process.env.APPDATA) ? resolve(process.env.APPDATA, 'Atom') : '';
+      appDataFolder = (process.env.APPDATA) ? resolve(process.env.APPDATA, 'Atom') : '';
       break;
     default:
-      atom.notifications.addWarning(`**browse**: This command is not yet available on ${platform()}`, {
-        dismissable: true
-      });
-      return atom.beep();
+      appDataFolder = resolve(homedir(), '.config', 'Atom');
+      break;
   }
 
   showFolder('App Data Folder', appDataFolder);
