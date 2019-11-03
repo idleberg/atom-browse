@@ -27,8 +27,8 @@
     "atom-workspace": [
       "browse:.apm-folder",
       "browse:application-folder",
+      "browse:app-data-folder",
       "browse:configuration-folder",
-      "browse:library-folder",
       "browse:packages-folder",
       "browse:project-folders",
       "browse:reveal-file",

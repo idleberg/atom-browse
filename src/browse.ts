@@ -46,7 +46,7 @@ export async function activate() {
 
   subscriptions.add(
     atom.commands.add('atom-workspace', {
-      'browse:application-data-folder': () => {
+      'browse:app-data-folder': () => {
         appDataFolder();
       }
     })

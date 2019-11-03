@@ -19,7 +19,7 @@ const appDataFolder = async (): Promise<void> => {
       return atom.beep();
   }
 
-  showFolder('Application Data Folder', appDataFolder);
+  showFolder('App Data Folder', appDataFolder);
 };
 
 export default appDataFolder;
