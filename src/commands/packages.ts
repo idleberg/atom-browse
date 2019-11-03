@@ -6,7 +6,7 @@ const packagesFolder = (): void => {
 
   packagesDirs.forEach((packagesDir: string) => {
     // TODO: isDir && dirExists
-    showFolder(packagesDir);
+    showFolder('Packages Folder', packagesDir);
   });
 };
 

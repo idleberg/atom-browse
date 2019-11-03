@@ -9,7 +9,7 @@ const projectFolders = async (): Promise<void> => {
 
   projectPaths.forEach( projectPath => {
     if (!projectPath.startsWith('atom://')) {
-      showFolder(projectPath);
+      showFolder('Project Folder', projectPath);
     }
   });
 };
