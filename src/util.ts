@@ -29,6 +29,8 @@ const getFileManager = (): string => {
 };
 
 const showFolder = async (filePath: string) => {
+  if (!filePath.length) return;
+
   const fileManager = getConfig('customFileManager.fullPath');
 
   if (fileManager) {
@@ -52,7 +54,9 @@ const showFolder = async (filePath: string) => {
   }
 };
 
-const showInFolder = async (filePath) => {
+const showInFolder = async (filePath: string) => {
+  if (!filePath.length) return;
+
   const fileManager = getConfig('customFileManager.fullPath');
 
   if (fileManager) {

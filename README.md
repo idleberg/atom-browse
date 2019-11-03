@@ -61,6 +61,7 @@ Once installed, you can run any of the following commands from the [Command Pale
 
 * `Browse: .apm Folder`
 * `Browse: Application Folder`
+* `Browse: App Data Folder`
 * `Browse: Configuration Folder`
 * `Browse: Packages Folder`
 
