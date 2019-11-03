@@ -66,6 +66,10 @@
             "label": "Open Application Folder"
           },
           {
+            "command": "browse:app-data-folder",
+            "label": "Open Application Data Folder"
+          },
+          {
             "type": "separator"
           },
           {
@@ -98,6 +102,10 @@
             {
               "command": "browse:application-folder",
               "label": "Open Application Folder"
+            },
+            {
+              "command": "browse:app-data-folder",
+              "label": "Open Application Data Folder"
             },
             {
               "type": "separator"
