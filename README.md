@@ -5,7 +5,7 @@
 [![apm](https://flat.badgen.net/apm/dl/browse)](https://atom.io/packages/browse)
 [![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-browse)](https://circleci.com/gh/idleberg/atom-browse)
 
-# Description
+## Description
 
 Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
 
