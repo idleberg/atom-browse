@@ -85,7 +85,7 @@ const showInFolder = async (filePath: string) => {
 };
 
 const info = (message: string, dismissable: boolean = false): void => {
-  if (getConfig('notify')) {
+  if (getConfig('notify') === 'all') {
     atom.notifications.addInfo(`**browse**: ${message}`, {
       dismissable: dismissable,
       icon: 'check'
@@ -94,7 +94,7 @@ const info = (message: string, dismissable: boolean = false): void => {
 };
 
 const warn = (message: string, dismissable: boolean = false): void => {
-  if (getConfig('notify')) {
+  if (getConfig('notify') !== 'none') {
     atom.notifications.addWarning(`**browse**: ${message}`, {
       dismissable: dismissable
     });

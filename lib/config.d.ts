@@ -3,7 +3,11 @@ export declare const config: {
         title: string;
         description: string;
         type: string;
-        default: boolean;
+        enum: {
+            value: string;
+            description: string;
+        }[];
+        default: string;
         order: number;
     };
     beep: {

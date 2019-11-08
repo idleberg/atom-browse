@@ -1,14 +1,28 @@
 export const config = {
   notify: {
-    title: 'Show Notifications',
-    description: 'Show info notifications for all actions',
-    type: 'boolean',
-    default: true,
+    title: 'Notifications',
+    description: 'Specify which types of notifications to display',
+    type: 'string',
+    enum: [
+      {
+        value: 'none',
+        description: 'None'
+      },
+      {
+        value: 'warnings',
+        description: 'Warnings Only'
+      },
+      {
+        value: 'all',
+        description: 'All Notifications'
+      }
+    ],
+    default: 'all',
     order: 1
   },
   beep: {
     title: 'Beep on error',
-    description: 'Show info notifications for all actions',
+    description: 'Play beep sound when errors occur',
     type: 'boolean',
     default: true,
     order: 2
