@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { showFolder } from '../util';
 
 const appDataFolder = async (): Promise<void> => {
-  let appDataFolder;
+  let appDataFolder: string;
 
   switch (platform()) {
     case 'darwin':

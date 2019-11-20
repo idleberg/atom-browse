@@ -6,6 +6,7 @@ import appDataFolder from './commands/app-data';
 import packagesFolder from './commands/packages';
 import projectFolders from './commands/project';
 import configFolder from './commands/config';
+import resourcesFolder from './commands/resources';
 import {
   revealFile,
   revealFiles
@@ -64,6 +65,14 @@ export async function activate() {
     atom.commands.add('atom-workspace', {
       'browse:project-folders': () => {
         projectFolders();
+      }
+    })
+  );
+
+  subscriptions.add(
+    atom.commands.add('atom-workspace', {
+      'browse:resources-folder': () => {
+        resourcesFolder();
       }
     })
   );

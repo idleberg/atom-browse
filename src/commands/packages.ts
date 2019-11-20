@@ -2,7 +2,7 @@ import { getPackagesDirs } from '../util';
 import { showFolder } from '../util';
 
 const packagesFolder = (): void => {
-  const packagesDirs = getPackagesDirs();
+  const packagesDirs: string[] = getPackagesDirs();
 
   packagesDirs.forEach((packagesDir: string) => {
     // TODO: isDir && dirExists

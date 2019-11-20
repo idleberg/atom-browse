@@ -70,6 +70,10 @@
             "label": "Open App Data Folder"
           },
           {
+            "command": "browse:resources-folder",
+            "label": "Open Resources Folder"
+          },
+          {
             "type": "separator"
           },
           {
@@ -106,6 +110,10 @@
             {
               "command": "browse:app-data-folder",
               "label": "Open App Data Folder"
+            },
+            {
+              "command": "browse:resources-folder",
+              "label": "Open Resources Folder"
             },
             {
               "type": "separator"
