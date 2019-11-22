@@ -4,6 +4,7 @@
 [![apm](https://flat.badgen.net/apm/v/browse)](https://atom.io/packages/browse)
 [![apm](https://flat.badgen.net/apm/dl/browse)](https://atom.io/packages/browse)
 [![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-browse)](https://circleci.com/gh/idleberg/atom-browse)
+[![David](https://flat.badgen.net/david/dep/idleberg/atom-browse)](https://david-dm.org/idleberg/atom-browse)
 
 ## Description
 
