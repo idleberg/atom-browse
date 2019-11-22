@@ -10,7 +10,6 @@ const openAppPackage = (): Object => {
         break;
       // @ts-ignore
       case 'nightly':
-      case 'dev':
         appName = 'Atom Nightly';
         break;
       default:
