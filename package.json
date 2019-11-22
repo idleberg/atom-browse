@@ -7,6 +7,7 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode none --watch",
     "lint": "tslint --project ./",
+    "lint:fix": "tslint --fix --project ./",
     "prepublishOnly": "npm run build",
     "test": "npm run lint"
   },
@@ -26,8 +27,8 @@
   "activationCommands": {
     "atom-workspace": [
       "browse:.apm-folder",
-      "browse:application-folder",
       "browse:app-data-folder",
+      "browse:application-folder",
       "browse:configuration-folder",
       "browse:packages-folder",
       "browse:project-folders",
@@ -37,6 +38,7 @@
     ]
   },
   "dependencies": {
+    "find-up": "^4.1.0",
     "util": "^0.12.0"
   },
   "devDependencies": {

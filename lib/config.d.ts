@@ -1,4 +1,4 @@
-export declare const config: {
+declare const config: {
     notify: {
         title: string;
         description: string;
@@ -17,6 +17,7 @@ export declare const config: {
         default: boolean;
         order: number;
     };
+    openAppPackage: Object;
     customFileManager: {
         title: string;
         type: string;
@@ -52,3 +53,4 @@ export declare const config: {
         };
     };
 };
+export { config };

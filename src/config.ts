@@ -1,4 +1,38 @@
-export const config = {
+import { platform } from 'os';
+
+const openAppPackage = (): Object => {
+  if (platform() === 'darwin') {
+    let appName: string;
+
+    switch (atom.getReleaseChannel()) {
+      case "beta":
+        appName = 'Atom Beta';
+        break;
+      case "dev":
+      // @ts-ignore
+      case "nightly":
+        appName = 'Atom Nightly';
+        break;
+
+      default:
+        appName = 'Atom';
+        break;
+    }
+
+    return {
+        title: 'Open App Package',
+        description: `Specify whether *Browse: Application Folder* opens the \`${appName}.app\` package or the executable that started the Node.js process (i.e. \`Atom Helper\`)`,
+        type: 'boolean',
+        default: true,
+        order: 3
+    }
+  } else {
+    return {};
+  }
+};
+
+
+const config = {
   notify: {
     title: 'Notifications',
     description: 'Specify which types of notifications to display',
@@ -27,10 +61,11 @@ export const config = {
     default: true,
     order: 2
   },
+  openAppPackage: openAppPackage(),
   customFileManager: {
     title: 'Custom File Manager Options',
     type: 'object',
-    order: 3,
+    order: 4,
     properties: {
       fullPath: {
         title: 'Full Path',
@@ -67,4 +102,8 @@ export const config = {
       }
     }
   }
+};
+
+export {
+  config
 };
