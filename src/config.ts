@@ -5,15 +5,14 @@ const openAppPackage = (): Object => {
     let appName: string;
 
     switch (atom.getReleaseChannel()) {
-      case "beta":
+      case 'beta':
         appName = 'Atom Beta';
         break;
-      case "dev":
       // @ts-ignore
-      case "nightly":
+      case 'nightly':
+      case 'dev':
         appName = 'Atom Nightly';
         break;
-
       default:
         appName = 'Atom';
         break;
@@ -25,12 +24,11 @@ const openAppPackage = (): Object => {
         type: 'boolean',
         default: true,
         order: 3
-    }
+    };
   } else {
     return {};
   }
 };
-
 
 const config = {
   notify: {
