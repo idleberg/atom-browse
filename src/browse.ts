@@ -20,7 +20,7 @@ export async function activate() {
   // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
   subscriptions = new CompositeDisposable();
 
-  // Register command that displays Hello World
+  // Register commands
   subscriptions.add(
     atom.commands.add('atom-workspace', {
       'browse:.apm-folder': () => {
