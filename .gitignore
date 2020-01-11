@@ -1,10 +1,14 @@
 # Package Managers
 bower_components/
 node_modules/
-
-# Error Logs
-*npm-debug.log*
+npm-debug.log*
+shrinkwrap.yaml
+vendor/
 yarn-error.log
 
-# Yeoman
-.yo-rc.json
+# Development Files
+*.d.ts
+*.map
+
+# Project-specific
+todo.md
