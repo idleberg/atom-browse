@@ -53,7 +53,7 @@ const config = {
   },
   dependencyPaths: {
     title: 'Dependency Paths',
-    description: 'Specify dependency paths that can be opened using the *Browse: Dependency Folders* command',
+    description: 'Specify dependency folders that can be opened using the *Browse: Dependency Folders* command',
     type: 'array',
     default: [
       'bower_components',
