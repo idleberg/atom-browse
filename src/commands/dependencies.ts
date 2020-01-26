@@ -1,6 +1,5 @@
-import { stat } from 'fs';
+import { getConfig, showFolder, stat, warn } from '../util';
 import { resolve } from 'path';
-import { getConfig, showFolder, warn } from '../util';
 
 const projectDependencies = async (): Promise<void> => {
   const projectPaths: string[] = atom.project.getPaths();
@@ -17,18 +16,21 @@ const projectDependencies = async (): Promise<void> => {
 
   projectPaths.forEach( projectPath => {
     if (!projectPath.startsWith('atom://')) {
-      dependencyPaths.forEach( dependencyPath => {
+      dependencyPaths.forEach( async dependencyPath => {
         const resolvedDependencyPath = resolve(projectPath, dependencyPath);
+        let stats;
 
-        stat(resolvedDependencyPath, (error, stats) => {
-          if (error) {
-            if (atom.inDevMode()) console.error(error);
+        try {
+          stats = await stat(resolvedDependencyPath);
+        } catch (error) {
+          if (atom.inDevMode()) console.warn(`browse: Skipping ${resolvedDependencyPath}, not found`);
 
-            return;
-          } else if (stats.isDirectory()) {
-            showFolder(`\`${dependencyPath}\``, resolvedDependencyPath);
-          }
-        });
+          return;
+        }
+
+        if (stats.isDirectory()) {
+          showFolder(`\`${dependencyPath}\``, resolvedDependencyPath);
+        }
       });
 
     }

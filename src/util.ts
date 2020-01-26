@@ -1,11 +1,13 @@
-import { promisify } from 'util';
 import { basename } from 'path';
 import { platform } from 'os';
+import { promisify } from 'util';
 // @ts-ignore
 import { shell } from 'electron';
 import { spawn } from 'child_process';
+import { stat } from 'fs';
 
 const spawnAsync = promisify(spawn);
+const statAsync = promisify(stat);
 
 const getConfig = (key: string = ''): any => {
   return atom.config.get(`browse.${key}`);
@@ -108,5 +110,6 @@ export {
   getPackagesDirs,
   showFolder,
   showInFolder,
+  statAsync as stat,
   warn
 };
