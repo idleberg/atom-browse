@@ -5,10 +5,11 @@
   "description": "Adds commands that let you quickly browse Atom-related folders or reveal files you're working on",
   "scripts": {
     "build": "webpack --mode production",
+    "clean": "rimraf ./lib",
     "dev": "webpack --mode none --watch",
     "lint": "tslint --project ./",
     "lint:fix": "tslint --fix --project ./",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run clean && npm run build",
     "test": "npm run lint"
   },
   "keywords": [],
@@ -44,10 +45,11 @@
   "devDependencies": {
     "@types/atom": "^1.36.1",
     "@types/node": "^13.5.0",
-    "husky": "^4.0.6",
+    "husky": "^4.2.1",
+    "rimraf": "^3.0.0",
     "ts-loader": "^6.2.1",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.4",
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
