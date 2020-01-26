@@ -9,6 +9,20 @@ import { stat } from 'fs';
 const spawnAsync = promisify(spawn);
 const statAsync = promisify(stat);
 
+const folderExists = async (pathName: string): Promise<boolean> => {
+  let stats;
+
+  try {
+    stats = await statAsync(pathName);
+  } catch (error) {
+    if (atom.inDevMode()) console.warn(`browse: Skipping '${pathName}' – not found`);
+
+    return false;
+  }
+
+  return stats.isDirectory();
+};
+
 const getConfig = (key: string = ''): any => {
   return atom.config.get(`browse.${key}`);
 };
@@ -31,7 +45,7 @@ const getFileManager = (): string => {
 };
 
 const showFolder = async (folderName: string, filePath: string) => {
-  if (!filePath.length) return;
+  if (!filePath.length || !await folderExists(filePath)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
 
@@ -106,10 +120,10 @@ const warn = (message: string, dismissable: boolean = false): void => {
 };
 
 export {
+  folderExists,
   getConfig,
   getPackagesDirs,
   showFolder,
   showInFolder,
-  statAsync as stat,
   warn
 };

@@ -1,4 +1,4 @@
-import { getConfig, showFolder, stat, warn } from '../util';
+import { getConfig, showFolder, warn } from '../util';
 import { resolve } from 'path';
 
 const projectDependencies = async (): Promise<void> => {
@@ -16,21 +16,10 @@ const projectDependencies = async (): Promise<void> => {
 
   projectPaths.forEach( projectPath => {
     if (!projectPath.startsWith('atom://')) {
-      dependencyPaths.forEach( async dependencyPath => {
-        const resolvedDependencyPath = resolve(projectPath, dependencyPath);
-        let stats;
+      dependencyPaths.forEach( async (dependencyPath: string) => {
+        const resolvedDependencyPath: string = resolve(projectPath, dependencyPath);
 
-        try {
-          stats = await stat(resolvedDependencyPath);
-        } catch (error) {
-          if (atom.inDevMode()) console.warn(`browse: Skipping '${resolvedDependencyPath}' – not found`);
-
-          return;
-        }
-
-        if (stats.isDirectory()) {
-          showFolder(`\`${dependencyPath}\``, resolvedDependencyPath);
-        }
+        showFolder(`\`${dependencyPath}\``, resolvedDependencyPath);
       });
 
     }
