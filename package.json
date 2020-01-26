@@ -40,7 +40,8 @@
     ]
   },
   "dependencies": {
-    "find-up": "^4.1.0"
+    "find-up": "^4.1.0",
+    "util": "^0.12.1"
   },
   "devDependencies": {
     "@types/atom": "^1.36.1",
