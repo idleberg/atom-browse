@@ -78,7 +78,7 @@ const config = {
   customFileManager: {
     title: 'Custom File Manager Options',
     type: 'object',
-    order: 4,
+    order: 5,
     properties: {
       fullPath: {
         title: 'Full Path',
