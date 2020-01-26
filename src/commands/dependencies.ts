@@ -23,7 +23,7 @@ const projectDependencies = async (): Promise<void> => {
         try {
           stats = await stat(resolvedDependencyPath);
         } catch (error) {
-          if (atom.inDevMode()) console.warn(`browse: Skipping ${resolvedDependencyPath}, not found`);
+          if (atom.inDevMode()) console.warn(`browse: Skipping '${resolvedDependencyPath}' – not found`);
 
           return;
         }
