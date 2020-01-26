@@ -27,5 +27,3 @@ const projectDependencies = async (): Promise<void> => {
 };
 
 export default projectDependencies;
-
-
