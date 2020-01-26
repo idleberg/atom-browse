@@ -89,7 +89,7 @@ const config = {
       },
       openArgs: {
         title: 'Open Arguments',
-        description: 'Specify custom arguments to open a folder. The use of a `%path%` placeholder is optional.',
+        description: 'Specify custom arguments to open a folder. The use of the `%path%` placeholder is optional.',
         type: 'array',
         default: [],
         items: {
@@ -102,7 +102,7 @@ const config = {
       },
       revealArgs: {
         title: 'Reveal Arguments',
-        description: 'Specify custom arguments to reveal a file. The use of a `%path%` placeholder is optional.',
+        description: 'Specify custom arguments to reveal a file. The use of the `%path%` placeholder is optional.',
         type: 'array',
         default: [],
         items: {
