@@ -6,7 +6,7 @@ import appDataFolder from './commands/app-data';
 import projectDependencies from './commands/dependencies';
 import packagesFolder from './commands/packages';
 import projectFolders from './commands/project';
-import configFolder from './commands/config';
+import configFolder from './commands/configuration';
 import resourcesFolder from './commands/resources';
 import {
   revealFile,
