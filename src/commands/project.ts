@@ -15,5 +15,3 @@ const projectFolders = async (): Promise<void> => {
 };
 
 export default projectFolders;
-
-

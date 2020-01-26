@@ -3,6 +3,7 @@ import { CompositeDisposable } from 'atom';
 import apmFolder from './commands/apm';
 import appFolder from './commands/application';
 import appDataFolder from './commands/app-data';
+import projectDependencies from './commands/dependencies';
 import packagesFolder from './commands/packages';
 import projectFolders from './commands/project';
 import configFolder from './commands/config';
@@ -65,6 +66,14 @@ export async function activate() {
     atom.commands.add('atom-workspace', {
       'browse:project-folders': () => {
         projectFolders();
+      }
+    })
+  );
+
+  subscriptions.add(
+    atom.commands.add('atom-workspace', {
+      'browse:project-dependencies': () => {
+        projectDependencies();
       }
     })
   );

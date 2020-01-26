@@ -79,6 +79,10 @@
           {
             "command": "browse:project-folders",
             "label": "Open Project Folder(s)"
+          },
+          {
+            "command": "browse:project-dependencies",
+            "label": "Open Project Dependencies"
           }
         ]
       }
@@ -121,6 +125,10 @@
             {
               "command": "browse:project-folders",
               "label": "Open Project Folder(s)"
+            },
+            {
+              "command": "browse:project-dependencies",
+              "label": "Open Project Dependencies"
             },
             {
               "command": "browse:reveal-file",

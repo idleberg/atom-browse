@@ -51,12 +51,28 @@ const config = {
     default: 'all',
     order: 1
   },
+  dependencyPaths: {
+    title: 'Dependency Paths',
+    description: 'Specify dependency paths that can be opened using the *Browse: Dependency Folders* command',
+    type: 'array',
+    default: [
+      'bower_components',
+      'node_modules',
+      'vendor'
+    ],
+    items: {
+      type: [
+        'string'
+      ]
+    },
+    order: 2
+  },
   beep: {
     title: 'Beep on error',
     description: 'Play beep sound when errors occur',
     type: 'boolean',
     default: true,
-    order: 2
+    order: 3
   },
   openAppPackage: openAppPackage(),
   customFileManager: {

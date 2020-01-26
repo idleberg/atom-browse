@@ -55,6 +55,7 @@ Once installed, you can run any of the following commands from the [Command Pale
 **Project-specific:**
 
 * `Browse: Project Folder(s)`
+* `Browse: Project Dependencies` (e.g. `node_modules`, `vendor`)
 * `Browse: Reveal File`
 * `Browse: Reveal Open Files`
 

@@ -10,6 +10,16 @@ declare const config: {
         default: string;
         order: number;
     };
+    dependencyPaths: {
+        title: string;
+        description: string;
+        type: string;
+        default: string[];
+        items: {
+            type: string[];
+        };
+        order: number;
+    };
     beep: {
         title: string;
         description: string;
