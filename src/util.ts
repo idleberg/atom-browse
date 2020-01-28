@@ -86,12 +86,7 @@ const showFolder = async (folderName: string, filePath: string) => {
 };
 
 const showInFolder = async (filePath: string) => {
-  if (!filePath.length) return;
-
-  if (!(await fileExists(filePath))) {
-    if (atom.inDevMode()) return console.warn(`browse: Skipping '${filePath}' – not found`);
-
-  }
+  if (!filePath.length || !(await fileExists(filePath))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
 
