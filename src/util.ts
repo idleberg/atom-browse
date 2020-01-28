@@ -4,10 +4,23 @@ import { promisify } from 'util';
 // @ts-ignore
 import { shell } from 'electron';
 import { spawn } from 'child_process';
-import { stat } from 'fs';
+import { access, stat } from 'fs';
 
+const accessAsync = promisify(access);
 const spawnAsync = promisify(spawn);
 const statAsync = promisify(stat);
+
+const fileExists = async (pathName: string): Promise<boolean> => {
+  try {
+    await accessAsync(pathName);
+  } catch (error) {
+    if (atom.inDevMode()) console.warn(`browse: Skipping '${pathName}' – not found`);
+
+    return false;
+  }
+
+  return true;
+};
 
 const folderExists = async (pathName: string): Promise<boolean> => {
   let stats;
@@ -74,6 +87,11 @@ const showFolder = async (folderName: string, filePath: string) => {
 
 const showInFolder = async (filePath: string) => {
   if (!filePath.length) return;
+
+  if (!(await fileExists(filePath))) {
+    if (atom.inDevMode()) return console.warn(`browse: Skipping '${filePath}' – not found`);
+
+  }
 
   const fileManager = getConfig('customFileManager.fullPath');
 
