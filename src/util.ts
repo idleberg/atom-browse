@@ -120,9 +120,12 @@ const info = (message: string, dismissable: boolean = false): void => {
       icon: 'check'
     });
   }
+
+  if (atom.inDevMode()) console.info(`**browse**: ${message}`);
 };
 
 const warn = (message: string, dismissable: boolean = false): void => {
+
   if (getConfig('notify') !== 'none') {
     atom.notifications.addWarning(`**browse**: ${message}`, {
       dismissable: dismissable
@@ -130,6 +133,7 @@ const warn = (message: string, dismissable: boolean = false): void => {
   }
 
   if (getConfig('beep')) atom.beep();
+  if (atom.inDevMode()) console.warn(`**browse**: ${message}`);
 };
 
 export {
