@@ -121,7 +121,7 @@ const info = (message: string, dismissable: boolean = false): void => {
     });
   }
 
-  if (atom.inDevMode()) console.info(`**browse**: ${message}`);
+  if (atom.inDevMode()) console.info(`browse: ${message}`);
 };
 
 const warn = (message: string, dismissable: boolean = false): void => {
@@ -133,7 +133,7 @@ const warn = (message: string, dismissable: boolean = false): void => {
   }
 
   if (getConfig('beep')) atom.beep();
-  if (atom.inDevMode()) console.warn(`**browse**: ${message}`);
+  if (atom.inDevMode()) console.warn(`browse: ${message}`);
 };
 
 export {
