@@ -5,6 +5,7 @@ npm-debug.log*
 shrinkwrap.yaml
 vendor/
 yarn-error.log
+yarn.lock
 
 # Development Files
 *.d.ts
