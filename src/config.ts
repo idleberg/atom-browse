@@ -8,7 +8,6 @@ const openAppPackage = (): Record<string, unknown> => {
       case 'beta':
         appName = 'Atom Beta';
         break;
-      // @ts-ignore
       case 'nightly':
         appName = 'Atom Nightly';
         break;

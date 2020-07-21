@@ -1,5 +1,6 @@
 import { showInFolder, warn } from '../util';
 
+// eslint-disable-next-line
 const revealFile = async (pane?): Promise<void> => {
   const activePane = pane
     ? pane

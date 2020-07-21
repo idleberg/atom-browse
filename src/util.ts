@@ -1,7 +1,6 @@
 import { basename } from 'path';
 import { platform } from 'os';
 import { promisify } from 'util';
-// @ts-ignore
 import { shell } from 'electron';
 import { spawn } from 'child_process';
 import { access, stat } from 'fs';
@@ -81,6 +80,7 @@ const showFolder = async (folderName: string, filePath: string): Promise<void> =
     spawnAsync(fileManager, openArgs, {});
   } else {
     info(`Opening ${folderName} in ${getFileManager()}`);
+    // @ts-ignore
     shell.openItem(filePath);
   }
 };
