@@ -17,7 +17,7 @@ export { config } from './config';
 
 let subscriptions: CompositeDisposable | undefined;
 
-export async function activate() {
+export async function activate(): Promise<void> {
   // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
   subscriptions = new CompositeDisposable();
 
@@ -103,6 +103,6 @@ export async function activate() {
   );
 }
 
-export function deactivate() {
+export function deactivate(): void {
   subscriptions && subscriptions.dispose();
 }

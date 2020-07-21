@@ -10,7 +10,9 @@ const appFolder = async (): Promise<void> => {
   if (platform() === 'darwin' && getConfig('openAppPackage')) {
     const resFolder = findUp.sync('Resources', {cwd: execPath, type: 'directory'});
 
-    appFolder = resFolder ? dirname(resFolder) : execPath;
+    appFolder = resFolder
+      ? dirname(resFolder)
+      : execPath;
   } else {
     appFolder = execPath;
   }

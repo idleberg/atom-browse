@@ -36,7 +36,7 @@ const folderExists = async (pathName: string): Promise<boolean> => {
   return stats.isDirectory();
 };
 
-const getConfig = (key: string = ''): any => {
+const getConfig = (key = ''): any => {
   return atom.config.get(`browse.${key}`);
 };
 
@@ -57,7 +57,7 @@ const getFileManager = (): string => {
   }
 };
 
-const showFolder = async (folderName: string, filePath: string) => {
+const showFolder = async (folderName: string, filePath: string): Promise<void> => {
   if (!filePath.length || !await folderExists(filePath)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -85,7 +85,7 @@ const showFolder = async (folderName: string, filePath: string) => {
   }
 };
 
-const showInFolder = async (filePath: string) => {
+const showInFolder = async (filePath: string): Promise<void> => {
   if (!filePath.length || !(await fileExists(filePath))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -113,7 +113,7 @@ const showInFolder = async (filePath: string) => {
   }
 };
 
-const info = (message: string, dismissable: boolean = false): void => {
+const info = (message: string, dismissable = false): void => {
   if (getConfig('notify') === 'all') {
     atom.notifications.addInfo(`**browse**: ${message}`, {
       dismissable: dismissable,
@@ -124,7 +124,7 @@ const info = (message: string, dismissable: boolean = false): void => {
   if (atom.inDevMode()) console.info(`browse: ${message}`);
 };
 
-const warn = (message: string, dismissable: boolean = false): void => {
+const warn = (message: string, dismissable = false): void => {
 
   if (getConfig('notify') !== 'none') {
     atom.notifications.addWarning(`**browse**: ${message}`, {

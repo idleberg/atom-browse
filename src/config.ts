@@ -1,6 +1,6 @@
 import { platform } from 'os';
 
-const openAppPackage = (): Object => {
+const openAppPackage = (): Record<string, unknown> => {
   if (platform() === 'darwin') {
     let appName: string;
 

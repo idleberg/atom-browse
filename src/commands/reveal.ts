@@ -1,10 +1,14 @@
 import { showInFolder, warn } from '../util';
 
 const revealFile = async (pane?): Promise<void> => {
-  const activePane = (pane) ? pane : atom.workspace.getActivePaneItem();
+  const activePane = pane
+    ? pane
+    : atom.workspace.getActivePaneItem();
 
   if (activePane && (activePane.constructor.name === 'TextEditor' || activePane.constructor.name === 'ImageEditor')) {
-    const filePath: string = (activePane.buffer.file) ? activePane.buffer.file.path : '';
+    const filePath: string = (activePane.buffer.file)
+      ? activePane.buffer.file.path
+      : '';
 
     if (filePath) {
       showInFolder(filePath);
