@@ -1,6 +1,6 @@
 {
   "name": "browse",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "description": "Adds commands that let you quickly browse Atom-related folders or reveal files you're working on",
   "scripts": {
     "build": "rollup -c",
