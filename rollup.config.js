@@ -27,6 +27,5 @@ export default [
       'electron'
     ],
     plugins: plugins
-  },
-
+  }
 ];
