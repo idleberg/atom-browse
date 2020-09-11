@@ -20,7 +20,6 @@ export default {
   subscriptions: null,
 
   async activate(): Promise<void> {
-    console.log('activate')
     // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     this.subscriptions = new CompositeDisposable();
 
