@@ -129,7 +129,7 @@ revealFile() {
   })
 },
 
-// Optional: Assign command for function
+// Optional: Assign command for your reveal function
 activate() {
   this.subscriptions = new CompositeDisposable();
   this.subscriptions.add(atom.commands.add('atom-workspace', {
