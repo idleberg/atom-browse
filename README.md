@@ -93,6 +93,57 @@ browse:
 
 **Note:** The `%path%` placeholder can be omitted when it's the last argument
 
+## Service Provider
+
+This package provides the service to open/reveal custom paths. To consume it, add the following to your `package.json`:
+
+```json
+{
+  "providedServices": {
+    "browse": {
+      "versions": {
+        "1.0.0": "provideBrowse"
+      }
+    }
+  }
+}
+```
+
+```js
+consumeBrowse(browseCustom) {
+  this.browseCustom = browseCustom;
+
+  return new Disposable(() => {
+    this.browseCustom = null;
+  });
+},
+
+// Example function that uses the service
+myBrowseFunction() {
+  this.browseCustom({
+    action: 'reveal',
+    target: '/path/to/file'
+  })
+}
+```
+
+### Options
+
+#### `action`
+
+Type: `string`  
+Arguments: `reveal|open`  
+
+Specifies the default action for the service. You can open folders or reveal files in your file manager.
+
+#### `target`
+
+Type: `string|array`
+
+Specifies the target path(s) that should be opened.
+
+###
+
 ## License
 
 This work is licensed under the [MIT License](LICENSE)
