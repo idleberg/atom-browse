@@ -113,17 +113,17 @@ Next, you need to consume the service in you main file:
 
 ```js
 // Use service provider
-consumeBrowse(browseCustom) {
-  this.browseCustom = browseCustom;
+consumeBrowse(browse) {
+  this.browse = browse;
 
   return new Disposable(() => {
-    this.browseCustom = null;
+    this.browse = null;
   });
 },
 
 // Example function that uses the service
 myBrowseFunction() {
-  this.browseCustom({
+  this.browse({
     action: 'reveal',
     target: '/path/to/file'
   })
