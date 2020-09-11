@@ -143,13 +143,13 @@ activate() {
 #### `action`
 
 Type: `string`  
-Arguments: `reveal|open`  
+Arguments: `reveal | open`  
 
 Specifies the default action for the service. You can open folders or reveal files in your file manager.
 
 #### `target`
 
-Type: `string|array`
+Type: `string | string[]`
 
 Specifies the target path(s) that should be opened.
 
