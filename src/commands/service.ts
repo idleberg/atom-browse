@@ -2,7 +2,7 @@ import { basename } from 'path';
 import { showFolder, showInFolder } from '../util';
 import * as console from '@atxm/developer-console';
 
-const browseCustom = (payload: BrowseCustomPayload): void => {
+const browseService = (payload: BrowseServicePayload): void => {
   if (!['open', 'reveal'].includes(payload.action)) {
     return console.warn(`Action '${payload.action}' is not supported`);
   }
@@ -22,4 +22,4 @@ const browseCustom = (payload: BrowseCustomPayload): void => {
   });
 }
 
-export default browseCustom;
+export default browseService;

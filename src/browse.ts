@@ -96,7 +96,7 @@ export default {
   },
 
   provideBrowse(): unknown {
-    console.log('Provide');
+    console.log('Provide service');
 
     return browseService
   }
