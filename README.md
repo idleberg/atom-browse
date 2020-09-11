@@ -133,6 +133,7 @@ export default {
   // Optional: Assign command for your reveal function
   activate() {
     this.subscriptions = new CompositeDisposable();
+    
     this.subscriptions.add(atom.commands.add('atom-workspace', {
       'my-package:reveal-file': () => this.revealFile()
     }));
