@@ -19,13 +19,19 @@ export default [
     input: 'src/browse.ts',
     output: {
       dir: 'lib',
+      exports: 'default',
       format: 'cjs',
       sourcemap: true
     },
     external: [
       'atom',
-      'electron'
+      'child_process',
+      'electron',
+      'fs',
+      'os',
+      'path'
     ],
     plugins: plugins
-  }
+  },
+
 ];
