@@ -68,7 +68,7 @@ Once installed, you can run any of the following commands from the [Command Pale
 * `Browse: Packages Folder`
 * `Browse: Resources Folder`
 
-## Options
+## Settings
 
 If you want to override your system's default file-manager, you can specify its path in the [package settings](https://flight-manual.atom.io/using-atom/sections/atom-packages/#package-settings).
 
