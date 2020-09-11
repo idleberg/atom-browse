@@ -122,7 +122,7 @@ consumeBrowse(browse) {
 },
 
 // Example function that uses the service
-myBrowseFunction() {
+revealFile() {
   this.browse({
     action: 'reveal',
     target: '/path/to/file'
@@ -133,7 +133,7 @@ myBrowseFunction() {
 activate() {
   this.subscriptions = new CompositeDisposable();
   this.subscriptions.add(atom.commands.add('atom-workspace', {
-    'my-package:reveal-file': () => this.myBrowseFunction()
+    'my-package:reveal-file': () => this.revealFile()
   }));
 }
 ```
