@@ -1,10 +1,12 @@
 import { CompositeDisposable } from 'atom';
+import * as console from '@atxm/developer-console';
+
 import configSchema from './config';
 
 import apmFolder from './commands/apm';
 import appFolder from './commands/application';
 import appDataFolder from './commands/app-data';
-import browseCustom from './commands/custom';
+import browseService from './commands/service';
 import projectDependencies from './commands/dependencies';
 import packagesFolder from './commands/packages';
 import projectFolders from './commands/project';
@@ -20,6 +22,8 @@ export default {
   subscriptions: null,
 
   async activate(): Promise<void> {
+    console.log('Activate');
+
     // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     this.subscriptions = new CompositeDisposable();
 
@@ -86,10 +90,14 @@ export default {
   },
 
   deactivate(): void {
+    console.log('Deactivate');
+
     this.subscriptions && this.subscriptions.dispose();
   },
 
   provideBrowse(): unknown {
-    return browseCustom
+    console.log('Provide');
+
+    return browseService
   }
 }
