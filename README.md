@@ -112,7 +112,7 @@ This package provides the service to open/reveal custom paths. To consume it, ad
 Next, you need to consume the service in you main file:
 
 ```js
-// Use service provider
+// Assign service provider
 consumeBrowse(browse) {
   this.browse = browse;
 
@@ -121,7 +121,7 @@ consumeBrowse(browse) {
   });
 },
 
-// Example function that uses the service
+// Example function that consumes the service
 revealFile() {
   this.browse({
     action: 'reveal',
