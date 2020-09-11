@@ -28,7 +28,7 @@ const openAppPackage = (): Record<string, unknown> => {
   }
 };
 
-const config = {
+export default {
   notify: {
     title: 'Notifications',
     description: 'Specify which types of notifications to display',
@@ -114,8 +114,4 @@ const config = {
       }
     }
   }
-};
-
-export {
-  config
 };

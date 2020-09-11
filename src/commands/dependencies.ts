@@ -14,9 +14,9 @@ const projectDependencies = async (): Promise<void> => {
     return warn('No dependency folders specified in package configuration');
   }
 
-  projectPaths.forEach( projectPath => {
+  projectPaths.map( projectPath => {
     if (!projectPath.startsWith('atom://')) {
-      dependencyPaths.forEach( async (dependencyPath: string) => {
+      dependencyPaths.map( async (dependencyPath: string) => {
         const resolvedDependencyPath: string = resolve(projectPath, dependencyPath);
 
         showFolder(`\`${dependencyPath}\``, resolvedDependencyPath);

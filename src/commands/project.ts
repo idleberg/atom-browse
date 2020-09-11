@@ -7,7 +7,7 @@ const projectFolders = async (): Promise<void> => {
     return warn('Editor has no projects');
   }
 
-  projectPaths.forEach( projectPath => {
+  projectPaths.map( projectPath => {
     if (!projectPath.startsWith('atom://')) {
       showFolder('Project Folder', projectPath);
     }

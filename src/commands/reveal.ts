@@ -25,7 +25,7 @@ const revealFiles = (): void => {
   const paneItems = atom.workspace.getPaneItems();
 
   if (paneItems.length) {
-    paneItems.forEach( paneItem => {
+    paneItems.map( paneItem => {
       revealFile(paneItem);
     });
   } else {

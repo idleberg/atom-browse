@@ -4,7 +4,7 @@ import { showFolder } from '../util';
 const packagesFolder = (): void => {
   const packagesDirs: string[] = getPackagesDirs();
 
-  packagesDirs.forEach((packagesDir: string) => {
+  packagesDirs.map((packagesDir: string) => {
     showFolder('Packages Folder', packagesDir);
   });
 };
