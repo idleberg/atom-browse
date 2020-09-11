@@ -109,7 +109,10 @@ This package provides the service to open/reveal custom paths. To consume it, ad
 }
 ```
 
+Next, you need to consume the service in you main file:
+
 ```js
+// Use service provider
 consumeBrowse(browseCustom) {
   this.browseCustom = browseCustom;
 
@@ -124,6 +127,14 @@ myBrowseFunction() {
     action: 'reveal',
     target: '/path/to/file'
   })
+},
+
+// Optional: Assign command for function
+activate() {
+  this.subscriptions = new CompositeDisposable();
+  this.subscriptions.add(atom.commands.add('atom-workspace', {
+    'my-package:reveal-file': () => this.myBrowseFunction()
+  }));
 }
 ```
 
