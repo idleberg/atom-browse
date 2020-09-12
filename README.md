@@ -109,7 +109,7 @@ This package provides the service to open/reveal custom paths. To consume it, ad
 }
 ```
 
-Next, you need to consume the service in you main file:
+Next, you need to consume the service in your package's main file:
 
 ```js
 export default {
@@ -133,7 +133,7 @@ export default {
   // Optional: Assign command for your reveal function
   activate() {
     this.subscriptions = new CompositeDisposable();
-    
+
     this.subscriptions.add(atom.commands.add('atom-workspace', {
       'my-package:reveal-file': () => this.revealFile()
     }));
