@@ -109,7 +109,7 @@ This package provides the service to open/reveal custom paths. To consume it, ad
 }
 ```
 
-Next, you need to consume the service in your package's main file:
+Next up, you need to consume the service in your package's main file.
 
 <details>
 <summary><strong>Example</strong></summary>
