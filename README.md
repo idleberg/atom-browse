@@ -72,17 +72,20 @@ Once installed, you can run any of the following commands from the [Command Pale
 
 If you want to override your system's default file-manager, you can specify its path in the [package settings](https://flight-manual.atom.io/using-atom/sections/atom-packages/#package-settings).
 
-**Example:**
+<details>
+<summary><strong>Example</strong></summary>
 
 ```cson
 browse:
   customFileManager:
     fullPath: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
+</details>
 
 Furthermore, you can specify custom arguments for the open and reveal actions.
 
-**Example:**
+<details>
+<summary><strong>Example</strong></summary>
 
 ```cson
 browse:
@@ -92,6 +95,7 @@ browse:
 ```
 
 **Note:** The `%path%` placeholder can be omitted when it's the last argument
+</details>
 
 ## Service Provider
 
