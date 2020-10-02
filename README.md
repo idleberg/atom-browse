@@ -99,10 +99,10 @@ This package provides the service to open/reveal custom paths. To consume it, ad
 
 ```json
 {
-  "providedServices": {
+  "consumedServices": {
     "browse": {
       "versions": {
-        "1.0.0": "provideBrowse"
+        "1.0.0": "consumeBrowse"
       }
     }
   }
