@@ -1,10 +1,12 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from "rollup-plugin-terser";
 import commonjs from '@rollup/plugin-commonjs';
+import filesize from 'rollup-plugin-filesize';
 import typescript from '@rollup/plugin-typescript';
 
 const plugins = [
   commonjs(),
+  filesize(),
   nodeResolve({
     preferBuiltins: true
   }),

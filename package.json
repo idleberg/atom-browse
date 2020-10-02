@@ -37,7 +37,12 @@
       }
     }
   },
-  "dependencies": {},
+  "package-deps": [
+    "browse:3.0.0"
+  ],
+  "dependencies": {
+    "atom-package-deps": "^7.0.2"
+  },
   "devDependencies": {
     "@atxm/developer-console": "^0.2.2",
     "@rollup/plugin-commonjs": "^15.0.0",
@@ -53,6 +58,7 @@
     "husky": "^4.3.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.26.11",
+    "rollup-plugin-filesize": "^9.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.0.2"
   },
