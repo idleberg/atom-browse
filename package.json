@@ -41,10 +41,10 @@
     "browse:3.0.0"
   ],
   "dependencies": {
-    "@atxm/developer-console": "^0.2.3",
     "atom-package-deps": "^7.0.2"
   },
   "devDependencies": {
+    "@atxm/developer-console": "^0.2.3",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
