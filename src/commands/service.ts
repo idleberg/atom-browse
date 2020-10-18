@@ -2,10 +2,10 @@ import { basename } from 'path';
 import { showFolder, showInFolder } from '../util';
 import * as console from '@atxm/developer-console';
 
-const browseService = (payload: BrowseServicePayload): void => {
-  if (!['open', 'reveal'].includes(payload.action)) {
-    return console.warn(`Action '${payload.action}' is not supported`);
-  }
+async function browseService(payload: BrowseServicePayload): Promise<void> {
+  // if (!['open', 'reveal'].includes(payload.action)) {
+  //   return console.warn(`Action '${payload.action}' is not supported`);
+  // }
 
   const targetPaths = Array.isArray(payload.target)
     ? payload.target

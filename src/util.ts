@@ -8,7 +8,7 @@ import * as console from '@atxm/developer-console';
 
 const spawnAsync = promisify(spawn);
 
-const fileExists = async (pathName: string): Promise<boolean> => {
+async function fileExists(pathName: string): Promise<boolean> {
   try {
     await fs.access(pathName, constants.F_OK);
   } catch (error) {
@@ -18,9 +18,9 @@ const fileExists = async (pathName: string): Promise<boolean> => {
   }
 
   return true;
-};
+}
 
-const folderExists = async (pathName: string): Promise<boolean> => {
+async function folderExists(pathName: string): Promise<boolean> {
   let stats;
 
   try {
@@ -32,17 +32,17 @@ const folderExists = async (pathName: string): Promise<boolean> => {
   }
 
   return stats.isDirectory();
-};
+}
 
 const getConfig = (key = ''): any => {
   return atom.config.get(`browse.${key}`);
-};
+}
 
 const getPackagesDirs = (): string[] => {
   const packageDirs: string[] = atom.packages.getPackageDirPaths();
 
   return packageDirs.filter( (val: string) => !val.includes('app.asar') );
-};
+}
 
 const getFileManager = (): string => {
   switch (platform()) {
@@ -53,9 +53,9 @@ const getFileManager = (): string => {
     default:
       return 'file manager';
   }
-};
+}
 
-const showFolder = async (folderName: string, filePath: string): Promise<void> => {
+async function showFolder (folderName: string, filePath: string): Promise<void> {
   if (!filePath.length || !await folderExists(filePath)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -82,9 +82,9 @@ const showFolder = async (folderName: string, filePath: string): Promise<void> =
     // @ts-ignore
     shell.openItem(filePath);
   }
-};
+}
 
-const showInFolder = async (filePath: string): Promise<void> => {
+async function showInFolder (filePath: string): Promise<void> {
   if (!filePath.length || !(await fileExists(filePath))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -110,9 +110,9 @@ const showInFolder = async (filePath: string): Promise<void> => {
     info(`Revealing \`${basename(filePath)}\` in ${getFileManager()}`);
     shell.showItemInFolder(filePath);
   }
-};
+}
 
-const info = (message: string, dismissable = false): void => {
+function info(message: string, dismissable = false): void {
   if (getConfig('notify') === 'all') {
     atom.notifications.addInfo(`**browse**: ${message}`, {
       dismissable: dismissable,
@@ -121,10 +121,9 @@ const info = (message: string, dismissable = false): void => {
   }
 
   console.info(`${message}`);
-};
+}
 
-const warn = (message: string, dismissable = false): void => {
-
+function warn(message: string, dismissable = false): void {
   if (getConfig('notify') !== 'none') {
     atom.notifications.addWarning(`**browse**: ${message}`, {
       dismissable: dismissable
@@ -133,7 +132,7 @@ const warn = (message: string, dismissable = false): void => {
 
   if (getConfig('beep')) atom.beep();
   console.warn(`${message}`);
-};
+}
 
 export {
   folderExists,

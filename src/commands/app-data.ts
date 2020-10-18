@@ -2,7 +2,7 @@ import { homedir, platform } from 'os';
 import { resolve } from 'path';
 import { showFolder } from '../util';
 
-const appDataFolder = async (): Promise<void> => {
+function appDataFolder(): void {
   let appDataFolder: string;
 
   switch (platform()) {
@@ -10,7 +10,9 @@ const appDataFolder = async (): Promise<void> => {
       appDataFolder = resolve(homedir(), 'Library', 'Application Support', 'Atom');
       break;
     case 'win32':
-      appDataFolder = (process.env.APPDATA) ? resolve(process.env.APPDATA, 'Atom') : '';
+      appDataFolder = (process.env.APPDATA)
+        ? resolve(process.env.APPDATA, 'Atom')
+        : '';
       break;
     default:
       appDataFolder = resolve(homedir(), '.config', 'Atom');
@@ -18,6 +20,6 @@ const appDataFolder = async (): Promise<void> => {
   }
 
   showFolder('App Data Folder', appDataFolder);
-};
+}
 
 export default appDataFolder;

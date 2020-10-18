@@ -31,7 +31,8 @@ export default [
       'electron',
       'fs',
       'os',
-      'path'
+      'path',
+      'util'
     ],
     plugins: plugins
   },

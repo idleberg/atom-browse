@@ -1,7 +1,7 @@
 import { showInFolder, warn } from '../util';
 
 // eslint-disable-next-line
-const revealFile = async (pane?): Promise<void> => {
+async function revealFile(pane?): Promise<void> {
   const activePane = pane
     ? pane
     : atom.workspace.getActiveTextEditor() || atom.workspace.getActivePaneItem();
@@ -19,9 +19,9 @@ const revealFile = async (pane?): Promise<void> => {
   } else {
     warn('Active pane is not an editor');
   }
-};
+}
 
-const revealFiles = (): void => {
+async function revealFiles(): Promise<void> {
   const paneItems = atom.workspace.getPaneItems();
 
   if (paneItems.length) {
@@ -32,7 +32,7 @@ const revealFiles = (): void => {
     warn('No active files');
   }
 
-};
+}
 
 export {
   revealFile,

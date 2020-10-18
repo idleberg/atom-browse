@@ -95,9 +95,9 @@ export default {
     this.subscriptions && this.subscriptions.dispose();
   },
 
-  provideBrowse(): unknown {
+  async provideBrowse(): Promise<unknown> {
     console.log('Providing service');
 
-    return browseService
+    return await browseService
   }
 }

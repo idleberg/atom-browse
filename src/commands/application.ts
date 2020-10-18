@@ -3,7 +3,7 @@ import { dirname, resolve } from 'path';
 import findUp from 'find-up';
 import { getConfig, showFolder } from '../util';
 
-const appFolder = async (): Promise<void> => {
+async function appFolder(): Promise<void> {
   const execPath = dirname(resolve(process.execPath));
   let appFolder;
 
@@ -18,6 +18,6 @@ const appFolder = async (): Promise<void> => {
   }
 
   showFolder('Application Folder', appFolder);
-};
+}
 
 export default appFolder;

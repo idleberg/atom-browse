@@ -1,7 +1,7 @@
 import { getConfig, showFolder, warn } from '../util';
 import { resolve } from 'path';
 
-const projectDependencies = async (): Promise<void> => {
+async function projectDependencies(): Promise<void> {
   const projectPaths: string[] = atom.project.getPaths();
 
   if (projectPaths.length === 0) {
@@ -24,6 +24,6 @@ const projectDependencies = async (): Promise<void> => {
 
     }
   });
-};
+}
 
 export default projectDependencies;
