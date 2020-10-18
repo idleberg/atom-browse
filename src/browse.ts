@@ -1,5 +1,4 @@
 import { CompositeDisposable } from 'atom';
-import * as console from '@atxm/developer-console';
 
 import configSchema from './config';
 
@@ -22,7 +21,7 @@ export default {
   subscriptions: null,
 
   async activate(): Promise<void> {
-    console.log('Activating package');
+    if (atom.inDevMode()) console.log('[browse] Activating package');
 
     // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     this.subscriptions = new CompositeDisposable();
@@ -90,13 +89,13 @@ export default {
   },
 
   deactivate(): void {
-    console.log('Deactivating package');
+    if (atom.inDevMode()) console.log('[browse] Deactivating package');
 
     this.subscriptions && this.subscriptions.dispose();
   },
 
   async provideBrowse(): Promise<unknown> {
-    console.log('Providing service');
+    if (atom.inDevMode()) console.log('[browse] Providing service');
 
     return await browseService
   }

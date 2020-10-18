@@ -4,7 +4,6 @@ import { platform } from 'os';
 import { promisify } from 'util';
 import { shell } from 'electron';
 import { spawn } from 'child_process';
-import * as console from '@atxm/developer-console';
 
 const spawnAsync = promisify(spawn);
 
@@ -12,7 +11,7 @@ async function fileExists(pathName: string): Promise<boolean> {
   try {
     await fs.access(pathName, constants.F_OK);
   } catch (error) {
-    console.warn(`Skipping '${pathName}' – not found`);
+    if (atom.inDevMode()) console.warn(`[browse] Skipping '${pathName}' – not found`);
 
     return false;
   }
@@ -26,7 +25,7 @@ async function isDirectory(pathName: string): Promise<boolean> {
   try {
     stats = await fs.lstat(pathName);
   } catch (error) {
-    console.error(error);
+    if (atom.inDevMode()) console.error('[browse]', error);
 
     return false;
   }
@@ -40,7 +39,7 @@ async function isFile(pathName: string): Promise<boolean> {
   try {
     stats = await fs.lstat(pathName);
   } catch (error) {
-    console.error(error);
+    if (atom.inDevMode()) console.error('[browse]', error);
 
     return false;
   }
@@ -54,7 +53,7 @@ async function folderExists(pathName: string): Promise<boolean> {
   try {
     stats = await fs.stat(pathName);
   } catch (error) {
-    console.warn(`Skipping '${pathName}' – not found`);
+    if (atom.inDevMode()) console.warn(`[browse] Skipping '${pathName}' – not found`);
 
     return false;
   }
@@ -148,7 +147,7 @@ function info(message: string, dismissable = false): void {
     });
   }
 
-  console.info(`${message}`);
+  if (atom.inDevMode()) console.info(`[browse] ${message}`);
 }
 
 function warn(message: string, dismissable = false): void {
@@ -159,7 +158,7 @@ function warn(message: string, dismissable = false): void {
   }
 
   if (getConfig('beep')) atom.beep();
-  console.warn(`${message}`);
+  if (atom.inDevMode()) console.warn(`[browse] ${message}`);
 }
 
 export {
