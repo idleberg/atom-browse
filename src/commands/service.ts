@@ -1,12 +1,8 @@
 import { basename } from 'path';
-import { showFolder, showInFolder } from '../util';
+import { isDirectory, isFile, showFolder, showInFolder } from '../util';
 import * as console from '@atxm/developer-console';
 
 async function browseService(payload: BrowseServicePayload): Promise<void> {
-  // if (!['open', 'reveal'].includes(payload.action)) {
-  //   return console.warn(`Action '${payload.action}' is not supported`);
-  // }
-
   const targetPaths = Array.isArray(payload.target)
     ? payload.target
     : [payload.target];
@@ -16,9 +12,13 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
       console.warn(`Skipping: '${targetPath}' is not a string`);
     }
 
-    payload.action === 'reveal'
-      ? showInFolder(targetPath)
-      : showFolder(basename(targetPath), targetPath);
+    if (payload.action === 'reveal' || isFile(targetPath)) {
+      showInFolder(targetPath)
+    } else if (payload.action === 'open' || isDirectory(targetPath)) {
+      showFolder(basename(targetPath), targetPath);
+    } else if (payload.action?.length) {
+      console.warn(`Action '${payload.action}' is not supported`);
+    }
   });
 }
 

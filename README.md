@@ -106,7 +106,7 @@ This package provides the service to open/reveal custom paths. To consume it, ad
   "consumedServices": {
     "browse": {
       "versions": {
-        "1.0.0": "consumeBrowse"
+        "2.0.0": "consumeBrowse"
       }
     }
   }
@@ -130,19 +130,18 @@ export default {
   },
 
   // Example function that consumes the service
-  revealFile() {
+  browseFile() {
     this.browse({
-      action: 'reveal',
       target: '/path/to/file'
     })
   },
 
-  // Optional: Assign command for your reveal function
+  // Optional: Assign command to your browse function
   activate() {
     this.subscriptions = new CompositeDisposable();
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'my-package:reveal-file': () => this.revealFile()
+      'my-package:browse-file': () => this.browseFile()
     }));
   }
 }
@@ -157,6 +156,8 @@ Type: `string`
 Arguments: `reveal | open`  
 
 Specifies the default action for the service. You can open folders or reveal files in your file manager.
+
+**Note:** As of version v3.1, this option can be omitted. The action will tgeb be determined by whether target option resolves to a file or directory.
 
 #### `target`
 
