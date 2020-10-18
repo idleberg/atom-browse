@@ -20,6 +20,34 @@ async function fileExists(pathName: string): Promise<boolean> {
   return true;
 }
 
+async function isDirectory(pathName: string): Promise<boolean> {
+  let stats;
+
+  try {
+    stats = await fs.lstat(pathName);
+  } catch (error) {
+    console.error(error);
+
+    return false;
+  }
+
+  return stats.isDirectory();
+}
+
+async function isFile(pathName: string): Promise<boolean> {
+  let stats;
+
+  try {
+    stats = await fs.lstat(pathName);
+  } catch (error) {
+    console.error(error);
+
+    return false;
+  }
+
+  return stats.isFile();
+}
+
 async function folderExists(pathName: string): Promise<boolean> {
   let stats;
 
@@ -138,6 +166,8 @@ export {
   folderExists,
   getConfig,
   getPackagesDirs,
+  isDirectory,
+  isFile,
   showFolder,
   showInFolder,
   warn
