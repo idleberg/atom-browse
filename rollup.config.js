@@ -12,7 +12,8 @@ const plugins = [
   }),
   terser(),
   typescript({
-    allowSyntheticDefaultImports: true
+    allowSyntheticDefaultImports: true,
+    sourceMap: true
   })
 ];
 
