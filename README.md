@@ -106,7 +106,7 @@ This package provides the service to open/reveal custom paths. To consume it, ad
   "consumedServices": {
     "browse": {
       "versions": {
-        "2.0.0": "consumeBrowse"
+        "1.0.0": "consumeBrowse"
       }
     }
   }
@@ -130,18 +130,19 @@ export default {
   },
 
   // Example function that consumes the service
-  browseFile() {
+  revealFile() {
     this.browse({
+      action: 'reveal',
       target: '/path/to/file'
     })
   },
 
-  // Optional: Assign command to your browse function
+  // Optional: Assign command for your reveal function
   activate() {
     this.subscriptions = new CompositeDisposable();
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'my-package:browse-file': () => this.browseFile()
+      'my-package:reveal-file': () => this.revealFile()
     }));
   }
 }
