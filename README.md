@@ -142,7 +142,7 @@ export default {
     this.subscriptions = new CompositeDisposable();
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'my-package:reveal-file': () => this.revealFile()
+      'my-package:reveal-file': async () => await this.revealFile()
     }));
   }
 }
