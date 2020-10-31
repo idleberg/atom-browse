@@ -103,10 +103,10 @@ async function showFolder (folderName: string, filePath: string): Promise<void> 
       openArgs = [ filePath ];
     }
 
-    info(`Opening ${folderName} in custom file manager`);
+    info(`Opening '${folderName}' in custom file manager`);
     spawnAsync(fileManager, openArgs, {});
   } else {
-    info(`Opening ${folderName} in ${getFileManager()}`);
+    info(`Opening '${folderName}' in ${getFileManager()}`);
     // @ts-ignore
     shell.openItem(filePath);
   }
