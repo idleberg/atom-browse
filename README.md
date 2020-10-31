@@ -130,8 +130,8 @@ export default {
   },
 
   // Example function that consumes the service
-  revealFile() {
-    this.browse({
+  async revealFile() {
+    await this.browse({
       action: 'reveal',
       target: '/path/to/file'
     })
@@ -165,8 +165,6 @@ Specifies the default action for the service. You can open folders or reveal fil
 Type: `string | string[]`
 
 Specifies the target path(s) that should be opened.
-
-###
 
 ## License
 
