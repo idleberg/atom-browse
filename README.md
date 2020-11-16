@@ -134,10 +134,10 @@ export default {
   },
 
   // Example function that consumes the service
-  async revealFile() {
+  async revealFile(pathToFile) {
     await this.browse({
       action: 'reveal',
-      target: '/path/to/file'
+      target: pathToFile
     })
   },
 
@@ -146,7 +146,7 @@ export default {
     this.subscriptions = new CompositeDisposable();
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'my-package:reveal-file': async () => await this.revealFile()
+      'my-package:reveal-file': async () => await this.revealFile('/path/to/file')
     }));
   }
 }
