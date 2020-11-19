@@ -27,10 +27,10 @@ Change to your Atom packages directory:
 **Windows**
 
 ```powershell
-# Windows Powershell
+# Powershell
 cd $Env:USERPROFILE\.atom\packages
 
-# Windows Command Prompt
+# Command Prompt
 $ cd %USERPROFILE%\.atom\packages
 ```
 
