@@ -158,13 +158,19 @@ Arguments: `reveal | open`
 
 Specifies the default action for the service. You can open folders or reveal files in your file manager.
 
-**Note:** As of version v3.1, this option can be omitted. The action will tgeb be determined by whether target option resolves to a file or directory.
+**Note:** As of version v3.1, this option can be omitted. The action will then be determined by whether target option resolves to a file or directory.
 
 #### `target`
 
 Type: `string | string[]`
 
 Specifies the target path(s) that should be opened.
+
+#### `message`
+
+Type: `string`
+
+Custom message to be displayed for the action
 
 ## License
 

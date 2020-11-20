@@ -83,7 +83,7 @@ const getFileManager = (): string => {
   }
 }
 
-async function showFolder (folderName: string, filePath: string): Promise<void> {
+async function showFolder(folderName: string, filePath: string, customMessage = ''): Promise<void> {
   if (!filePath.length || !await folderExists(filePath)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -103,16 +103,16 @@ async function showFolder (folderName: string, filePath: string): Promise<void> 
       openArgs = [ filePath ];
     }
 
-    info(`Opening '${folderName}' in custom file manager`);
+    info(customMessage ? String(customMessage) : `**browse**: Opening '${folderName}' in custom file manager`);
     spawnAsync(fileManager, openArgs, {});
   } else {
-    info(`Opening '${folderName}' in ${getFileManager()}`);
+    info(customMessage ? String(customMessage) : `**browse**: Opening '${folderName}' in ${getFileManager()}`);
     // @ts-ignore
     shell.openItem(filePath);
   }
 }
 
-async function showInFolder (filePath: string): Promise<void> {
+async function showInFolder(filePath: string, customMessage = ''): Promise<void> {
   if (!filePath.length || !(await fileExists(filePath))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -132,17 +132,17 @@ async function showInFolder (filePath: string): Promise<void> {
       revealArgs = [ filePath ];
     }
 
-    info(`Revealing \`${basename(filePath)}\` in custom file manager`);
+    info(customMessage ? String(customMessage) : `**browse**: Revealing \`${basename(filePath)}\` in custom file manager`);
     spawnAsync(fileManager, revealArgs, {});
   } else {
-    info(`Revealing \`${basename(filePath)}\` in ${getFileManager()}`);
+    info(customMessage ? String(customMessage) : `**browse**: Revealing \`${basename(filePath)}\` in ${getFileManager()}`);
     shell.showItemInFolder(filePath);
   }
 }
 
 function info(message: string, dismissable = false): void {
   if (getConfig('notify') === 'all') {
-    atom.notifications.addInfo(`**browse**: ${message}`, {
+    atom.notifications.addInfo(message, {
       dismissable: dismissable,
       icon: 'check'
     });
@@ -153,7 +153,7 @@ function info(message: string, dismissable = false): void {
 
 function warn(message: string, dismissable = false): void {
   if (getConfig('notify') !== 'none') {
-    atom.notifications.addWarning(`**browse**: ${message}`, {
+    atom.notifications.addWarning(message, {
       dismissable: dismissable
     });
   }
