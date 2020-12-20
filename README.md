@@ -174,6 +174,12 @@ Specifies the target path(s) that should be opened.
 
 Type: `string`
 
+Disables notification for action
+
+#### `silent`
+
+Type: `boolean`
+
 Custom message to be displayed for the action
 
 ## License
