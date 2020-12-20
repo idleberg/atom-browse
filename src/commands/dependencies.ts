@@ -19,9 +19,11 @@ async function projectDependencies(): Promise<void> {
       dependencyPaths.map( async (dependencyPath: string) => {
         const resolvedDependencyPath: string = resolve(projectPath, dependencyPath);
 
-        showFolder(`\`${dependencyPath}\``, resolvedDependencyPath);
+        showFolder({
+          name: `\`${dependencyPath}\``,
+          path: resolvedDependencyPath
+        });
       });
-
     }
   });
 }

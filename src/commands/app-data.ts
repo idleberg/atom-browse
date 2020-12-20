@@ -19,7 +19,10 @@ function appDataFolder(): void {
       break;
   }
 
-  showFolder('App Data Folder', appDataFolder);
+  showFolder({
+    name: 'App Data Folder',
+    path: appDataFolder
+  });
 }
 
 export default appDataFolder;

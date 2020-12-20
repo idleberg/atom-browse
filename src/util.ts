@@ -83,8 +83,8 @@ const getFileManager = (): string => {
   }
 }
 
-async function showFolder(folderName: string, filePath: string, customMessage = ''): Promise<void> {
-  if (!filePath.length || !await folderExists(filePath)) return;
+async function showFolder(options: ShowFolderOptions): Promise<void> {
+  if (!options.path.length || !await folderExists(options.path)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
 
@@ -95,25 +95,33 @@ async function showFolder(folderName: string, filePath: string, customMessage = 
       if (openArgs.includes('%path%')) {
         const index = openArgs.indexOf('%path%');
 
-        openArgs[index] = openArgs[index].replace('%path%', filePath);
+        openArgs[index] = openArgs[index].replace('%path%', options.path);
       } else {
-        openArgs.push(filePath);
+        openArgs.push(options.path);
       }
     } else {
-      openArgs = [ filePath ];
+      openArgs = [ options.path ];
     }
 
-    info(customMessage ? String(customMessage) : `**browse**: Opening '${folderName}' in custom file manager`);
+    if (!options.silent) info(options.message
+      ? String(options.message)
+      : `**browse**: Opening '${options.name}' in custom file manager`
+    );
+
     spawnAsync(fileManager, openArgs, {});
   } else {
-    info(customMessage ? String(customMessage) : `**browse**: Opening '${folderName}' in ${getFileManager()}`);
+    if (!options.silent) info(options.message
+      ? String(options.message)
+      : `**browse**: Opening '${options.name}' in ${getFileManager()}`
+    );
+
     // @ts-ignore
-    shell.openItem(filePath);
+    shell.openItem(options.path);
   }
 }
 
-async function showInFolder(filePath: string, customMessage = ''): Promise<void> {
-  if (!filePath.length || !(await fileExists(filePath))) return;
+async function showInFolder(options: ShowInFolderOptions): Promise<void> {
+  if (!options.path.length || !(await fileExists(options.path))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
 
@@ -124,19 +132,27 @@ async function showInFolder(filePath: string, customMessage = ''): Promise<void>
       if (revealArgs.includes('%path%')) {
         const index = revealArgs.indexOf('%path%');
 
-        revealArgs[index] = revealArgs[index].replace('%path%', filePath);
+        revealArgs[index] = revealArgs[index].replace('%path%', options.path);
       } else {
-        revealArgs.push(filePath);
+        revealArgs.push(options.path);
       }
     } else {
-      revealArgs = [ filePath ];
+      revealArgs = [ options.path ];
     }
 
-    info(customMessage ? String(customMessage) : `**browse**: Revealing \`${basename(filePath)}\` in custom file manager`);
+    if (!options.silent) info(options.message
+      ? String(options.message)
+      : `**browse**: Revealing \`${basename(options.path)}\` in custom file manager`
+    );
+
     spawnAsync(fileManager, revealArgs, {});
   } else {
-    info(customMessage ? String(customMessage) : `**browse**: Revealing \`${basename(filePath)}\` in ${getFileManager()}`);
-    shell.showItemInFolder(filePath);
+    if (!options.silent) info(options.message
+      ? String(options.message)
+      : `**browse**: Revealing \`${basename(options.path)}\` in ${getFileManager()}`
+    );
+
+    shell.showItemInFolder(options.path);
   }
 }
 

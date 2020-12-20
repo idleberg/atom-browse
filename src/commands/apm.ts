@@ -5,7 +5,10 @@ function apmFolder(): void {
   const configPath: string = dirname(atom.config.getUserConfigPath());
   const apmPath: string = resolve(configPath, '.apm');
 
-  showFolder('.apm Folder', apmPath);
+  showFolder({
+    name: '.apm Folder',
+    path: apmPath
+  });
 }
 
 export default apmFolder;

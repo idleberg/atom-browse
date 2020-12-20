@@ -5,7 +5,10 @@ function packagesFolder(): void {
   const packagesDirs: string[] = getPackagesDirs();
 
   packagesDirs.map((packagesDir: string) => {
-    showFolder('Packages Folder', packagesDir);
+    showFolder({
+      name: 'Packages Folder',
+      path: packagesDir
+    });
   });
 }
 

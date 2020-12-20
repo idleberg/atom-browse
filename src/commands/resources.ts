@@ -4,7 +4,10 @@ async function appFolder(): Promise<void> {
   // @ts-ignore
   const appFolder: string = atom.commandInstaller.getResourcesDirectory();
 
-  showFolder('Resources Folder', appFolder);
+  showFolder({
+    name: 'Resources Folder',
+    path: appFolder
+  });
 }
 
 export default appFolder;

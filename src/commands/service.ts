@@ -24,9 +24,18 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
     }
 
     if (payload.action === 'reveal' || await isFile(targetPath)) {
-      showInFolder(targetPath, payload.message)
+      showInFolder({
+        path: targetPath,
+        message: payload.message,
+        silent: payload.silent
+      })
     } else if (payload.action === 'open' || await isDirectory(targetPath)) {
-      showFolder(basename(targetPath), targetPath, payload.message);
+      showFolder({
+        name: basename(targetPath),
+        path: targetPath,
+        message: payload.message,
+        silent: payload.silent
+      });
     } else if (payload.action?.length) {
       console.warn(`[browse] Action '${payload.action}' is not supported`);
     }

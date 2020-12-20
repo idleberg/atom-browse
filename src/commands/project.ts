@@ -9,7 +9,10 @@ async function projectFolders(): Promise<void> {
 
   projectPaths.map( projectPath => {
     if (!projectPath.startsWith('atom://')) {
-      showFolder('Project Folder', projectPath);
+      showFolder({
+        name: 'Project Folder',
+        path: projectPath
+      });
     }
   });
 }

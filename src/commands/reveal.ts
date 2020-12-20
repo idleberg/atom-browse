@@ -12,7 +12,7 @@ async function revealFile(pane?): Promise<void> {
       : '';
 
     if (filePath) {
-      showInFolder(filePath);
+      showInFolder({path: filePath});
     } else {
       warn('File hasn\'t been saved yet');
     }

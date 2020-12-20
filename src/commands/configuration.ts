@@ -4,7 +4,10 @@ import { showFolder } from '../util';
 function configFolder(): void {
   const configPath: string = dirname(atom.config.getUserConfigPath());
 
-  showFolder('Configuration Folder', configPath);
+  showFolder({
+    name: 'Configuration Folder',
+    path: configPath
+  });
 }
 
 export default configFolder;
