@@ -1,3 +1,9 @@
+# v3.3.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.1)
+
+- minor refactoring
+- modify `lint:ts` script
+- update dependencies
+
 # v3.3.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.0)
 
 - add silent option to service
