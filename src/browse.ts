@@ -19,13 +19,10 @@ import {
 
 export default {
   config: configSchema,
-  subscriptions: null,
+  subscriptions: new CompositeDisposable(),
 
   async activate(): Promise<void> {
     console.log('[browse] Activating package');
-
-    // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
-    this.subscriptions = new CompositeDisposable();
 
     // Register commands
     this.subscriptions.add(
