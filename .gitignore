@@ -8,6 +8,7 @@ yarn-error.log
 yarn.lock
 
 # Development Files
+.eslintcache
 *.d.ts
 *.map
 
