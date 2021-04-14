@@ -1,3 +1,7 @@
+# v3.3.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.2)
+
+- update dependencies
+
 # v3.3.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.1)
 
 - minor refactoring
