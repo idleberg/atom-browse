@@ -41,8 +41,9 @@
     }
   },
   "devDependencies": {
-    "@atxm/developer-console": "^0.3.0",
+    "@atxm/developer-console": "^0.4.0",
     "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@rollup/plugin-typescript": "^8.1.0",
     "@types/atom": "^1.40.4",

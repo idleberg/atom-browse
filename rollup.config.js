@@ -2,17 +2,21 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from "rollup-plugin-terser";
 import commonjs from '@rollup/plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
+import json from '@rollup/plugin-json';
 import typescript from '@rollup/plugin-typescript';
 
 const plugins = [
   commonjs(),
   filesize(),
+  json(),
   nodeResolve({
     preferBuiltins: true
   }),
   terser(),
   typescript({
     allowSyntheticDefaultImports: true,
+    moduleResolution: 'node',
+    resolveJsonModule: true,
     sourceMap: true
   })
 ];
