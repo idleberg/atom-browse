@@ -2,6 +2,13 @@ import { basename } from 'path';
 import { isDirectory, isFile, showFolder, showInFolder } from '../util';
 import console from '../log';
 
+interface BrowseServicePayload {
+  action?: 'open' | 'reveal';
+  message?: string;
+  silent?: boolean;
+  target: string;
+}
+
 async function browseService(payload: BrowseServicePayload): Promise<void> {
   if (typeof payload === 'string') {
     console.log('Auto-handle string input');
@@ -36,7 +43,7 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
         message: payload.message,
         silent: payload.silent
       });
-    } else if (payload.action?.length) {
+    } else if (payload.action) {
       console.warn(`Action '${payload.action}' is not supported`);
     }
   });

@@ -8,6 +8,13 @@ import console from './log';
 
 const spawnAsync = promisify(spawn);
 
+interface ShowOptions {
+  message?: string;
+  name?: string;
+  path: string;
+  silent?: boolean;
+}
+
 async function fileExists(pathName: string): Promise<boolean> {
   try {
     await fs.access(pathName, constants.F_OK);
@@ -83,7 +90,7 @@ const getFileManager = (): string => {
   }
 }
 
-async function showFolder(options: ShowFolderOptions): Promise<void> {
+async function showFolder(options: ShowOptions): Promise<void> {
   if (!options.path.length || !await folderExists(options.path)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
@@ -120,7 +127,7 @@ async function showFolder(options: ShowFolderOptions): Promise<void> {
   }
 }
 
-async function showInFolder(options: ShowInFolderOptions): Promise<void> {
+async function showInFolder(options: ShowOptions): Promise<void> {
   if (!options.path.length || !(await fileExists(options.path))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
