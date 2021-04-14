@@ -1,10 +1,10 @@
 import { basename } from 'path';
 import { isDirectory, isFile, showFolder, showInFolder } from '../util';
-import * as console from '@atxm/developer-console';
+import console from '../log';
 
 async function browseService(payload: BrowseServicePayload): Promise<void> {
   if (typeof payload === 'string') {
-    console.log('[browse] Auto-handle string input');
+    console.log('Auto-handle string input');
 
     payload = {
       action: await isFile(payload)
@@ -20,7 +20,7 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
 
   targetPaths.map(async targetPath => {
     if (typeof targetPath !== 'string') {
-      console.warn(`[browse] Skipping: target path is of type ${typeof targetPath}, should be string`);
+      console.warn(`Skipping: target path is of type ${typeof targetPath}, should be string`);
     }
 
     if (payload.action === 'reveal' || await isFile(targetPath)) {
@@ -37,7 +37,7 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
         silent: payload.silent
       });
     } else if (payload.action?.length) {
-      console.warn(`[browse] Action '${payload.action}' is not supported`);
+      console.warn(`Action '${payload.action}' is not supported`);
     }
   });
 }

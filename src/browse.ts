@@ -1,5 +1,5 @@
 import { CompositeDisposable } from 'atom';
-import * as console from '@atxm/developer-console';
+import console from './log';
 
 import configSchema from './config';
 
@@ -22,7 +22,7 @@ export default {
   subscriptions: new CompositeDisposable(),
 
   async activate(): Promise<void> {
-    console.log('[browse] Activating package');
+    console.log('Activating package');
 
     // Register commands
     this.subscriptions.add(
@@ -87,13 +87,13 @@ export default {
   },
 
   deactivate(): void {
-    console.log('[browse] Deactivating package');
+    console.log('Deactivating package');
 
     this.subscriptions && this.subscriptions.dispose();
   },
 
   provideBrowse(): unknown {
-    console.log('[browse] Providing service');
+    console.log('Providing service');
 
     return browseService;
   }

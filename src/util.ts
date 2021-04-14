@@ -4,7 +4,7 @@ import { platform } from 'os';
 import { promisify } from 'util';
 import { shell } from 'electron';
 import { spawn } from 'child_process';
-import * as console from '@atxm/developer-console';
+import console from './log';
 
 const spawnAsync = promisify(spawn);
 
@@ -12,7 +12,7 @@ async function fileExists(pathName: string): Promise<boolean> {
   try {
     await fs.access(pathName, constants.F_OK);
   } catch (error) {
-    console.warn(`[browse] Skipping '${pathName}' – not found`);
+    console.warn(`Skipping '${pathName}' – not found`);
 
     return false;
   }
@@ -54,7 +54,7 @@ async function folderExists(pathName: string): Promise<boolean> {
   try {
     stats = await fs.stat(pathName);
   } catch (error) {
-    console.warn(`[browse] Skipping '${pathName}' – not found`);
+    console.warn(`Skipping '${pathName}' – not found`);
 
     return false;
   }
@@ -164,7 +164,7 @@ function info(message: string, dismissable = false): void {
     });
   }
 
-  console.info(`[browse] ${message}`);
+  console.info(`${message}`);
 }
 
 function warn(message: string, dismissable = false): void {
@@ -175,7 +175,7 @@ function warn(message: string, dismissable = false): void {
   }
 
   if (getConfig('beep')) atom.beep();
-  console.warn(`[browse] ${message}`);
+  console.warn(`${message}`);
 }
 
 export {
