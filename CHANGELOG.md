@@ -1,3 +1,7 @@
+# v3.3.3 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.3)
+
+- fix markdown linting
+
 # v3.3.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.2)
 
 - update dependencies
