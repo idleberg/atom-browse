@@ -1,3 +1,9 @@
+# v3.4.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.4.0)
+
+- replace `shell.openItem` with `shell.openPath``
+- refactor messaging
+- require Atom 1.56 or later
+
 # v3.3.3 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.3.3)
 
 - fix markdown linting
