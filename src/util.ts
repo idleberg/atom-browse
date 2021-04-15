@@ -5,6 +5,7 @@ import { promisify } from 'util';
 import { shell } from 'electron';
 import { spawn } from 'child_process';
 import console from './log';
+import meta from '../package.json';
 
 const spawnAsync = promisify(spawn);
 
@@ -33,7 +34,7 @@ async function isDirectory(pathName: string): Promise<boolean> {
   try {
     stats = await fs.lstat(pathName);
   } catch (error) {
-    console.error('[browse]', error);
+    console.error(error);
 
     return false;
   }
@@ -47,7 +48,7 @@ async function isFile(pathName: string): Promise<boolean> {
   try {
     stats = await fs.lstat(pathName);
   } catch (error) {
-    console.error('[browse]', error);
+    console.error(error);
 
     return false;
   }
@@ -112,18 +113,17 @@ async function showFolder(options: ShowOptions): Promise<void> {
 
     if (!options.silent) info(options.message
       ? String(options.message)
-      : `**browse**: Opening '${options.name}' in custom file manager`
+      : `Opening '${options.name}' in custom file manager`
     );
 
     spawnAsync(fileManager, openArgs, {});
   } else {
     if (!options.silent) info(options.message
       ? String(options.message)
-      : `**browse**: Opening '${options.name}' in ${getFileManager()}`
+      : `Opening '${options.name}' in ${getFileManager()}`
     );
 
-    // @ts-ignore
-    shell.openItem(options.path);
+    await shell.openPath(options.path);
   }
 }
 
@@ -149,14 +149,14 @@ async function showInFolder(options: ShowOptions): Promise<void> {
 
     if (!options.silent) info(options.message
       ? String(options.message)
-      : `**browse**: Revealing \`${basename(options.path)}\` in custom file manager`
+      : `Revealing \`${basename(options.path)}\` in custom file manager`
     );
 
     spawnAsync(fileManager, revealArgs, {});
   } else {
     if (!options.silent) info(options.message
       ? String(options.message)
-      : `**browse**: Revealing \`${basename(options.path)}\` in ${getFileManager()}`
+      : `Revealing \`${basename(options.path)}\` in ${getFileManager()}`
     );
 
     shell.showItemInFolder(options.path);
@@ -165,7 +165,7 @@ async function showInFolder(options: ShowOptions): Promise<void> {
 
 function info(message: string, dismissable = false): void {
   if (getConfig('notify') === 'all') {
-    atom.notifications.addInfo(message, {
+    atom.notifications.addInfo(`**${meta.name}** ${message}`, {
       dismissable: dismissable,
       icon: 'check'
     });
@@ -176,7 +176,7 @@ function info(message: string, dismissable = false): void {
 
 function warn(message: string, dismissable = false): void {
   if (getConfig('notify') !== 'none') {
-    atom.notifications.addWarning(message, {
+    atom.notifications.addWarning(`**${meta.name}** ${message}`, {
       dismissable: dismissable
     });
   }
