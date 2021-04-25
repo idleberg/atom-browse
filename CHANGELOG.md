@@ -2,6 +2,7 @@
 
 - add fallback for Electron 6-based Atom versions
 - lower minimum version to Atom 1.52
+- update dependencies
 
 # v3.4.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.4.0)
 
