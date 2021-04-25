@@ -1,6 +1,11 @@
+# v3.5.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.5.0)
+
+- add fallback for Electron 6-based Atom versions
+- lower minimum version to Atom 1.52
+
 # v3.4.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.4.0)
 
-- replace `shell.openItem` with `shell.openPath``
+- replace `shell.openItem` with `shell.openPath`
 - refactor messaging
 - require Atom 1.56 or later
 
