@@ -5,6 +5,8 @@ import filesize from 'rollup-plugin-filesize';
 import json from '@rollup/plugin-json';
 import typescript from '@rollup/plugin-typescript';
 
+const production = !process.env.ROLLUP_WATCH;
+
 const plugins = [
   commonjs(),
   filesize(),
@@ -12,12 +14,11 @@ const plugins = [
   nodeResolve({
     preferBuiltins: true
   }),
-  terser(),
+  production && terser(),
   typescript({
     allowSyntheticDefaultImports: true,
     moduleResolution: 'node',
     resolveJsonModule: true,
-    sourceMap: true
   })
 ];
 
@@ -28,7 +29,7 @@ export default [
       dir: 'lib',
       exports: 'default',
       format: 'cjs',
-      sourcemap: true
+      sourcemap: production ? false : true
     },
     external: [
       'atom',
