@@ -123,7 +123,12 @@ async function showFolder(options: ShowOptions): Promise<void> {
       : `Opening '${options.name}' in ${getFileManager()}`
     );
 
-    await shell.openPath(options.path);
+    try {
+      await shell.openPath(options.path);
+    } catch (err) {
+      // Electron <9
+      if (shell['openItem']) shell['openItem'](options.path);
+    }
   }
 }
 
