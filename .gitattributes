@@ -1,3 +1,5 @@
+.editorconfig export-ignore
+.eslintrc.cjs export-ignore
 /.circle-ci export-ignore
 /.vscode export-ignore
 /src export-ignore
