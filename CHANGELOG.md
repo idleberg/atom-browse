@@ -1,3 +1,9 @@
+# v3.6.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.6.0)
+
+- bundle with `esbuild`
+- add `.gitattributes``
+- update dependencies
+
 # v3.5.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.5.0)
 
 - add fallback for Electron 6-based Atom versions
