@@ -28,9 +28,11 @@ Change to your Atom packages directory:
 
 ```powershell
 # Powershell
-cd $Env:USERPROFILE\.atom\packages
+$ cd $Env:USERPROFILE\.atom\packages
+```
 
-# Command Prompt
+```cmd
+:: Command Prompt
 $ cd %USERPROFILE%\.atom\packages
 ```
 
@@ -58,19 +60,19 @@ Once installed, you can run any of the following commands from the [Command Pale
 
 **Project-specific:**
 
-* `Browse: Project Folder(s)`
-* `Browse: Project Dependencies` (e.g. `node_modules`, `vendor`)
-* `Browse: Reveal File`
-* `Browse: Reveal Open Files`
+- `Browse: Project Folder(s)`
+- `Browse: Project Dependencies` (e.g. `node_modules`, `vendor`)
+- `Browse: Reveal File`
+- `Browse: Reveal Open Files`
 
 **Atom-specific:**
 
-* `Browse: .apm Folder`
-* `Browse: Application Folder`
-* `Browse: App Data Folder`
-* `Browse: Configuration Folder`
-* `Browse: Packages Folder`
-* `Browse: Resources Folder`
+- `Browse: .apm Folder`
+- `Browse: Application Folder`
+- `Browse: App Data Folder`
+- `Browse: Configuration Folder`
+- `Browse: Packages Folder`
+- `Browse: Resources Folder`
 
 ## Settings
 
@@ -84,6 +86,7 @@ browse:
   customFileManager:
     fullPath: "%PROGRAMFILES%\\Explorer++\\Explorer++.exe"
 ```
+
 </details>
 
 Furthermore, you can specify custom arguments for the open and reveal actions.
@@ -99,6 +102,7 @@ browse:
 ```
 
 **Note:** The `%path%` placeholder can be omitted when it's the last argument
+
 </details>
 
 ## Service Provider
@@ -136,21 +140,25 @@ export default {
   // Example function that consumes the service
   async revealFile(pathToFile) {
     await this.browse({
-      action: 'reveal',
-      target: pathToFile
-    })
+      action: "reveal",
+      target: pathToFile,
+    });
   },
 
   // Optional: Assign command for your reveal function
   activate() {
     this.subscriptions = new CompositeDisposable();
 
-    this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'my-package:reveal-file': async () => await this.revealFile('/path/to/file')
-    }));
-  }
-}
+    this.subscriptions.add(
+      atom.commands.add("atom-workspace", {
+        "my-package:reveal-file": async () =>
+          await this.revealFile("/path/to/file"),
+      })
+    );
+  },
+};
 ```
+
 </details>
 
 ### Options
@@ -158,7 +166,7 @@ export default {
 #### `action`
 
 Type: `string`  
-Arguments: `reveal | open`  
+Arguments: `reveal | open`
 
 Specifies the default action for the service. You can open folders or reveal files in your file manager.
 
