@@ -1,7 +1,12 @@
+# v3.6.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.6.1)
+
+- refine `.gitattributes`
+- update 'README.md`
+
 # v3.6.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.6.0)
 
 - bundle with `esbuild`
-- add `.gitattributes``
+- add `.gitattributes`
 - update dependencies
 
 # v3.5.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.5.0)
