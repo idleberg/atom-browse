@@ -1,7 +1,7 @@
 # v3.6.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.6.1)
 
 - refine `.gitattributes`
-- update 'README.md`
+- update `README.md`
 
 # v3.6.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.6.0)
 
