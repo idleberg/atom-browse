@@ -127,6 +127,8 @@ Next up, you need to consume the service in your package's main file.
 <summary><strong>Example</strong></summary>
 
 ```js
+import { CompositeDisposable, Disposable } from "atom";
+
 export default {
   // Assign service provider
   consumeBrowse(browse) {
