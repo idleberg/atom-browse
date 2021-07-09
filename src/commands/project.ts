@@ -1,6 +1,6 @@
-import { showFolder, warn } from '../util';
-
 async function projectFolders(): Promise<void> {
+  const { showFolder, warn } = await import('../util');
+
   const projectPaths: string[] = atom.project.getPaths();
 
   if (projectPaths.length === 0) {
@@ -17,4 +17,6 @@ async function projectFolders(): Promise<void> {
   });
 }
 
-export default projectFolders;
+export {
+  projectFolders
+};

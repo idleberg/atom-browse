@@ -1,7 +1,8 @@
-import { getConfig, showFolder, warn } from '../util';
-import { resolve } from 'path';
 
 async function projectDependencies(): Promise<void> {
+  const { getConfig, showFolder, warn } = await import('../util');
+  const { resolve } = await import('path');
+
   const projectPaths: string[] = atom.project.getPaths();
 
   if (projectPaths.length === 0) {
@@ -28,4 +29,6 @@ async function projectDependencies(): Promise<void> {
   });
 }
 
-export default projectDependencies;
+export {
+  projectDependencies
+};

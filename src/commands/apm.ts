@@ -1,7 +1,7 @@
-import { dirname, resolve } from 'path';
-import { showFolder } from '../util';
+async function apmFolder(): Promise<void> {
+  const { dirname, resolve } = await import('path');
+  const { showFolder } = await import('../util');
 
-function apmFolder(): void {
   const configPath: string = dirname(atom.config.getUserConfigPath());
   const apmPath: string = resolve(configPath, '.apm');
 
@@ -11,4 +11,6 @@ function apmFolder(): void {
   });
 }
 
-export default apmFolder;
+export {
+  apmFolder
+};

@@ -1,7 +1,7 @@
-import { dirname } from 'path';
-import { showFolder } from '../util';
+async function configFolder(): Promise<void> {
+  const { dirname } = await import('path');
+  const { showFolder } = await import('../util');
 
-function configFolder(): void {
   const configPath: string = dirname(atom.config.getUserConfigPath());
 
   showFolder({
@@ -10,4 +10,6 @@ function configFolder(): void {
   });
 }
 
-export default configFolder;
+export {
+  configFolder
+};

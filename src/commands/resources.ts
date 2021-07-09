@@ -1,13 +1,15 @@
-import { showFolder } from '../util';
+async function resourcesFolder(): Promise<void> {
+  const { showFolder } = await import('../util');
 
-async function appFolder(): Promise<void> {
   // @ts-ignore
-  const appFolder: string = atom.commandInstaller.getResourcesDirectory();
+  const resourcesFolder: string = atom.commandInstaller.getResourcesDirectory();
 
   showFolder({
     name: 'Resources Folder',
-    path: appFolder
+    path: resourcesFolder
   });
 }
 
-export default appFolder;
+export {
+  resourcesFolder
+};

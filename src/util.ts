@@ -5,7 +5,7 @@ import { promisify } from 'util';
 import { shell } from 'electron';
 import { spawn } from 'child_process';
 import console from './log';
-import meta from '../package.json';
+import { name } from '../package.json';
 
 const spawnAsync = promisify(spawn);
 
@@ -170,7 +170,7 @@ async function showInFolder(options: ShowOptions): Promise<void> {
 
 function info(message: string, dismissable = false): void {
   if (getConfig('notify') === 'all') {
-    atom.notifications.addInfo(`**${meta.name}** ${message}`, {
+    atom.notifications.addInfo(`**${name}** ${message}`, {
       dismissable: dismissable,
       icon: 'check'
     });
@@ -181,7 +181,7 @@ function info(message: string, dismissable = false): void {
 
 function warn(message: string, dismissable = false): void {
   if (getConfig('notify') !== 'none') {
-    atom.notifications.addWarning(`**${meta.name}** ${message}`, {
+    atom.notifications.addWarning(`**${name}** ${message}`, {
       dismissable: dismissable
     });
   }

@@ -1,7 +1,7 @@
-import { showInFolder, warn } from '../util';
-
 // eslint-disable-next-line
 async function revealFile(pane?): Promise<void> {
+  const { showInFolder, warn } = await import('../util');
+
   const activePane = pane
     ? pane
     : atom.workspace.getActiveTextEditor() || atom.workspace.getActivePaneItem();
@@ -22,6 +22,8 @@ async function revealFile(pane?): Promise<void> {
 }
 
 async function revealFiles(): Promise<void> {
+  const { warn } = await import('../util');
+
   const paneItems = atom.workspace.getPaneItems();
 
   if (paneItems.length) {

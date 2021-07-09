@@ -1,8 +1,8 @@
-import { homedir, platform } from 'os';
-import { resolve } from 'path';
-import { showFolder } from '../util';
+async function appDataFolder(): Promise<void> {
+  const { homedir, platform } = await import('os');
+  const { resolve } = await import('path');
+  const { showFolder } = await import('../util');
 
-function appDataFolder(): void {
   let appDataFolder: string;
 
   switch (platform()) {
@@ -25,4 +25,6 @@ function appDataFolder(): void {
   });
 }
 
-export default appDataFolder;
+export {
+  appDataFolder
+};

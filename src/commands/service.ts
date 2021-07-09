@@ -1,5 +1,3 @@
-import { basename } from 'path';
-import { isDirectory, isFile, showFolder, showInFolder } from '../util';
 import console from '../log';
 
 interface BrowseServicePayload {
@@ -10,6 +8,8 @@ interface BrowseServicePayload {
 }
 
 async function browseService(payload: BrowseServicePayload): Promise<void> {
+  const { isDirectory, isFile, showFolder, showInFolder } = await import('../util');
+
   if (typeof payload === 'string') {
     console.log('Auto-handle string input');
 
@@ -37,6 +37,8 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
         silent: payload.silent
       })
     } else if (payload.action === 'open' || await isDirectory(targetPath)) {
+      const { basename } = await import('path');
+
       showFolder({
         name: basename(targetPath),
         path: targetPath,
@@ -49,4 +51,6 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
   });
 }
 
-export default browseService;
+export {
+  browseService
+};

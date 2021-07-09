@@ -1,11 +1,12 @@
-import { platform } from 'os';
-import { dirname, resolve } from 'path';
-import findUp from 'find-up';
-import { getConfig, showFolder } from '../util';
-
 async function appFolder(): Promise<void> {
+  const { dirname, resolve } = await import('path');
+  const { getConfig, showFolder } = await import('../util');
+  const { platform } = await import('os');
+  const findUp = await import('find-up');
+
   const execPath = dirname(resolve(process.execPath));
   let appFolder;
+
 
   if (platform() === 'darwin' && getConfig('openAppPackage')) {
     const resFolder = findUp.sync('Resources', {cwd: execPath, type: 'directory'});
@@ -23,4 +24,6 @@ async function appFolder(): Promise<void> {
   });
 }
 
-export default appFolder;
+export {
+  appFolder
+};

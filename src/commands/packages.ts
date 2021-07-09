@@ -1,7 +1,6 @@
-import { getPackagesDirs } from '../util';
-import { showFolder } from '../util';
+async function packagesFolder(): Promise<void> {
+  const { getPackagesDirs, showFolder } = await import('../util');
 
-function packagesFolder(): void {
   const packagesDirs: string[] = getPackagesDirs();
 
   packagesDirs.map((packagesDir: string) => {
@@ -12,4 +11,6 @@ function packagesFolder(): void {
   });
 }
 
-export default packagesFolder;
+export {
+  packagesFolder
+};
