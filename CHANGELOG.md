@@ -1,3 +1,9 @@
+# v3.7.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.7.0)
+
+- switch back bundler to Rollup
+- decrease bundle size
+- update dependencies
+
 # v3.6.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.6.1)
 
 - refine `.gitattributes`
