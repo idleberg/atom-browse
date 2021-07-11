@@ -51,7 +51,7 @@ $ git clone https://github.com/idleberg/atom-browse browse
 Install dependencies:
 
 ```bash
-cd browse && npm install
+$ cd browse && npm install
 ```
 
 ## Usage
