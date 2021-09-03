@@ -12,7 +12,8 @@
     "lint": "npm-run-all lint:*",
     "prepublishOnly": "npm run build",
     "start": "rollup --config --watch",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "prepare": "husky install"
   },
   "main": "./lib/index",
   "typings": "./types",
@@ -53,7 +54,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-json": "^3.1.0",
     "find-up": "^5.0.0",
-    "husky": ">=4.3 <5",
+    "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
     "log-symbols": "^5.0.0",
     "npm-run-all": "^4.1.5",
@@ -70,11 +71,6 @@
     "plugins": [
       "@stylelint/remark-preset"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.md": "prettier --write",
