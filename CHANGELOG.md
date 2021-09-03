@@ -1,3 +1,10 @@
+# v3.7.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.7.1)
+
+- switch CI provider
+- remove `jsonlint`
+- update husky to v0.7
+- update dependencies
+
 # v3.7.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.7.0)
 
 - switch back bundler to Rollup
