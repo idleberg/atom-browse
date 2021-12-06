@@ -184,13 +184,13 @@ Specifies the target path(s) that should be opened.
 
 Type: `string`
 
-Disables notification for action
+Custom message to be displayed for the action
 
 #### `silent`
 
 Type: `boolean`
 
-Custom message to be displayed for the action
+Disables notification for action
 
 ## License
 
