@@ -130,7 +130,7 @@ See below for a real-world example.
 
 ### Usage
 
-This package provides the service to open/reveal custom paths. To consume it, add the following to your `package.json`:
+To consume the provided service, add the following to your `package.json`:
 
 ```json
 {
