@@ -92,7 +92,11 @@ const getFileManager = (): string => {
 }
 
 async function showFolder(options: ShowOptions): Promise<void> {
-  if (!options.path.length || !await folderExists(options.path)) return;
+  const filePath = typeof options === 'string'
+    ? options
+    : options.path;
+
+  if (!filePath.length || !await folderExists(filePath)) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
 
@@ -103,37 +107,45 @@ async function showFolder(options: ShowOptions): Promise<void> {
       if (openArgs.includes('%path%')) {
         const index = openArgs.indexOf('%path%');
 
-        openArgs[index] = openArgs[index].replace('%path%', options.path);
+        openArgs[index] = openArgs[index].replace('%path%', filePath);
       } else {
-        openArgs.push(options.path);
+        openArgs.push(filePath);
       }
     } else {
-      openArgs = [ options.path ];
+      openArgs = [ filePath ];
     }
 
-    if (!options.silent) info(options.message
-      ? String(options.message)
-      : `Opening '${options.name}' in custom file manager`
-    );
+    if (!options?.silent && options?.message?.length) {
+      info(options.message
+        ? String(options.message)
+        : `Opening '${options.name}' in custom file manager`
+      );
+    }
 
     spawnAsync(fileManager, openArgs, {});
   } else {
-    if (!options.silent) info(options.message
-      ? String(options.message)
-      : `Opening '${options.name}' in ${getFileManager()}`
-    );
+    if (!options?.silent && options?.message?.length) {
+      info(options.message
+        ? String(options.message)
+        : `Opening '${options.name}' in ${getFileManager()}`
+      );
+    }
 
     try {
-      await shell.openPath(options.path);
+      await shell.openPath(filePath);
     } catch (err) {
       // Electron <9
-      if (shell['openItem']) shell['openItem'](options.path);
+      if (shell['openItem']) shell['openItem'](filePath);
     }
   }
 }
 
 async function showInFolder(options: ShowOptions): Promise<void> {
-  if (!options.path.length || !(await fileExists(options.path))) return;
+  const filePath = typeof options === 'string'
+    ? options
+    : options.path;
+
+  if (!filePath.length || !(await fileExists(filePath))) return;
 
   const fileManager = getConfig('customFileManager.fullPath');
 
@@ -144,27 +156,31 @@ async function showInFolder(options: ShowOptions): Promise<void> {
       if (revealArgs.includes('%path%')) {
         const index = revealArgs.indexOf('%path%');
 
-        revealArgs[index] = revealArgs[index].replace('%path%', options.path);
+        revealArgs[index] = revealArgs[index].replace('%path%', filePath);
       } else {
-        revealArgs.push(options.path);
+        revealArgs.push(filePath);
       }
     } else {
-      revealArgs = [ options.path ];
+      revealArgs = [ filePath ];
     }
 
-    if (!options.silent) info(options.message
-      ? String(options.message)
-      : `Revealing \`${basename(options.path)}\` in custom file manager`
-    );
+    if (!options?.silent && options?.message?.length) {
+      info(options.message
+        ? String(options.message)
+        : `Revealing \`${basename(filePath)}\` in custom file manager`
+      );
+    }
 
     spawnAsync(fileManager, revealArgs, {});
   } else {
-    if (!options.silent) info(options.message
-      ? String(options.message)
-      : `Revealing \`${basename(options.path)}\` in ${getFileManager()}`
-    );
+    if (!options?.silent && options?.message?.length) {
+      info(options.message
+        ? String(options.message)
+        : `Revealing \`${basename(filePath)}\` in ${getFileManager()}`
+      );
+    }
 
-    shell.showItemInFolder(options.path);
+    shell.showItemInFolder(filePath);
   }
 }
 
