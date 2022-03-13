@@ -91,7 +91,7 @@ const getFileManager = (): string => {
   }
 }
 
-async function showFolder(options: ShowOptions): Promise<void> {
+async function showFolder(options: ShowOptions | string): Promise<void> {
   const filePath = typeof options === 'string'
     ? options
     : options.path;
@@ -115,7 +115,7 @@ async function showFolder(options: ShowOptions): Promise<void> {
       openArgs = [ filePath ];
     }
 
-    if (!options?.silent && options?.message?.length) {
+    if (typeof options !== 'string' && !options?.silent && options?.message?.length && options?.name?.length) {
       info(options.message
         ? String(options.message)
         : `Opening '${options.name}' in custom file manager`
@@ -124,7 +124,7 @@ async function showFolder(options: ShowOptions): Promise<void> {
 
     spawnAsync(fileManager, openArgs, {});
   } else {
-    if (!options?.silent && options?.message?.length) {
+    if (typeof options !== 'string' && !options?.silent && options?.message?.length && options?.name?.length) {
       info(options.message
         ? String(options.message)
         : `Opening '${options.name}' in ${getFileManager()}`
@@ -140,7 +140,7 @@ async function showFolder(options: ShowOptions): Promise<void> {
   }
 }
 
-async function showInFolder(options: ShowOptions): Promise<void> {
+async function showInFolder(options: ShowOptions | string): Promise<void> {
   const filePath = typeof options === 'string'
     ? options
     : options.path;
@@ -164,7 +164,7 @@ async function showInFolder(options: ShowOptions): Promise<void> {
       revealArgs = [ filePath ];
     }
 
-    if (!options?.silent && options?.message?.length) {
+    if (typeof options !== 'string' && !options?.silent && options?.message?.length) {
       info(options.message
         ? String(options.message)
         : `Revealing \`${basename(filePath)}\` in custom file manager`
@@ -173,7 +173,7 @@ async function showInFolder(options: ShowOptions): Promise<void> {
 
     spawnAsync(fileManager, revealArgs, {});
   } else {
-    if (!options?.silent && options?.message?.length) {
+    if (typeof options !== 'string' && !options?.silent && options?.message?.length) {
       info(options.message
         ? String(options.message)
         : `Revealing \`${basename(filePath)}\` in ${getFileManager()}`
