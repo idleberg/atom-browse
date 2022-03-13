@@ -107,6 +107,29 @@ browse:
 
 ## Service Provider
 
+### API
+
+At its most basic, the method provided by the service accepts a single argument, the path to a file or folder:
+
+```js
+browse(pathToFile);
+```
+
+However, you can also pass an object that offers additional options:
+
+```ts
+browse({
+  action?: "reveal",
+  message?: "Revealing output file..."
+  silent?: false
+  target: pathToFile,
+})
+```
+
+See below for a real-world example.
+
+### Usage
+
 This package provides the service to open/reveal custom paths. To consume it, add the following to your `package.json`:
 
 ```json
@@ -141,10 +164,7 @@ export default {
 
   // Example function that consumes the service
   async revealFile(pathToFile) {
-    await this.browse({
-      action: "reveal",
-      target: pathToFile,
-    });
+    await this.browse(pathToFile);
   },
 
   // Optional: Assign command for your reveal function
