@@ -121,8 +121,8 @@ However, you can also pass an object that offers additional options:
 browse({
   action?: "reveal",
   message?: "Revealing output file..."
-  silent?: false
-  target: pathToFile,
+  silent?: false,
+  target: pathToFile
 })
 ```
 
