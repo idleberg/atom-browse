@@ -3,6 +3,11 @@
 - update dependencies
 - fix typo in `README.md`
 
+# v3.8.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.8.0)
+
+- add optional simple API
+- update dependencies
+
 # v3.7.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.7.1)
 
 - switch CI provider
