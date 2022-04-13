@@ -19,6 +19,8 @@ async function browseService(payload: BrowseServicePayload): Promise<void> {
         : 'open',
       target: payload
     }
+  } else if (payload?.action && ['reveal', 'open'].includes(payload?.action)) {
+    console.warn('payload.action is deprecated and can be omitted');
   }
 
   const targetPaths = Array.isArray(payload.target)
