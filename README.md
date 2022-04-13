@@ -118,7 +118,6 @@ However, you can also pass an object that offers additional options:
 
 ```ts
 browse({
-  action?: "reveal",
   message?: "Revealing output file..."
   silent?: false,
   target: pathToFile
@@ -183,15 +182,6 @@ export default {
 </details>
 
 ### Options
-
-#### `action`
-
-Type: `string`  
-Arguments: `reveal | open`
-
-Specifies the default action for the service. You can open folders or reveal files in your file manager.
-
-**Note:** As of version v3.1, this option can be omitted. The action will then be determined by whether target option resolves to a file or directory.
 
 #### `target`
 
