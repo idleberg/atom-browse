@@ -1,3 +1,7 @@
+# v3.9.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.9.0)
+
+- add Pulsar support to `Browse: App Data Folder" command
+
 # v3.7.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.7.2)
 
 - update dependencies
