@@ -12,6 +12,7 @@ async function appDataFolder(): Promise<void> {
     case 'darwin':
       appDataFolder = resolve(homedir(), 'Library', 'Application Support', appName);
       break;
+
     case 'win32':
 
       appDataFolder = (process.env.APPDATA)

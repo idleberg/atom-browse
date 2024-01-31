@@ -88,8 +88,10 @@ const getFileManager = (): string => {
   switch (platform()) {
     case 'darwin':
       return 'Finder';
+
     case 'win32':
       return 'Explorer';
+
     default:
       return 'file manager';
   }
