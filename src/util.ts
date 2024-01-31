@@ -70,6 +70,10 @@ async function folderExists(pathName: string): Promise<boolean> {
   return stats.isDirectory();
 }
 
+const getAppName = (): string => {
+  return atom.getAppName().split(' ')[0];
+}
+
 const getConfig = (key = ''): any => {
   return atom.config.get(`browse.${key}`);
 }
@@ -208,6 +212,7 @@ function warn(message: string, dismissable = false): void {
 
 export {
   folderExists,
+  getAppName,
   getConfig,
   getPackagesDirs,
   isDirectory,
