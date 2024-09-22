@@ -1,9 +1,9 @@
 # browse
 
-[![apm](https://flat.badgen.net/apm/license/browse)](https://atom.io/packages/browse)
-[![apm](https://flat.badgen.net/apm/v/browse)](https://atom.io/packages/browse)
-[![apm](https://flat.badgen.net/apm/dl/browse)](https://atom.io/packages/browse)
-[![CI](https://img.shields.io/github/workflow/status/idleberg/atom-browse/CI?style=flat-square)](https://github.com/idleberg/atom-browse/actions)
+[![License](https://img.shields.io/github/license/idleberg/atom-browse?color=blue&style=for-the-badge)](https://github.com/idleberg/atom-browse/blob/main/LICENSE)
+![Release](https://img.shields.io/github/v/release/idleberg/atom-browse?style=for-the-badge)
+![Downloads](https://img.shields.io/pulsar/dt/browse?style=for-the-badge&color=slateblue)
+[![CI](https://img.shields.io/github/actions/workflow/status/idleberg/atom-browse/default.yml?style=for-the-badge)](https://github.com/idleberg/atom-browse/actions)
 
 ## Description
 
