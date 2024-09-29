@@ -202,4 +202,4 @@ Disables notification for action
 
 ## License
 
-This work is licensed under the [MIT License](LICENSE)
+This work is licensed under the [MIT License](LICENSE).
