@@ -56,7 +56,7 @@ $ ppm install || apm install
 
 ## Usage
 
-Once installed, you can run any of the following commands from the [Command Palette](https://atom-editor.cc/docs/latest/getting-started-atom-basics#command-palette).
+Once installed, you can run any of the following commands from the [Command Palette](https://flight-manual.atom-editor.cc/docs/latest/getting-started-atom-basics#command-palette).
 
 **Project-specific:**
 
