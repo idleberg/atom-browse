@@ -1,6 +1,7 @@
+import { resolve } from 'path';
+
 export async function projectDependencies(): Promise<void> {
 	const { getConfig, showFolder, warn } = await import('../util');
-	const { resolve } = await import('path');
 
 	const projectPaths: string[] = atom.project.getPaths();
 

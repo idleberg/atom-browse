@@ -1,9 +1,8 @@
-import { getAppName } from '../util';
+import { homedir, platform } from 'os';
+import { resolve } from 'path';
 
 export async function appDataFolder(): Promise<void> {
-	const { homedir, platform } = await import('os');
-	const { resolve } = await import('path');
-	const { showFolder } = await import('../util');
+	const { getAppName, showFolder } = await import('../util');
 
 	const appName = getAppName();
 	let appDataFolder: string;

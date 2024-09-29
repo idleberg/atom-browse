@@ -1,7 +1,8 @@
+import { dirname, resolve } from 'path';
+import { platform } from 'os';
+
 export async function appFolder(): Promise<void> {
-	const { dirname, resolve } = await import('path');
 	const { getConfig, showFolder } = await import('../util');
-	const { platform } = await import('os');
 	const findUp = await import('find-up');
 
 	const execPath = dirname(resolve(process.execPath));
