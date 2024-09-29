@@ -1,3 +1,12 @@
+# v3.9.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.9.2)
+
+- remove dynamic imports of Node.js built-ins
+
+# v3.9.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.9.1)
+
+- update tooling
+- update dependencies
+
 # v3.9.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.9.0)
 
 - add Pulsar support to "Browse: App Data Folder" command
