@@ -1,8 +1,8 @@
 # browse
 
-[![License](https://img.shields.io/github/license/idleberg/atom-browse?color=blue&style=for-the-badge)](https://github.com/idleberg/atom-browse/blob/main/LICENSE)
-![Release](https://img.shields.io/github/v/release/idleberg/atom-browse?style=for-the-badge)
-![Downloads](https://img.shields.io/pulsar/dt/browse?style=for-the-badge&color=slateblue)
+[![License](https://img.shields.io/github/license/idleberg/atom-browse?color=blue&style=for-the-badge)](https://github.com/idleberg/atom-browse/blob/master/LICENSE)
+[![Release](https://img.shields.io/github/v/release/idleberg/atom-browse?style=for-the-badge)](https://github.com/idleberg/atom-browse/releases)
+[![Downloads](https://img.shields.io/pulsar/dt/browse?style=for-the-badge&color=slateblue)](https://web.pulsar-edit.dev/packages/browse)
 [![CI](https://img.shields.io/github/actions/workflow/status/idleberg/atom-browse/default.yml?style=for-the-badge)](https://github.com/idleberg/atom-browse/actions)
 
 ## Description
@@ -15,7 +15,7 @@ Adds commands that let you quickly browse Atom-related folders or reveal files y
 
 ### apm
 
-Install `browse` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:
+Install `browse` from Atom's [Package Manager](http://flight-manual.atom-editor.cc/using-atom/sections/atom-packages/) or the command-line equivalent:
 
 `$ apm install browse`
 
@@ -55,7 +55,7 @@ $ cd browse && npm install
 
 ## Usage
 
-Once installed, you can run any of the following commands from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
+Once installed, you can run any of the following commands from the [Command Palette](https://atom-editor.cc/docs/latest/getting-started-atom-basics#command-palette).
 
 **Project-specific:**
 
@@ -75,7 +75,7 @@ Once installed, you can run any of the following commands from the [Command Pale
 
 ## Settings
 
-If you want to override your system's default file-manager, you can specify its path in the [package settings](https://flight-manual.atom.io/using-atom/sections/atom-packages/#package-settings).
+If you want to override your system's default file-manager, you can specify its path in the [package settings](https://flight-manual.atom-editor.cc/using-atom/sections/atom-packages/#package-settings).
 
 <details>
 <summary><strong>Example</strong></summary>
@@ -132,13 +132,13 @@ To consume the provided service, add the following to your `package.json`:
 
 ```json
 {
-  "consumedServices": {
-    "browse": {
-      "versions": {
-        "1.0.0": "consumeBrowse"
-      }
-    }
-  }
+	"consumedServices": {
+		"browse": {
+			"versions": {
+				"1.0.0": "consumeBrowse"
+			}
+		}
+	}
 }
 ```
 
@@ -148,34 +148,33 @@ Next up, you need to consume the service in your package's main file.
 <summary><strong>Example</strong></summary>
 
 ```js
-import { CompositeDisposable, Disposable } from "atom";
+import { CompositeDisposable, Disposable } from 'atom';
 
 export default {
-  // Assign service provider
-  consumeBrowse(browse) {
-    this.browse = browse;
+	// Assign service provider
+	consumeBrowse(browse) {
+		this.browse = browse;
 
-    return new Disposable(() => {
-      this.browse = null;
-    });
-  },
+		return new Disposable(() => {
+			this.browse = null;
+		});
+	},
 
-  // Example function that consumes the service
-  async revealFile(pathToFile) {
-    await this.browse(pathToFile);
-  },
+	// Example function that consumes the service
+	async revealFile(pathToFile) {
+		await this.browse(pathToFile);
+	},
 
-  // Optional: Assign command for your reveal function
-  activate() {
-    this.subscriptions = new CompositeDisposable();
+	// Optional: Assign command for your reveal function
+	activate() {
+		this.subscriptions = new CompositeDisposable();
 
-    this.subscriptions.add(
-      atom.commands.add("atom-workspace", {
-        "my-package:reveal-file": async () =>
-          await this.revealFile("/path/to/file"),
-      })
-    );
-  },
+		this.subscriptions.add(
+			atom.commands.add('atom-workspace', {
+				'my-package:reveal-file': async () => await this.revealFile('/path/to/file'),
+			}),
+		);
+	},
 };
 ```
 
