@@ -7,7 +7,7 @@
 
 ## Description
 
-Adds commands that let you quickly browse Atom-related folders or reveal files you're working on ([details below](#usage))
+Adds commands that let you quickly browse editor-related folders or reveal files you're working on ([details below](#usage))
 
 ![Screenshot](https://raw.githubusercontent.com/idleberg/atom-browse/master/screenshot.gif)
 
@@ -15,13 +15,13 @@ Adds commands that let you quickly browse Atom-related folders or reveal files y
 
 ### apm
 
-Install `browse` from Atom's [Package Manager](http://flight-manual.atom-editor.cc/using-atom/sections/atom-packages/) or the command-line equivalent:
+Install `browse` from the editor's [Package Manager](http://flight-manual.atom-editor.cc/using-atom/sections/atom-packages/) or the command-line equivalent:
 
 `$ apm install browse`
 
 ### Using Git
 
-Change to your Atom packages directory:
+Change to your the directory:
 
 **Windows**
 
@@ -64,7 +64,7 @@ Once installed, you can run any of the following commands from the [Command Pale
 - `Browse: Reveal File`
 - `Browse: Reveal Open Files`
 
-**Atom-specific:**
+**Editor-specific:**
 
 - `Browse: .apm Folder`
 - `Browse: Application Folder`
