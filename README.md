@@ -13,11 +13,11 @@ Adds commands that let you quickly browse editor-related folders or reveal files
 
 ## Installation
 
-### apm
+### Package Manager
 
 Install `browse` from the editor's [Package Manager](http://flight-manual.atom-editor.cc/using-atom/sections/atom-packages/) or the command-line equivalent:
 
-`$ apm install browse`
+`$ ppm install browse || apm install browse`
 
 ### Using Git
 
@@ -50,7 +50,8 @@ $ git clone https://github.com/idleberg/atom-browse browse
 Install dependencies:
 
 ```bash
-$ cd browse && npm install
+$ cd browse
+$ ppm install || apm install
 ```
 
 ## Usage
