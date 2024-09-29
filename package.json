@@ -5,7 +5,6 @@
   "scripts": {
     "build": "tsup",
     "dev": "npm run build -- --watch",
-    "lint:json": "eslint ./keymaps/*.json menus/*.json --ignore-pattern .gitignore",
     "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
     "lint:ts": "eslint ./src --ignore-pattern .gitignore --no-warn-ignored",
     "lint": "npm-run-all lint:*",
