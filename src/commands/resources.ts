@@ -1,15 +1,11 @@
-async function resourcesFolder(): Promise<void> {
-  const { showFolder } = await import('../util');
+export async function resourcesFolder(): Promise<void> {
+	const { showFolder } = await import('../util');
 
-  // @ts-ignore
-  const resourcesFolder: string = atom.commandInstaller.getResourcesDirectory();
+	// @ts-ignore
+	const resourcesFolder: string = atom.commandInstaller.getResourcesDirectory();
 
-  showFolder({
-    name: 'Resources Folder',
-    path: resourcesFolder
-  });
+	showFolder({
+		name: 'Resources Folder',
+		path: resourcesFolder,
+	});
 }
-
-export {
-  resourcesFolder
-};

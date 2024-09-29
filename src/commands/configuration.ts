@@ -1,15 +1,11 @@
-async function configFolder(): Promise<void> {
-  const { dirname } = await import('path');
-  const { showFolder } = await import('../util');
+export async function configFolder(): Promise<void> {
+	const { dirname } = await import('path');
+	const { showFolder } = await import('../util');
 
-  const configPath: string = dirname(atom.config.getUserConfigPath());
+	const configPath: string = dirname(atom.config.getUserConfigPath());
 
-  showFolder({
-    name: 'Configuration Folder',
-    path: configPath
-  });
+	showFolder({
+		name: 'Configuration Folder',
+		path: configPath,
+	});
 }
-
-export {
-  configFolder
-};

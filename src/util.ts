@@ -16,7 +16,7 @@ interface ShowOptions {
 	silent?: boolean;
 }
 
-async function fileExists(pathName: string): Promise<boolean> {
+export async function fileExists(pathName: string): Promise<boolean> {
 	try {
 		await fs.access(pathName, constants.F_OK);
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -29,7 +29,7 @@ async function fileExists(pathName: string): Promise<boolean> {
 	return true;
 }
 
-async function isDirectory(pathName: string): Promise<boolean> {
+export async function isDirectory(pathName: string): Promise<boolean> {
 	let stats;
 
 	try {
@@ -43,7 +43,7 @@ async function isDirectory(pathName: string): Promise<boolean> {
 	return stats.isDirectory();
 }
 
-async function isFile(pathName: string): Promise<boolean> {
+export async function isFile(pathName: string): Promise<boolean> {
 	let stats;
 
 	try {
@@ -57,7 +57,7 @@ async function isFile(pathName: string): Promise<boolean> {
 	return stats.isFile();
 }
 
-async function folderExists(pathName: string): Promise<boolean> {
+export async function folderExists(pathName: string): Promise<boolean> {
 	let stats;
 
 	try {
@@ -72,15 +72,15 @@ async function folderExists(pathName: string): Promise<boolean> {
 	return stats.isDirectory();
 }
 
-const getAppName = (): string => {
+export const getAppName = (): string => {
 	return atom.getAppName().split(' ')[0];
 };
 
-const getConfig = (key = ''): any => {
+export const getConfig = (key = ''): any => {
 	return atom.config.get(`browse.${key}`);
 };
 
-const getPackagesDirs = (): string[] => {
+export const getPackagesDirs = (): string[] => {
 	const packageDirs: string[] = atom.packages.getPackageDirPaths();
 
 	return packageDirs.filter((val: string) => !val.includes('app.asar'));
@@ -99,7 +99,7 @@ const getFileManager = (): string => {
 	}
 };
 
-async function showFolder(options: ShowOptions | string): Promise<void> {
+export async function showFolder(options: ShowOptions | string): Promise<void> {
 	const filePath = typeof options === 'string' ? options : options.path;
 
 	if (!filePath.length || !(await folderExists(filePath))) return;
@@ -141,7 +141,7 @@ async function showFolder(options: ShowOptions | string): Promise<void> {
 	}
 }
 
-async function showInFolder(options: ShowOptions | string): Promise<void> {
+export async function showInFolder(options: ShowOptions | string): Promise<void> {
 	const filePath = typeof options === 'string' ? options : options.path;
 
 	if (!filePath.length || !(await fileExists(filePath))) return;
@@ -177,7 +177,7 @@ async function showInFolder(options: ShowOptions | string): Promise<void> {
 	}
 }
 
-function info(message: string, dismissable = false): void {
+export function info(message: string, dismissable = false): void {
 	if (getConfig('notify') === 'all') {
 		atom.notifications.addInfo(`**${name}** ${message}`, {
 			dismissable: dismissable,
@@ -188,7 +188,7 @@ function info(message: string, dismissable = false): void {
 	console.info(`${message}`);
 }
 
-function warn(message: string, dismissable = false): void {
+export function warn(message: string, dismissable = false): void {
 	if (getConfig('notify') !== 'none') {
 		atom.notifications.addWarning(`**${name}** ${message}`, {
 			dismissable: dismissable,
@@ -198,5 +198,3 @@ function warn(message: string, dismissable = false): void {
 	if (getConfig('beep')) atom.beep();
 	console.warn(`${message}`);
 }
-
-export { folderExists, getAppName, getConfig, getPackagesDirs, isDirectory, isFile, showFolder, showInFolder, warn };
