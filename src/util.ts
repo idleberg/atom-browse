@@ -19,8 +19,7 @@ interface ShowOptions {
 export async function fileExists(pathName: string): Promise<boolean> {
 	try {
 		await fs.access(pathName, constants.F_OK);
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	} catch (error) {
+	} catch {
 		console.warn(`Skipping '${pathName}' – not found`);
 
 		return false;
@@ -34,9 +33,7 @@ export async function isDirectory(pathName: string): Promise<boolean> {
 
 	try {
 		stats = await fs.lstat(pathName);
-	} catch (error) {
-		console.error(error);
-
+	} catch {
 		return false;
 	}
 
@@ -48,9 +45,7 @@ export async function isFile(pathName: string): Promise<boolean> {
 
 	try {
 		stats = await fs.lstat(pathName);
-	} catch (error) {
-		console.error(error);
-
+	} catch {
 		return false;
 	}
 
@@ -62,8 +57,7 @@ export async function folderExists(pathName: string): Promise<boolean> {
 
 	try {
 		stats = await fs.stat(pathName);
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	} catch (error) {
+	} catch {
 		console.warn(`Skipping '${pathName}' – not found`);
 
 		return false;
