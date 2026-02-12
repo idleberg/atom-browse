@@ -60,7 +60,7 @@ export default {
 			atom.commands.add('atom-workspace', {
 				'browse:project-folders': async () => {
 					const { projectFolders } = await import('./commands/project');
-					projectFolders();
+					await projectFolders();
 				},
 			}),
 		);
@@ -69,7 +69,7 @@ export default {
 			atom.commands.add('atom-workspace', {
 				'browse:project-dependencies': async () => {
 					const { projectDependencies } = await import('./commands/dependencies');
-					projectDependencies();
+					await projectDependencies();
 				},
 			}),
 		);
@@ -78,7 +78,7 @@ export default {
 			atom.commands.add('atom-workspace', {
 				'browse:resources-folder': async () => {
 					const { resourcesFolder } = await import('./commands/resources');
-					resourcesFolder();
+					await resourcesFolder();
 				},
 			}),
 		);
@@ -87,7 +87,7 @@ export default {
 			atom.commands.add('atom-workspace', {
 				'browse:reveal-open-files': async () => {
 					const { revealFiles } = await import('./commands/reveal');
-					revealFiles();
+					await revealFiles();
 				},
 			}),
 		);
@@ -96,7 +96,7 @@ export default {
 			atom.commands.add('atom-workspace', {
 				'browse:reveal-file': async () => {
 					const { revealFile } = await import('./commands/reveal');
-					revealFile();
+					await revealFile();
 				},
 			}),
 		);
