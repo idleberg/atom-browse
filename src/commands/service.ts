@@ -7,7 +7,7 @@ interface BrowseServicePayload {
 	target: string;
 }
 
-export async function browseService(payload: BrowseServicePayload): Promise<void> {
+export async function browseService(payload: BrowseServicePayload | string): Promise<void> {
 	const { isDirectory, isFile, showFolder, showInFolder } = await import('../util');
 
 	if (typeof payload === 'string') {
