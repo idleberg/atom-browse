@@ -1,142 +1,142 @@
 {
-  "context-menu": {
-    ".platform-darwin atom-text-editor": [
-      {
-        "label": "Browse",
-        "submenu": [
-          {
-            "command": "browse:reveal-file",
-            "label": "Reveal in Finder"
-          }
-        ]
-      }
-    ],
-    ".platform-linux .tree-view .full-menu": [
-      {
-        "command": "browse:reveal-file-from-tree-view",
-        "label": "Reveal in file manager"
-      }
-    ],
-    ".platform-linux atom-text-editor": [
-      {
-        "label": "Browse",
-        "submenu": [
-          {
-            "command": "browse:reveal-file",
-            "label": "Reveal in file manager"
-          }
-        ]
-      }
-    ],
-    ".platform-win32 .tree-view .full-menu": [
-      {
-        "command": "browse:reveal-file-from-tree-view",
-        "label": "Reveal in Explorer"
-      }
-    ],
-    ".platform-win32 atom-text-editor": [
-      {
-        "label": "Browse",
-        "submenu": [
-          {
-            "command": "browse:reveal-file",
-            "label": "Reveal in Explorer"
-          }
-        ]
-      }
-    ],
-    "atom-text-editor": [
-      {
-        "label": "Browse",
-        "submenu": [
-          {
-            "command": "browse:configuration-folder",
-            "label": "Open Configuration Folder"
-          },
-          {
-            "command": "browse:packages-folder",
-            "label": "Open Packages Folder"
-          },
-          {
-            "command": "browse:.apm-folder",
-            "label": "Open .apm Folder"
-          },
-          {
-            "command": "browse:application-folder",
-            "label": "Open Application Folder"
-          },
-          {
-            "command": "browse:app-data-folder",
-            "label": "Open App Data Folder"
-          },
-          {
-            "command": "browse:resources-folder",
-            "label": "Open Resources Folder"
-          },
-          {
-            "type": "separator"
-          },
-          {
-            "command": "browse:project-folders",
-            "label": "Open Project Folder(s)"
-          },
-          {
-            "command": "browse:project-dependencies",
-            "label": "Open Project Dependencies"
-          }
-        ]
-      }
-    ]
-  },
-  "menu": [
-    {
-      "label": "Packages",
-      "submenu": [
-        {
-          "label": "Browse",
-          "submenu": [
-            {
-              "command": "browse:configuration-folder",
-              "label": "Open Configuration Folder"
-            },
-            {
-              "command": "browse:packages-folder",
-              "label": "Open Packages Folder"
-            },
-            {
-              "command": "browse:.apm-folder",
-              "label": "Open .apm Folder"
-            },
-            {
-              "command": "browse:application-folder",
-              "label": "Open Application Folder"
-            },
-            {
-              "command": "browse:app-data-folder",
-              "label": "Open App Data Folder"
-            },
-            {
-              "command": "browse:resources-folder",
-              "label": "Open Resources Folder"
-            },
-            {
-              "type": "separator"
-            },
-            {
-              "command": "browse:project-folders",
-              "label": "Open Project Folder(s)"
-            },
-            {
-              "command": "browse:project-dependencies",
-              "label": "Open Project Dependencies"
-            },
-            {
-              "command": "browse:reveal-file",
-              "label": "Reveal File"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"context-menu": {
+		".platform-darwin atom-text-editor": [
+			{
+				"label": "Browse",
+				"submenu": [
+					{
+						"command": "browse:reveal-file",
+						"label": "Reveal in Finder"
+					}
+				]
+			}
+		],
+		".platform-linux .tree-view .full-menu": [
+			{
+				"command": "browse:reveal-file-from-tree-view",
+				"label": "Reveal in file manager"
+			}
+		],
+		".platform-linux atom-text-editor": [
+			{
+				"label": "Browse",
+				"submenu": [
+					{
+						"command": "browse:reveal-file",
+						"label": "Reveal in file manager"
+					}
+				]
+			}
+		],
+		".platform-win32 .tree-view .full-menu": [
+			{
+				"command": "browse:reveal-file-from-tree-view",
+				"label": "Reveal in Explorer"
+			}
+		],
+		".platform-win32 atom-text-editor": [
+			{
+				"label": "Browse",
+				"submenu": [
+					{
+						"command": "browse:reveal-file",
+						"label": "Reveal in Explorer"
+					}
+				]
+			}
+		],
+		"atom-text-editor": [
+			{
+				"label": "Browse",
+				"submenu": [
+					{
+						"command": "browse:configuration-folder",
+						"label": "Open Configuration Folder"
+					},
+					{
+						"command": "browse:packages-folder",
+						"label": "Open Packages Folder"
+					},
+					{
+						"command": "browse:.apm-folder",
+						"label": "Open .apm Folder"
+					},
+					{
+						"command": "browse:application-folder",
+						"label": "Open Application Folder"
+					},
+					{
+						"command": "browse:app-data-folder",
+						"label": "Open App Data Folder"
+					},
+					{
+						"command": "browse:resources-folder",
+						"label": "Open Resources Folder"
+					},
+					{
+						"type": "separator"
+					},
+					{
+						"command": "browse:project-folders",
+						"label": "Open Project Folder(s)"
+					},
+					{
+						"command": "browse:project-dependencies",
+						"label": "Open Project Dependencies"
+					}
+				]
+			}
+		]
+	},
+	"menu": [
+		{
+			"label": "Packages",
+			"submenu": [
+				{
+					"label": "Browse",
+					"submenu": [
+						{
+							"command": "browse:configuration-folder",
+							"label": "Open Configuration Folder"
+						},
+						{
+							"command": "browse:packages-folder",
+							"label": "Open Packages Folder"
+						},
+						{
+							"command": "browse:.apm-folder",
+							"label": "Open .apm Folder"
+						},
+						{
+							"command": "browse:application-folder",
+							"label": "Open Application Folder"
+						},
+						{
+							"command": "browse:app-data-folder",
+							"label": "Open App Data Folder"
+						},
+						{
+							"command": "browse:resources-folder",
+							"label": "Open Resources Folder"
+						},
+						{
+							"type": "separator"
+						},
+						{
+							"command": "browse:project-folders",
+							"label": "Open Project Folder(s)"
+						},
+						{
+							"command": "browse:project-dependencies",
+							"label": "Open Project Dependencies"
+						},
+						{
+							"command": "browse:reveal-file",
+							"label": "Reveal File"
+						}
+					]
+				}
+			]
+		}
+	]
 }
