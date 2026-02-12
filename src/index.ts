@@ -1,7 +1,7 @@
-import { browseService } from './commands/service';
 import { CompositeDisposable } from 'atom';
-import console from './log';
+import { browseService } from './commands/service';
 import configSchema from './config';
+import console from './log';
 
 export default {
 	config: configSchema,

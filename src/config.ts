@@ -1,4 +1,4 @@
-import { platform } from 'os';
+import { platform } from 'node:os';
 
 function openAppPackage(): Record<string, unknown> {
 	if (platform() === 'darwin') {

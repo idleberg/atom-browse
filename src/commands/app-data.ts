@@ -1,5 +1,5 @@
-import { homedir, platform } from 'os';
-import { resolve } from 'path';
+import { homedir, platform } from 'node:os';
+import { resolve } from 'node:path';
 
 export async function appDataFolder(): Promise<void> {
 	const { getAppName, showFolder } = await import('../util');

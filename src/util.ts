@@ -1,8 +1,8 @@
-import { spawn } from 'child_process';
+import { spawn } from 'node:child_process';
+import { platform } from 'node:os';
+import { basename } from 'node:path';
 import { shell } from 'electron';
 import { constants, promises as fs } from 'fs';
-import { platform } from 'os';
-import { basename } from 'path';
 import { name } from '../package.json';
 import console from './log';
 
@@ -93,10 +93,10 @@ export async function showFolder(options: ShowOptions | string): Promise<void> {
 
 	if (!filePath.length || !(await folderExists(filePath))) return;
 
-	const fileManager = getConfig('customFileManager.fullPath');
+	const fileManager = getConfig('customFileManager.fullPath') as string;
 
 	if (fileManager) {
-		let openArgs = getConfig('customFileManager.openArgs');
+		let openArgs = getConfig('customFileManager.openArgs') as string[];
 
 		if (openArgs.length > 0) {
 			if (openArgs.includes('%path%')) {
@@ -122,10 +122,9 @@ export async function showFolder(options: ShowOptions | string): Promise<void> {
 
 		try {
 			await shell.openPath(filePath);
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch {
-			// Electron <9
-			if (shell['openItem']) shell['openItem'](filePath);
+			// @ts-expect-error We don't install types for Electron <9
+			if ('openItem' in shell) shell.openItem(filePath);
 		}
 	}
 }
@@ -135,10 +134,10 @@ export async function showInFolder(options: ShowOptions | string): Promise<void>
 
 	if (!filePath.length || !(await fileExists(filePath))) return;
 
-	const fileManager = getConfig('customFileManager.fullPath');
+	const fileManager = getConfig('customFileManager.fullPath') as string;
 
 	if (fileManager) {
-		let revealArgs = getConfig('customFileManager.revealArgs');
+		let revealArgs = getConfig('customFileManager.revealArgs') as string[];
 
 		if (revealArgs.length > 0) {
 			if (revealArgs.includes('%path%')) {

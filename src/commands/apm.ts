@@ -1,4 +1,4 @@
-import { dirname, resolve } from 'path';
+import { dirname, resolve } from 'node:path';
 
 export async function apmFolder(): Promise<void> {
 	const { showFolder } = await import('../util');

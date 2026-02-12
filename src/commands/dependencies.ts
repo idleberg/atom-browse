@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 export async function projectDependencies(): Promise<void> {
 	const { getConfig, showFolder, warn } = await import('../util');
@@ -9,7 +9,7 @@ export async function projectDependencies(): Promise<void> {
 		return warn('Editor has no projects');
 	}
 
-	const dependencyPaths = getConfig('dependencyPaths');
+	const dependencyPaths = getConfig('dependencyPaths') as string[];
 
 	if (!dependencyPaths || !dependencyPaths.length) {
 		return warn('No dependency folders specified in package configuration');
