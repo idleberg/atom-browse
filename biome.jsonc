@@ -1,0 +1,6 @@
+{
+	"extends": ["@idleberg/configs/biome"],
+	"files": {
+		"includes": ["!lib"]
+	}
+}
