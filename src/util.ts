@@ -1,10 +1,10 @@
-import { basename } from 'path';
+import { spawn } from 'child_process';
+import { shell } from 'electron';
 import { constants, promises as fs } from 'fs';
 import { platform } from 'os';
-import { shell } from 'electron';
-import { spawn } from 'child_process';
-import console from './log';
+import { basename } from 'path';
 import { name } from '../package.json';
+import console from './log';
 
 interface ShowOptions {
 	message?: string;
@@ -30,48 +30,42 @@ export async function fileExists(pathName: string): Promise<boolean> {
 }
 
 export async function isDirectory(pathName: string): Promise<boolean> {
-	let stats;
-
 	try {
-		stats = await fs.lstat(pathName);
+		const stats = await fs.lstat(pathName);
+
+		return stats.isDirectory();
 	} catch {
 		return false;
 	}
-
-	return stats.isDirectory();
 }
 
 export async function isFile(pathName: string): Promise<boolean> {
-	let stats;
-
 	try {
-		stats = await fs.lstat(pathName);
+		const stats = await fs.lstat(pathName);
+
+		return stats.isFile();
 	} catch {
 		return false;
 	}
-
-	return stats.isFile();
 }
 
 export async function folderExists(pathName: string): Promise<boolean> {
-	let stats;
-
 	try {
-		stats = await fs.stat(pathName);
+		const stats = await fs.stat(pathName);
+
+		return stats.isDirectory();
 	} catch {
 		console.warn(`Skipping '${pathName}' – not found`);
 
 		return false;
 	}
-
-	return stats.isDirectory();
 }
 
 export const getAppName = (): string => {
-	return atom.getAppName().split(' ')[0];
+	return atom.getAppName().split(' ')[0] || '';
 };
 
-export const getConfig = (key = ''): any => {
+export const getConfig = (key = ''): Record<string, unknown> | unknown => {
 	return atom.config.get(`browse.${key}`);
 };
 
@@ -129,7 +123,7 @@ export async function showFolder(options: ShowOptions | string): Promise<void> {
 		try {
 			await shell.openPath(filePath);
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (error) {
+		} catch {
 			// Electron <9
 			if (shell['openItem']) shell['openItem'](filePath);
 		}

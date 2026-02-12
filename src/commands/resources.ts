@@ -1,7 +1,7 @@
 export async function resourcesFolder(): Promise<void> {
 	const { showFolder } = await import('../util');
 
-	// @ts-ignore
+	// @ts-expect-error Types are not up-to-date
 	const resourcesFolder: string = atom.commandInstaller.getResourcesDirectory();
 
 	showFolder({
