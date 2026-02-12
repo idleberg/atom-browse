@@ -1,18 +1,18 @@
 import { platform } from 'os';
 
-const openAppPackage = (): Record<string, unknown> => {
+function openAppPackage(): Record<string, unknown> {
 	if (platform() === 'darwin') {
-		return platform() === 'darwin'
-			? {
-					title: 'Open App Package',
-					description: `Specify whether *Browse: Application Folder* opens the \`${atom.getAppName()}.app\` package or the executable that started the Node.js process (i.e. \`Atom Helper\`)`,
-					type: 'boolean',
-					default: true,
-					order: 3,
-			  }
-			: {};
+		return {
+			title: 'Open App Package',
+			description: `Specify whether *Browse: Application Folder* opens the \`${atom.getAppName()}.app\` package or the executable that started the Node.js process (i.e. \`Atom Helper\`)`,
+			type: 'boolean',
+			default: true,
+			order: 3,
+		};
 	}
-};
+
+	return {};
+}
 
 export default {
 	notify: {
