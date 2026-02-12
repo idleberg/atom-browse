@@ -1,19 +1,20 @@
 import { basename } from 'path';
 import { constants, promises as fs } from 'fs';
 import { platform } from 'os';
-import { promisify } from 'util';
 import { shell } from 'electron';
 import { spawn } from 'child_process';
 import console from './log';
 import { name } from '../package.json';
-
-const spawnAsync = promisify(spawn);
 
 interface ShowOptions {
 	message?: string;
 	name?: string;
 	path: string;
 	silent?: boolean;
+}
+
+function execute(command: string, args: string[]): void {
+	spawn(command, args, { detached: true, stdio: 'ignore' }).unref();
 }
 
 export async function fileExists(pathName: string): Promise<boolean> {
@@ -119,7 +120,7 @@ export async function showFolder(options: ShowOptions | string): Promise<void> {
 			info(options.message ? String(options.message) : `Opening '${options.name}' in custom file manager`);
 		}
 
-		spawnAsync(fileManager, openArgs, {});
+		execute(fileManager, openArgs);
 	} else {
 		if (typeof options !== 'string' && !options?.silent && options?.message?.length && options?.name?.length) {
 			info(options.message ? String(options.message) : `Opening '${options.name}' in ${getFileManager()}`);
@@ -161,7 +162,7 @@ export async function showInFolder(options: ShowOptions | string): Promise<void>
 			info(options.message ? String(options.message) : `Revealing \`${basename(filePath)}\` in custom file manager`);
 		}
 
-		spawnAsync(fileManager, revealArgs, {});
+		execute(fileManager, revealArgs);
 	} else {
 		if (typeof options !== 'string' && !options?.silent && options?.message?.length) {
 			info(options.message ? String(options.message) : `Revealing \`${basename(filePath)}\` in ${getFileManager()}`);
