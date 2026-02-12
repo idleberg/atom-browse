@@ -4,7 +4,7 @@ export async function revealFile(pane?): Promise<void> {
 	const activePane = pane ? pane : atom.workspace.getActiveTextEditor() || atom.workspace.getActivePaneItem();
 
 	if (activePane && (activePane.constructor.name === 'TextEditor' || activePane.constructor.name === 'ImageEditor')) {
-		const filePath: string = activePane.buffer.file ? activePane.buffer.file.path : '';
+		const filePath: string = activePane.buffer?.file?.path ?? '';
 
 		if (filePath) {
 			showInFolder({ path: filePath });
