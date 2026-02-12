@@ -13,6 +13,8 @@ interface ShowOptions {
 	silent?: boolean;
 }
 
+export const PLATFORM = platform();
+
 function execute(command: string, args: string[]): void {
 	spawn(command, args, { detached: true, stdio: 'ignore' }).unref();
 }
@@ -76,7 +78,7 @@ export const getPackagesDirs = (): string[] => {
 };
 
 const getFileManager = (): string => {
-	switch (platform()) {
+	switch (PLATFORM) {
 		case 'darwin':
 			return 'Finder';
 

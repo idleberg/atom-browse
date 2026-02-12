@@ -1,5 +1,6 @@
-import { homedir, platform } from 'node:os';
+import { homedir } from 'node:os';
 import { resolve } from 'node:path';
+import { PLATFORM } from '../util';
 
 export async function appDataFolder(): Promise<void> {
 	const { getAppName, showFolder } = await import('../util');
@@ -7,7 +8,7 @@ export async function appDataFolder(): Promise<void> {
 	const appName = getAppName();
 	let appDataFolder: string;
 
-	switch (platform()) {
+	switch (PLATFORM) {
 		case 'darwin':
 			appDataFolder = resolve(homedir(), 'Library', 'Application Support', appName);
 			break;

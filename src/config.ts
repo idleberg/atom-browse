@@ -1,7 +1,7 @@
-import { platform } from 'node:os';
+import { PLATFORM } from './util';
 
 function openAppPackage(): Record<string, unknown> {
-	if (platform() === 'darwin') {
+	if (PLATFORM) {
 		return {
 			title: 'Open App Package',
 			description: `Specify whether *Browse: Application Folder* opens the \`${atom.getAppName()}.app\` package or the executable that started the Node.js process (i.e. \`Atom Helper\`)`,
