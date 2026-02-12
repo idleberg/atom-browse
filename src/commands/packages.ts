@@ -3,10 +3,10 @@ export async function packagesFolder(): Promise<void> {
 
 	const packagesDirs: string[] = getPackagesDirs();
 
-	packagesDirs.map((packagesDir: string) => {
+	for (const packagesDir of packagesDirs) {
 		showFolder({
 			name: 'Packages Folder',
 			path: packagesDir,
 		});
-	});
+	}
 }

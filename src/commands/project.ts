@@ -7,12 +7,12 @@ export async function projectFolders(): Promise<void> {
 		return warn('Editor has no projects');
 	}
 
-	projectPaths.map((projectPath) => {
+	for (const projectPath of projectPaths) {
 		if (!projectPath.startsWith('atom://')) {
 			showFolder({
 				name: 'Project Folder',
 				path: projectPath,
 			});
 		}
-	});
+	}
 }
