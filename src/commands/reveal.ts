@@ -22,9 +22,7 @@ export async function revealFiles(): Promise<void> {
 	const paneItems = atom.workspace.getPaneItems();
 
 	if (paneItems.length) {
-		paneItems.map((paneItem) => {
-			revealFile(paneItem);
-		});
+		await Promise.all(paneItems.map((paneItem) => revealFile(paneItem)));
 	} else {
 		warn('No active files');
 	}

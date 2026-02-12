@@ -15,16 +15,20 @@ export async function projectDependencies(): Promise<void> {
 		return warn('No dependency folders specified in package configuration');
 	}
 
-	projectPaths.map((projectPath) => {
-		if (!projectPath.startsWith('atom://')) {
-			dependencyPaths.map(async (dependencyPath: string) => {
-				const resolvedDependencyPath: string = resolve(projectPath, dependencyPath);
+	await Promise.all(
+		projectPaths.map(async (projectPath) => {
+			if (!projectPath.startsWith('atom://')) {
+				await Promise.all(
+					dependencyPaths.map(async (dependencyPath: string) => {
+						const resolvedDependencyPath: string = resolve(projectPath, dependencyPath);
 
-				showFolder({
-					name: `\`${dependencyPath}\``,
-					path: resolvedDependencyPath,
-				});
-			});
-		}
-	});
+						showFolder({
+							name: `\`${dependencyPath}\``,
+							path: resolvedDependencyPath,
+						});
+					}),
+				);
+			}
+		}),
+	);
 }

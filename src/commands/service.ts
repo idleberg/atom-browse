@@ -23,28 +23,30 @@ export async function browseService(payload: BrowseServicePayload): Promise<void
 
 	const targetPaths = Array.isArray(payload.target) ? payload.target : [payload.target];
 
-	targetPaths.map(async (targetPath) => {
-		if (typeof targetPath !== 'string') {
-			console.warn(`Skipping: target path is of type ${typeof targetPath}, should be string`);
-		}
+	await Promise.all(
+		targetPaths.map(async (targetPath) => {
+			if (typeof targetPath !== 'string') {
+				console.warn(`Skipping: target path is of type ${typeof targetPath}, should be string`);
+			}
 
-		if (payload.action === 'reveal' || (await isFile(targetPath))) {
-			showInFolder({
-				path: targetPath,
-				message: payload.message,
-				silent: payload.silent,
-			});
-		} else if (payload.action === 'open' || (await isDirectory(targetPath))) {
-			const { basename } = await import('path');
+			if (payload.action === 'reveal' || (await isFile(targetPath))) {
+				showInFolder({
+					path: targetPath,
+					message: payload.message,
+					silent: payload.silent,
+				});
+			} else if (payload.action === 'open' || (await isDirectory(targetPath))) {
+				const { basename } = await import('path');
 
-			showFolder({
-				name: basename(targetPath),
-				path: targetPath,
-				message: payload.message,
-				silent: payload.silent,
-			});
-		} else if (payload.action) {
-			console.warn(`Action '${payload.action}' is not supported`);
-		}
-	});
+				showFolder({
+					name: basename(targetPath),
+					path: targetPath,
+					message: payload.message,
+					silent: payload.silent,
+				});
+			} else if (payload.action) {
+				console.warn(`Action '${payload.action}' is not supported`);
+			}
+		}),
+	);
 }
