@@ -77,6 +77,19 @@ export const getPackagesDirs = (): string[] => {
 	return packageDirs.filter((val: string) => !val.includes('app.asar'));
 };
 
+function buildArgs(configArgs: string[], filePath: string): string[] {
+	const args = [...configArgs];
+
+	if (args.includes('%path%')) {
+		const index = args.indexOf('%path%');
+		args[index] = args[index].replace('%path%', filePath);
+	} else {
+		args.push(filePath);
+	}
+
+	return args;
+}
+
 const getFileManager = (): string => {
 	switch (PLATFORM) {
 		case 'darwin':
@@ -98,19 +111,7 @@ export async function showFolder(options: ShowOptions | string): Promise<void> {
 	const fileManager = getConfig('customFileManager.fullPath') as string;
 
 	if (fileManager) {
-		let openArgs = getConfig('customFileManager.openArgs') as string[];
-
-		if (openArgs.length > 0) {
-			if (openArgs.includes('%path%')) {
-				const index = openArgs.indexOf('%path%');
-
-				openArgs[index] = openArgs[index].replace('%path%', filePath);
-			} else {
-				openArgs.push(filePath);
-			}
-		} else {
-			openArgs = [filePath];
-		}
+		const openArgs = buildArgs(getConfig('customFileManager.openArgs') as string[], filePath);
 
 		if (typeof options !== 'string' && !options?.silent && options?.message?.length && options?.name?.length) {
 			info(options.message ? String(options.message) : `Opening '${options.name}' in custom file manager`);
@@ -139,19 +140,7 @@ export async function showInFolder(options: ShowOptions | string): Promise<void>
 	const fileManager = getConfig('customFileManager.fullPath') as string;
 
 	if (fileManager) {
-		let revealArgs = getConfig('customFileManager.revealArgs') as string[];
-
-		if (revealArgs.length > 0) {
-			if (revealArgs.includes('%path%')) {
-				const index = revealArgs.indexOf('%path%');
-
-				revealArgs[index] = revealArgs[index].replace('%path%', filePath);
-			} else {
-				revealArgs.push(filePath);
-			}
-		} else {
-			revealArgs = [filePath];
-		}
+		const revealArgs = buildArgs(getConfig('customFileManager.revealArgs') as string[], filePath);
 
 		if (typeof options !== 'string' && !options?.silent && options?.message?.length) {
 			info(options.message ? String(options.message) : `Revealing \`${basename(filePath)}\` in custom file manager`);
