@@ -26,7 +26,8 @@
 	},
 	"license": "MIT",
 	"engines": {
-		"atom": ">=1.52.0 <2.0.0"
+		"atom": ">=1.52.0 <2.0.0",
+		"pulsar": ">=1.102.0 <2.0.0"
 	},
 	"activationHooks": [
 		"core:loaded-shell-environment"
