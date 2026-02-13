@@ -13,7 +13,7 @@
 		"test": "npm run lint",
 		"prepare": "lefthook install"
 	},
-	"main": "./lib/index",
+	"main": "./lib/index.js",
 	"typings": "./types",
 	"keywords": [],
 	"repository": {
