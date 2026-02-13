@@ -1,4 +1,4 @@
-import { dirname } from 'path';
+import { dirname } from 'node:path';
 
 export async function configFolder(): Promise<void> {
 	const { showFolder } = await import('../util');
