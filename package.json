@@ -35,7 +35,7 @@
 		"browse": {
 			"description": "Opens files/folders in your file manager",
 			"versions": {
-				"1.0.0": "provideBrowse"
+				"2.0.0": "provideBrowse"
 			}
 		}
 	},

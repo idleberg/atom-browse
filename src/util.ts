@@ -1,8 +1,8 @@
 import { spawn } from 'node:child_process';
+import { constants, promises as fs } from 'node:fs';
 import { platform } from 'node:os';
 import { basename } from 'node:path';
 import { shell } from 'electron';
-import { constants, promises as fs } from 'fs';
 import { name } from '../package.json';
 import console from './log';
 
@@ -103,56 +103,52 @@ const getFileManager = (): string => {
 	}
 };
 
-export async function showFolder(options: ShowOptions | string): Promise<void> {
-	const filePath = typeof options === 'string' ? options : options.path;
-
-	if (!filePath.length || !(await folderExists(filePath))) return;
+export async function showFolder(options: ShowOptions): Promise<void> {
+	if (!options.path.length || !(await folderExists(options.path))) return;
 
 	const fileManager = getConfig('customFileManager.fullPath') as string;
 
 	if (fileManager) {
-		const openArgs = buildArgs(getConfig('customFileManager.openArgs') as string[], filePath);
+		const openArgs = buildArgs(getConfig('customFileManager.openArgs') as string[], options.path);
 
-		if (typeof options !== 'string' && !options?.silent && options?.message?.length && options?.name?.length) {
-			info(options.message ? String(options.message) : `Opening '${options.name}' in custom file manager`);
+		if (!options.silent && options.message?.length && options.name?.length) {
+			info(options.message ?? `Opening '${options.name}' in custom file manager`);
 		}
 
 		execute(fileManager, openArgs);
 	} else {
-		if (typeof options !== 'string' && !options?.silent && options?.message?.length && options?.name?.length) {
-			info(options.message ? String(options.message) : `Opening '${options.name}' in ${getFileManager()}`);
+		if (!options.silent && options.message?.length && options.name?.length) {
+			info(options.message ?? `Opening '${options.name}' in ${getFileManager()}`);
 		}
 
 		try {
-			await shell.openPath(filePath);
+			await shell.openPath(options.path);
 		} catch {
 			// @ts-expect-error We don't install types for Electron <9
-			if ('openItem' in shell) shell.openItem(filePath);
+			if ('openItem' in shell) shell.openItem(options.path);
 		}
 	}
 }
 
-export async function showInFolder(options: ShowOptions | string): Promise<void> {
-	const filePath = typeof options === 'string' ? options : options.path;
-
-	if (!filePath.length || !(await fileExists(filePath))) return;
+export async function showInFolder(options: ShowOptions): Promise<void> {
+	if (!options.path.length || !(await fileExists(options.path))) return;
 
 	const fileManager = getConfig('customFileManager.fullPath') as string;
 
 	if (fileManager) {
-		const revealArgs = buildArgs(getConfig('customFileManager.revealArgs') as string[], filePath);
+		const revealArgs = buildArgs(getConfig('customFileManager.revealArgs') as string[], options.path);
 
-		if (typeof options !== 'string' && !options?.silent && options?.message?.length) {
-			info(options.message ? String(options.message) : `Revealing \`${basename(filePath)}\` in custom file manager`);
+		if (!options.silent && options.message?.length) {
+			info(options.message ?? `Revealing \`${basename(options.path)}\` in custom file manager`);
 		}
 
 		execute(fileManager, revealArgs);
 	} else {
-		if (typeof options !== 'string' && !options?.silent && options?.message?.length) {
-			info(options.message ? String(options.message) : `Revealing \`${basename(filePath)}\` in ${getFileManager()}`);
+		if (!options.silent && options.message?.length) {
+			info(options.message ?? `Revealing \`${basename(options.path)}\` in ${getFileManager()}`);
 		}
 
-		shell.showItemInFolder(filePath);
+		shell.showItemInFolder(options.path);
 	}
 }
 
