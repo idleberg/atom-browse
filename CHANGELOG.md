@@ -1,3 +1,10 @@
+# v4.0.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v4.0.0)
+
+- remove deprecated service options
+- various refactorings
+- update tooling
+- update dependencies
+
 # v3.9.2 [#](https://github.com/idleberg/atom-browse/releases/tag/v3.9.2)
 
 - remove dynamic imports of Node.js built-ins
