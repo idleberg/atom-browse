@@ -1,6 +1,6 @@
 {
 	"name": "browse",
-	"version": "3.9.2",
+	"version": "4.0.0",
 	"description": "Adds commands that let you quickly browse editor-related folders or reveal files you're working on",
 	"scripts": {
 		"build": "tsup",
