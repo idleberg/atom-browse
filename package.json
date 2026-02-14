@@ -40,8 +40,12 @@
 			}
 		}
 	},
-	"devDependencies": {
+	"dependencies": {
 		"@atxm/developer-console": "^0.6.1",
+		"atom-package-deps": "^8.0.0",
+		"find-up": "^5.0.0"
+	},
+	"devDependencies": {
 		"@commitlint/cli": "^20.4.1",
 		"@commitlint/config-conventional": "^20.4.1",
 		"@idleberg/configs": "^0.4.2",
@@ -49,10 +53,7 @@
 		"@types/atom": "^1.40.18",
 		"@types/electron": "^1.6.12",
 		"@types/node": "^14.18.63",
-		"atom-package-deps": "^8.0.0",
 		"concurrently": "^9.2.1",
-		"cross-env": "^7.0.3",
-		"find-up": "^5.0.0",
 		"log-symbols": "^5.1.0",
 		"tslib": "^2.8.1",
 		"tsup": "^8.5.1",
