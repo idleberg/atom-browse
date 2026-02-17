@@ -10,8 +10,7 @@
 		"lint:e18e": "e18e-cli analyze",
 		"prepublishOnly": "npm run build",
 		"start": "npm run dev",
-		"test": "npm run lint",
-		"prepare": "lefthook install"
+		"test": "npm run lint"
 	},
 	"main": "./lib/index.js",
 	"typings": "./types",
