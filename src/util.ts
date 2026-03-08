@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { constants, promises as fs } from 'node:fs';
 import { platform } from 'node:os';
 import { basename } from 'node:path';
+// @ts-expect-error Electron is provided by Atom/Pulsar
 import { shell } from 'electron';
 import { name } from '../package.json';
 import console from './log';

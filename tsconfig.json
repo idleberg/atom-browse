@@ -4,6 +4,9 @@
 		"moduleResolution": "node",
 		"module": "commonjs",
 		"resolveJsonModule": true,
+		"paths": {
+			"atom": ["./node_modules/@pulsar-edit/types"]
+		},
 		"target": "ES2020"
 	}
 }
