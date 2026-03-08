@@ -7,6 +7,7 @@ export default defineConfig({
 		neverBundle: ['atom', 'electron'],
 		onlyAllowBundle: false,
 	},
+	dts: true,
 	entry: ['src/index.ts'],
 	format: 'cjs',
 	minify: true,

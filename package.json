@@ -12,12 +12,13 @@
 		"start": "npm run dev",
 		"test": "npm run lint"
 	},
-	"main": "./lib/index.js",
-	"typings": "./types",
+	"type": "commonjs",
+	"main": "./lib/index.cjs",
+	"types": "./lib/index.d.ts",
 	"keywords": [],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/idleberg/atom-browse"
+		"url": "git+https://github.com/idleberg/atom-browse.git"
 	},
 	"homepage": "https://web.pulsar-edit.dev/packages/browse",
 	"bugs": {
