@@ -14,7 +14,7 @@
 	},
 	"type": "commonjs",
 	"main": "./lib/index.cjs",
-	"types": "./lib/index.d.ts",
+	"types": "./lib/index.d.cts",
 	"keywords": [],
 	"repository": {
 		"type": "git",
