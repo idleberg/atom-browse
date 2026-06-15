@@ -48,7 +48,7 @@ declare const _default: {
           title: string;
           description: string;
           type: string;
-          default: any[];
+          default: never[];
           items: {
             type: string[];
           };
@@ -58,7 +58,7 @@ declare const _default: {
           title: string;
           description: string;
           type: string;
-          default: any[];
+          default: never[];
           items: {
             type: string[];
           };

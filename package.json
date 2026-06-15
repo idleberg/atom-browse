@@ -46,15 +46,15 @@
 		"find-up": "^5.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^20.4.1",
-		"@commitlint/config-conventional": "^20.4.1",
-		"@idleberg/configs": "^0.4.2",
+		"@commitlint/cli": "^21.0.2",
+		"@commitlint/config-conventional": "^21.0.2",
+		"@idleberg/configs": "^0.4.5",
 		"@pulsar-edit/types": "^1.131.0",
 		"@types/node": "^14.18.63",
-		"concurrently": "^9.2.1",
+		"concurrently": "^10.0.3",
 		"log-symbols": "^5.1.0",
-		"tsdown": "^0.21.0",
+		"tsdown": "^0.22.2",
 		"tslib": "^2.8.1",
-		"typescript": "^5.9.3"
+		"typescript": "^6.0.3"
 	}
 }

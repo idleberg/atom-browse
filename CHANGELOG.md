@@ -1,3 +1,7 @@
+# v4.0.1 [#](https://github.com/idleberg/atom-browse/releases/tag/v4.0.1)
+
+- update dependencies
+
 # v4.0.0 [#](https://github.com/idleberg/atom-browse/releases/tag/v4.0.0)
 
 - remove deprecated service options

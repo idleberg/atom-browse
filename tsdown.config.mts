@@ -5,7 +5,7 @@ export default defineConfig({
 	deps: {
 		alwaysBundle: ['@atxm/developer-console', '@nsis/dent', '@nsis/nlf', 'atom-select-list', 'makensis', 'which'],
 		neverBundle: ['atom', 'electron'],
-		onlyAllowBundle: false,
+		onlyBundle: false,
 	},
 	dts: true,
 	entry: ['src/index.ts'],
